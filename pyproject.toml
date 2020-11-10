@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "vietnam-number"
+version = "0.1.0"
+description = "Thư viện xữ lý chữ số dành riêng cho Tiếng Việt - Hỗ trợ chuyển đổi cho cả văn nói và văn viết"
+authors = ["Nguyễn Hoài Thương <ng.thuong.lio@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["Vietnam", "number", "w2n", "text"]
+classifiers = [
+    'Natural Language :: Vietnamese',
+    'Intended Audience :: Information Technology',
+    'Intended Audience :: Financial and Insurance Industry',
+    'Intended Audience :: Telecommunications Industry',
+    'Intended Audience :: Developers',
+    'Operating System :: OS Independent',
+    'Topic :: Software Development :: Localization',
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    'Programming Language :: Python :: 3 :: Only',
+    'Development Status :: 4 - Beta',
+]
+include = [
+    "LICENSE",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pre-commit = "^2.8.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
