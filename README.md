@@ -51,4 +51,4 @@ print(w2n('tám triệu tư'))
 - Hỗ trợ số âm
 - ...
 
-_**Hãy để lại cho mình một sao nếu thư viện giúp ích được phần nào công việc của bạn.**_
+_Hãy để lại cho mình một sao nếu thư viện giúp ích được phần nào công việc của bạn._
