@@ -1,87 +1,99 @@
-from vietnam_number.data import hundreds_words, tens_words, tens_special
 from vietnam_number.tens import process_tens
 from vietnam_number.units import process_units
+from vietnam_number.utils.utils_hundreds import NumbersOfHundreds
 
 
-def process_hundreds(number_hundreds: list):
-    # chuyển các từ mười, chục thành ['một,'mươi']
-    for e in number_hundreds:
-        if e in tens_special:
-            m_index = number_hundreds.index(e)
-            number_hundreds[m_index] = 'mươi'
-            number_hundreds.insert(m_index, 'một')
+def preprocessing_hundreds(words: list) -> NumbersOfHundreds:
+    """Tiền xữ lý danh sách chữ số đầu vào.
 
-    # báo lỗi nếu input có nhiều hơn 1 lần các từ trong hundreds_words và tens_words
-    for e, i in zip(hundreds_words, tens_words):
-        if number_hundreds.count(e) > 1 or number_hundreds.count(i) > 1:
-            raise ValueError("Các từ liên kết hàng trăm và hàng chục có nhiều hơn một từ!")
+    Giúp tiền xữ lý dữ liệu đầu vào bao gồm như định dang lại danh sách, kiểm tra tính hợp lệ
+    của danh sách...
 
-    # nếu list truyền vào là rỗng thì bằng 00
-    if len(number_hundreds) == 0:
-        number_hundreds.append('không')
+    Args:
+        words (list): Danh dách chữ số dùng để tiền xữ lý.
 
-    # trường hợp trăm, mươi nằm ở đầu
-    if number_hundreds[0] in hundreds_words \
-            or number_hundreds[0] in tens_words:
-        number_hundreds.insert(0, 'một')
+    Returns:
+        Trả về một instance sau khi đã được xữ lý
+        Nếu có lỗi sẽ trả về lỗi.
 
-    # trường hợp trăm, mươi nằm ở cuối
-    if number_hundreds[len(number_hundreds) - 1] in hundreds_words \
-            or number_hundreds[len(number_hundreds) - 1] in tens_words:
-        number_hundreds.append('không')
+    """
+    numbers_of_hundreds = NumbersOfHundreds.format_words(words)
 
-    hundreds_index = -1
-    tens_index = -1
+    # Kiểm tra tính hợp lệ của danh sách chữ số.
+    numbers_of_hundreds.validate()
 
-    for e in number_hundreds:
-        if e in tens_words:
-            tens_index = number_hundreds.index(e)
+    return numbers_of_hundreds
 
-        if e in hundreds_words:
-            hundreds_index = number_hundreds.index(e)
+
+def process_hundreds(words: list) -> str:
+    """Xữ lý chữ số hàng trăm.
+
+    Args:
+        words (list): Danh sách chữ số đầu vào.
+
+    Returns:
+        Chuổi số hàng trăm.
+
+    """
+    # Tiền xữ lý danh sách chữ số đầu vào.
+    numbers_of_hundreds = preprocessing_hundreds(words)
+
+    # Xữ lý chữ số hàng trăm.
+    clean_words_number = numbers_of_hundreds.words_number
 
     value_of_hundreds = []
     value_of_tens = []
 
-    if hundreds_index > -1:
-        value_of_hundreds = number_hundreds[:1]
+    # Lấy vị trí index của từ khóa hàng chục
+    tens_index = numbers_of_hundreds.get_keyword_index['tens_index']
+    hundreds_index = numbers_of_hundreds.get_keyword_index['hundreds_index']
 
-        if tens_index > -1:
-            value_of_tens = number_hundreds[hundreds_index + 1:]
-        else:
-            try:
-                value_of_tens = number_hundreds[hundreds_index + 1:]
-                if len(value_of_tens) == 1:
-                    value_of_tens.append('không')
-            except IndexError:
-                value_of_tens = []
-    else:
-        if tens_index > -1:
-            try:
-                value_of_tens = number_hundreds[tens_index - 1: tens_index + 2]
-            except IndexError:
-                value_of_tens = number_hundreds[tens_index - 1:]
+    if hundreds_index:
+        value_of_hundreds = clean_words_number[:1]
 
-            rest_value = list(set(number_hundreds) - set(value_of_tens))
+        try:
+            value_of_tens = clean_words_number[hundreds_index + 1:]
+        except IndexError:
+            value_of_tens = []
 
-            if len(number_hundreds) <= 3:
-                value_of_hundreds = ['không']
-                value_of_tens = number_hundreds
+        # Trường hợp ['bốn', 'trăm', 'hai'] == 420
+        if len(value_of_tens) == 1:
+            value_of_tens.append('không')
 
-            if len(number_hundreds) == 4:
-                if tens_index == 1:
-                    return process_tens(value_of_tens) + process_units(rest_value)
-                if tens_index == 2:
-                    return process_units(rest_value) + process_tens(value_of_tens)
+    elif tens_index:
+        # Lấy giá trị của phần chục.
+        try:
+            value_of_tens = clean_words_number[tens_index - 1: tens_index + 2]
+        except IndexError:
+            value_of_tens = clean_words_number[tens_index - 1:]
 
-        else:
-            if len(number_hundreds) <= 2:
-                value_of_hundreds = ['không']
-                value_of_tens = number_hundreds
+        # Lấy giá trị của phần còn lại.
+        remaining = clean_words_number[tens_index + 2:]
+        if not remaining:
+            remaining = clean_words_number[:tens_index - 1]
 
-            if len(number_hundreds) == 3:
-                value_of_hundreds = number_hundreds[:1]
-                value_of_tens = number_hundreds[1:]
+        # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
+        if len(clean_words_number) <= 3:
+            value_of_hundreds = ['không']
+            value_of_tens = clean_words_number
+
+        if len(clean_words_number) == 4:
+            # Trường hợp đặc biệt như ['ba', 'bốn', 'mươi', 'hai'] == 342
+            if tens_index == 1:
+                return process_tens(value_of_tens) + process_units(remaining)
+
+            # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
+            if tens_index == 2:
+                return process_units(remaining) + process_tens(value_of_tens)
+
+    # Trường hợp ['hai', 'ba'] == 023
+    elif len(clean_words_number) <= 2:
+        value_of_hundreds = ['không']
+        value_of_tens = clean_words_number
+
+    # Trường hợp ['năm', 'sáu', 'hai'] == 562
+    elif len(clean_words_number) == 3:
+        value_of_hundreds = clean_words_number[:1]
+        value_of_tens = clean_words_number[1:]
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)
-

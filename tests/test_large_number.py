@@ -1,5 +1,6 @@
 import pytest
-from vietnam_number.w2n import process_w2n
+
+from vietnam_number.large_number import process_w2n
 
 
 @pytest.mark.parametrize('word_number, number_result', [
@@ -20,6 +21,16 @@ from vietnam_number.w2n import process_w2n
     (['một'], '000000000001'),
     (['tỷ'], '001000000000'),
     (['hai', 'nghìn'], '000000002000'),
+    (['mười'], '000000000010'),
+    (['mười', 'không'], '000000000010'),
+    (['mười', 'một'], '000000000011'),
 ])
 def test_process_w2n(word_number, number_result):
+    """Kiểm tra xữ lý chữ số lớn hơn hàng trăm.
+
+    Args:
+        word_number (list): Danh sách chữ số đầu vào.
+        number_result (str): Số đầu ra.
+
+    """
     assert process_w2n(word_number) == number_result

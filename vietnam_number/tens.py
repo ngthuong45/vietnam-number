@@ -1,47 +1,66 @@
-from vietnam_number.data import tens_words, units_words, tens_special
 from vietnam_number.units import process_units
+from vietnam_number.utils.utils_tens import NumbersOfTens
 
 
-def process_tens(number_tens: list):
-    # chuyển các từ mười, chục thành ['một,'mươi']
-    for e in number_tens:
-        if e in tens_special:
-            m_index = number_tens.index(e)
-            number_tens[m_index] = 'mươi'
-            number_tens.insert(m_index, 'một')
+def preprocessing_tens(words: list) -> NumbersOfTens:
+    """Tiền xữ lý danh sách chữ số đầu vào.
 
-    # nếu list truyền vào là rỗng thì bằng 00
-    if len(number_tens) == 0:
-        number_tens.append('không')
+    Giúp tiền xữ lý dữ liệu đầu vào bao gồm như định dang lại danh sách, kiểm tra tính hợp lệ
+    của danh sách...
 
-    # nếu truyền vào 1 ký tự và thuộc vietnam_number thì thêm không
-    if len(number_tens) == 1 and number_tens[0] in units_words:
-        number_tens.insert(0, 'không')
+    Args:
+        words (list): Danh dách chữ số dùng để tiền xữ lý.
 
-    tens_index = -1
+    Returns:
+        Trả về một instance sau khi đã được xữ lý
+        Nếu có lỗi sẽ trả về lỗi.
 
-    for e in number_tens:
-        if e in tens_words:
-            tens_index = number_tens.index(e)
+    """
+    numbers_of_tens = NumbersOfTens.format_words(words)
 
+    # Kiểm tra tính hợp lệ của danh sách chữ số.
+    numbers_of_tens.validate()
+
+    return numbers_of_tens
+
+
+def process_tens(words: list) -> str:
+    """Xữ lý chữ số hàng chục.
+
+    Args:
+        words (list): Danh sách chử số đầu vào.
+
+    Returns:
+        Chuổi số hàng chục.
+
+    """
+    # Tiền xữ lý danh sách chữ số đầu vào.
+    numbers_of_tens = preprocessing_tens(words)
+
+    # Xữ lý chữ số hàng chục.
+    clean_words_number = numbers_of_tens.words_number
     value_of_tens = ''
     value_of_units = ''
 
-    if tens_index > -1:
-        if tens_index == 0:
-            value_of_tens = 'một'
-            try:
-                value_of_units = number_tens[1]
-            except IndexError:
-                value_of_units = 'không'
-        elif tens_index == 1:
-            value_of_tens = number_tens[0]
-            try:
-                value_of_units = number_tens[2]
-            except IndexError:
-                value_of_units = 'không'
-    else:
-        value_of_tens = number_tens[0]
-        value_of_units = number_tens[1]
+    # Lấy vị trí index của từ khóa hàng chục
+    tens_index = numbers_of_tens.get_keyword_index['tens_index']
+
+    if tens_index == 0:
+        value_of_tens = 'một'
+        try:
+            value_of_units = clean_words_number[1]
+        except IndexError:
+            value_of_units = 'không'
+
+    if tens_index == 1:
+        value_of_tens = clean_words_number[0]
+        try:
+            value_of_units = clean_words_number[2]
+        except IndexError:
+            value_of_units = 'không'
+
+    if tens_index is None:
+        value_of_tens = clean_words_number[0]
+        value_of_units = clean_words_number[1]
 
     return process_units([value_of_tens]) + process_units([value_of_units])

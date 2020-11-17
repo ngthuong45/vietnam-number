@@ -1,4 +1,5 @@
 import pytest
+
 from vietnam_number.hundreds import process_hundreds
 
 
@@ -29,6 +30,7 @@ from vietnam_number.hundreds import process_hundreds
     (['trăm', 'mười', 'ba'], '113'),
     (['năm', 'mười', 'bảy'], '517'),
     (['bốn', 'tám', 'mươi'], '480'),
+    (['hai', 'hai', 'mươi'], '220'),
 
     (['bốn', 'trăm', 'hai', 'ba'], '423'),
     (['trăm', 'hai', 'mươi', 'ba'], '123'),
@@ -36,9 +38,20 @@ from vietnam_number.hundreds import process_hundreds
     (['không', 'trăm', 'tám', 'mươi'], '080'),
     (['không', 'bảy', 'mươi'], '070'),
     (['ba', 'bốn', 'mươi', 'hai'], '342'),
+    (['hai', 'bốn', 'mươi', 'hai'], '242'),
+    (['hai', 'hai', 'mươi', 'hai'], '222'),
+    (['ba', 'mươi', 'bảy', 'năm'], '375'),
+    (['ba', 'mươi', 'bảy', 'bảy'], '377'),
     (['ba', 'mươi', 'hai', 'bốn'], '324'),
 
     (['một', 'trăm', 'ba', 'mươi', 'hai'], '132'),
 ])
 def test_process_hundreds(word_hundreds, number_result):
+    """Kiểm tra xữ lý chữ số hàng trăm.
+
+    Args:
+        word_hundreds (list): Danh sách chử số đầu vào.
+        number_result (str): Chữ số hàng trăm đầu ra.
+
+    """
     assert process_hundreds(word_hundreds) == number_result

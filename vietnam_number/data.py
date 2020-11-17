@@ -1,4 +1,4 @@
-units_words = {
+units = {
     'không': 0,
     'lẽ': 0,
     'một': 1,
@@ -15,10 +15,10 @@ units_words = {
     'chín': 9,
 }
 
-billion_words = ['tỷ', 'tỏi']
-million_words = ['triệu', 'củ']
+billion_words = ['tỷ', 'tỏi', 'tỉ']
+million_words = ['triệu', 'củ', 'chai']
 thousand_words = ['nghìn', 'nghàn', 'ngàn']
-hundreds_words = ['trăm']
+hundreds_words = ['trăm', 'lít']
 tens_words = ['mươi', 'chục']
 
 tens_special = ['mười']
