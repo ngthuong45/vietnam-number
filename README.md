@@ -1,7 +1,7 @@
 # vietnam-number
-Thư viện xữ lý chữ số dành riêng cho Tiếng Việt.
+Thư viện xữ lý chữ số dành riêng cho Tiếng Việt. Hỗ trợ chuyển đổi chữ số thành số.
 
-##### Chuyễn chữ số thành số (word to number):
+**Tính năng chuyễn chữ số thành số trong Tiếng Việt (word to number):**
 - Hỗ trợ cho cả văn nói và văn viết
 - Hỗ trợ cho chữ số từ không đến trăm tỷ (0 đến 000.000.000.000)
 - Hỗ trợ một số cách đọc chữ số vắn tắt
@@ -12,7 +12,7 @@ Thư viện xữ lý chữ số dành riêng cho Tiếng Việt.
     * Trăm: lít
     * ...
 
-#### Cách sử dụng
+#### Sử dụng
 
 ```
 from vietnam_number.main import w2n
@@ -43,7 +43,7 @@ print(w2n('tám triệu tư'))
 
 ```
 
-##### Những tính năng trong tương lai:
+##### Những tính năng cần có trong tương lai:
 
 - Chuyển đổi số thành chữ số
 - Hỗ trợ chuyển đổi chữ số sang số theo phong cách đọc từng chữ một.
@@ -51,4 +51,4 @@ print(w2n('tám triệu tư'))
 - Hỗ trợ số âm
 - ...
 
-> Động viên mình bằng một sao nếu thư viện giúp ích được phần nào công việc của bạn.
+_**Hãy để lại cho mình một sao nếu thư viện giúp ích được phần nào công việc của bạn.**_
