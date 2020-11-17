@@ -57,7 +57,7 @@ def process_w2n(words: list):
 
     if million_index:
         if billion_index:
-            value_of_million = clean_words_number[billion_index + 1:million_index]
+            value_of_million = clean_words_number[billion_index + 1 : million_index]
         else:
             value_of_million = clean_words_number[:million_index]
 
@@ -66,9 +66,9 @@ def process_w2n(words: list):
 
     if thousand_index:
         if million_index:
-            value_of_thousand = clean_words_number[million_index + 1:thousand_index]
+            value_of_thousand = clean_words_number[million_index + 1 : thousand_index]
         elif billion_index:
-            value_of_thousand = clean_words_number[billion_index + 1:thousand_index]
+            value_of_thousand = clean_words_number[billion_index + 1 : thousand_index]
         else:
             value_of_thousand = clean_words_number[:thousand_index]
 
@@ -76,17 +76,17 @@ def process_w2n(words: list):
             value_of_thousand = ['một']
 
     if thousand_index:
-        value_of_hundreds = clean_words_number[thousand_index + 1:]
+        value_of_hundreds = clean_words_number[thousand_index + 1 :]
     elif million_index:
-        value_of_hundreds = clean_words_number[million_index + 1:]
+        value_of_hundreds = clean_words_number[million_index + 1 :]
     elif billion_index:
-        value_of_hundreds = clean_words_number[billion_index + 1:]
+        value_of_hundreds = clean_words_number[billion_index + 1 :]
     else:
         value_of_hundreds = clean_words_number
 
     return (
-            process_hundreds(value_of_billion) +
-            process_hundreds(value_of_million) +
-            process_hundreds(value_of_thousand) +
-            process_hundreds(value_of_hundreds)
+        process_hundreds(value_of_billion)
+        + process_hundreds(value_of_million)
+        + process_hundreds(value_of_thousand)
+        + process_hundreds(value_of_hundreds)
     )
