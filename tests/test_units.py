@@ -7,7 +7,7 @@ from vietnam_number.units import process_units
     'word_units, number_result',
     [
         ([], '0'),
-        (['không'], '2'),
+        (['không'], '0'),
         (['lẽ'], '0'),
         (['lăm'], '5'),
         (['tư'], '4'),
