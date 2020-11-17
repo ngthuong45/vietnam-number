@@ -43,7 +43,7 @@ print(w2n('tám triệu tư'))
 
 ```
 
-##### Những tính năng cần có trong tương lai:
+#### Những tính năng cần có trong tương lai:
 
 - Chuyển đổi số thành chữ số
 - Hỗ trợ chuyển đổi chữ số sang số theo phong cách đọc từng chữ một.
