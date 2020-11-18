@@ -107,7 +107,15 @@ Tính năng
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
-    >>> from vietnam_number.main import w2n
+    >>> from vietnam_number.main import single_w2n
+
+    # Văn nói cho các đọc từng chữ số một
+    # phù hợp trong một số trường hợp cần đọc chính xác từng chữ số một như
+    # số điện thoại, số chứng minh nhân nhân, số thẻ ngân hàng...
+    >>> text = 'không tám không chín một hai ba bốn năm sáu'
+
+    >>> single_w2n(text)
+    0809123456
 
 
 Tính Năng Sắp Ra Mắt
