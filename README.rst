@@ -109,7 +109,7 @@ Tính năng
     >>> # -*- coding: utf-8 -*-
     >>> from vietnam_number.main import single_w2n
 
-    # Văn nói cho các đọc từng chữ số một
+    # Văn nói cho cách đọc từng chữ số một
     # phù hợp trong một số trường hợp cần đọc chính xác từng chữ số một như
     # số điện thoại, số chứng minh nhân nhân, số thẻ ngân hàng...
     >>> text = 'không tám không chín một hai ba bốn năm sáu'
