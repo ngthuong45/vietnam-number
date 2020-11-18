@@ -34,7 +34,7 @@ Vietnam Number Toolkit
 |                     | * Vd: 'không một hai ba bốn mươi lăm sáu mươi bảy tám mươi chín' = 0123456789                  |
 +---------------------+------------------------------------------------------------------------------------------------+
 
-Installation
+Cài đặt
 ----------------------------------------
 
 Cài đặt vietnam-number bằng lệnh:
@@ -43,17 +43,17 @@ Cài đặt vietnam-number bằng lệnh:
 
     $ pip install vietnam-number
 
-Usage
+Tính năng
 ----------------------------------------
 
-* `1. Chuyễn đổi chữ số sang số có từ liên kết (Word to Number) <#1-sentence-segmentation>`_
-* `2. Chuyễn đổi chữ số sang số không có từ liên kết <#2-word-segmentation>`_
+* `1. Chuyễn đổi chữ số sang số có từ liên kết (Word to Number) <#1-chu-so-sang-so-co-tu-lien-ket>`_
+* `2. Chuyễn đổi chữ số sang số không có từ liên kết <#2-chu-so-sang-so-khong-co-tu-lien-ket>`_
 
 ****************************************
 1. Chữ số sang số có từ liên kết.
 ****************************************
 
-Sử dụng
+.. image:: https://img.shields.io/badge/feature-word%20to%20number-success
 
 .. code-block:: python
 
@@ -102,7 +102,7 @@ Sử dụng
 2. Chữ số sang số không có từ liên kết.
 ****************************************
 
-Sử dụng
+.. image:: https://img.shields.io/badge/feature-word%20to%20number-success
 
 .. code-block:: python
 
