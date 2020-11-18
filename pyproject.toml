@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "vietnam-number"
-version = "0.1.0"
+name = "vietnam_number"
+version = "0.1.2"
 description = "Thư viện xữ lý chữ số dành riêng cho Tiếng Việt - Hỗ trợ chuyển đổi cho cả văn nói và văn viết"
 authors = ["Nguyễn Hoài Thương <ng.thuong.lio@gmail.com>"]
 repository = "https://github.com/ngthuong45/vietnam-number.git"
-license = "MIT"
+license = "GPL-3.0-or-later"
 readme = "README.md"
 keywords = ["Vietnam", "number", "w2n", "text"]
 classifiers = [
@@ -38,10 +38,10 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.isort]
 profile = "black"
-line_length = 120
+line_length = 127
 
 [tool.black]
-line-length = 120
+line-length = 127
 skip-string-normalization = true
 include = '\.pyi?$'
 exclude = '''
