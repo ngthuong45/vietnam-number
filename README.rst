@@ -46,11 +46,11 @@ Cài đặt vietnam-number bằng lệnh:
 Tính năng
 ----------------------------------------
 
-- `Chữ số sang số có từ liên kết.`_
-- `Chữ số sang số không có từ liên kết.`_
+| `1. Chữ số sang số có từ liên kết.`_
+| `2. Chữ số sang số không có từ liên kết.`_
 
 ****************************************
-Chữ số sang số có từ liên kết.
+1. Chữ số sang số có từ liên kết.
 ****************************************
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
@@ -99,7 +99,7 @@ Chữ số sang số có từ liên kết.
     7000000
 
 ****************************************
-Chữ số sang số không có từ liên kết.
+2. Chữ số sang số không có từ liên kết.
 ****************************************
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
