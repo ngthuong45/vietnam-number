@@ -1,6 +1,6 @@
 import pytest
 
-from vietnam_number.hundreds import process_hundreds
+from vietnam_number.w2n.hundreds import process_hundreds
 
 
 @pytest.mark.parametrize(

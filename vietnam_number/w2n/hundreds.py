@@ -1,6 +1,6 @@
-from vietnam_number.tens import process_tens
-from vietnam_number.units import process_units
 from vietnam_number.utils.utils_hundreds import NumbersOfHundreds
+from vietnam_number.w2n.tens import process_tens
+from vietnam_number.w2n.units import process_units
 
 
 def preprocessing_hundreds(words: list) -> NumbersOfHundreds:

@@ -1,6 +1,6 @@
 import pytest
 
-from vietnam_number.large_number import process_w2n
+from vietnam_number.w2n.large_number import process_w2n
 
 
 @pytest.mark.parametrize(

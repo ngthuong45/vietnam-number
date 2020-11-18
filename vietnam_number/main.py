@@ -1,5 +1,5 @@
 from vietnam_number.data import units, word_multiplier
-from vietnam_number.large_number import process_w2n
+from vietnam_number.w2n.large_number import process_w2n
 
 
 def w2n(number_sentence):
