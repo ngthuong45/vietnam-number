@@ -46,12 +46,8 @@ Cài đặt vietnam-number bằng lệnh:
 Tính năng
 ----------------------------------------
 
-* 1. Chuyễn đổi chữ số sang số có từ liên kết (Word to Number).
-* 2. Chuyễn đổi chữ số sang số không có từ liên kết.
-
-.. role:: red
-
-This text is :red:`colored red` and so is :red:`this`
+- `1. Chữ số sang số có từ liên kết.`_.
+- `2. Chữ số sang số không có từ liên kết.`_.
 
 ****************************************
 1. Chữ số sang số có từ liên kết.
@@ -123,9 +119,9 @@ Tính Năng Sắp Ra Mắt
 Đóng Góp
 ----------------------------------------
 
-Thông báo lỗi tại https://github.com/undertheseanlp/underthesea/issues.
+Thông báo lỗi :beetle: tại https://github.com/undertheseanlp/underthesea/issues.
 
-Nếu bạn thông báo một lỗi mới :beetle: , vui lòng đính kèm các thông tin:
+Nếu bạn thông báo một lỗi mới, vui lòng đính kèm các thông tin:
 
 * Thông tin hệ điều hành của bạn.
 * Những thiết lập ở local nếu có.
