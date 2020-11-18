@@ -53,7 +53,7 @@ Tính năng
 1. Chữ số sang số có từ liên kết.
 ****************************************
 
-.. image:: https://img.shields.io/badge/feature-word%20to%20number-success
+.. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
 .. code-block:: python
 
@@ -102,7 +102,7 @@ Tính năng
 2. Chữ số sang số không có từ liên kết.
 ****************************************
 
-.. image:: https://img.shields.io/badge/feature-word%20to%20number-success
+.. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
 .. code-block:: python
 
