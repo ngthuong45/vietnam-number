@@ -1,4 +1,5 @@
 from vietnam_number.data import units, word_multiplier
+from vietnam_number.w2n.couple import process_couple
 from vietnam_number.w2n.large_number import process_w2n
 from vietnam_number.w2n.single import process_single
 
@@ -62,8 +63,8 @@ def w2n(number_sentence):
     return int(process_w2n(clean_numbers))
 
 
-def single_w2n(number_sentence):
-    """Chuyển đổi chữ số sang số.
+def w2n_single(number_sentence):
+    """Chuyển đổi chữ số sang số từng số một.
 
     Args:
         number_sentence (str): Chuổi chữ số đầu vào.
@@ -78,4 +79,20 @@ def single_w2n(number_sentence):
     return process_single(clean_numbers)
 
 
-print(single_w2n('không tám không chín một hai ba bốn năm sáu'))
+def w2n_couple(number_sentence):
+    """Chuyển đổi chữ số sang số từng cặp số.
+
+    Args:
+        number_sentence (str): Chuổi chữ số đầu vào.
+
+    Returns:
+        Số đầu ra
+
+    """
+    # Tiền xữ lý dữ liệu chuỗi số đầu vào
+    clean_numbers = preprocessing_number(number_sentence)
+
+    return process_couple(clean_numbers)
+
+
+print(w2n_couple('hai mươi ba bảy tám mươi bốn năm bốn chín mươi mốt mười hai bảy năm'))

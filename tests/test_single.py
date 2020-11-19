@@ -10,10 +10,10 @@ from vietnam_number.w2n.single import process_single
     ],
 )
 def test_process_single(word_single, number_result):
-    """Kiểm tra xữ lý chữ số hàng chục.
+    """Kiểm tra xữ lý từng số.
 
     Args:
-        word_tens (list): Danh sách chữ số đầu vào hàng chục.
+        word_single (list): Danh sách chữ số đầu vào.
         number_result (str): Số đầu ra hàng chục.
 
     """

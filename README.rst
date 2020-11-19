@@ -55,6 +55,9 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
+| Sử dụng phù hợp trong các tình huống dãy số có các từ liên kết với nhau như: 'mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'
+| Vd: đơn vị tiền tệ, tuổi tác...
+
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
@@ -104,18 +107,32 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
+| Sử dụng phù hợp trong các tình huống xữ lý một dãy số nhiều chữ số khác nhau, cần độ chính xác cao
+| Vd: số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
+
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
-    >>> from vietnam_number.main import single_w2n
+    >>> from vietnam_number.main import w2n_single
 
-    # Văn nói cho cách đọc từng chữ số một
-    # phù hợp trong một số trường hợp cần đọc chính xác từng chữ số một như
-    # số điện thoại, số chứng minh nhân nhân, số thẻ ngân hàng...
+    # Văn nói cho cách đọc đơn từng số một.
     >>> text = 'không tám không chín một hai ba bốn năm sáu'
 
-    >>> single_w2n(text)
+    >>> w2n_single(text)
     0809123456
+
+    # Văn nói cho cách đọc đôi từng cặp số một.
+    # Bắt buộc số ban đầu phải là số kết hợp bởi từng cặp số,
+    # hay nói cách khác số ban đầu phải có số lượng chữ số chia hết cho 2.
+    # Trong trường hợp đặt biệt này, dãy số có thể có hoặc không có từ liên kết hàng chục là từ 'mươi'...
+    # vd:
+    #  032 -> 'không ba mươi hai' -> không được phép (số lượng phần tử số ban đầu lẽ) -> đầu ra không chính xác.
+    #  0324 -> 'không ba mươi hai bốn' -> không được phép (không phải cách đọc từng cặp số một) -> đầu ra không chính xác
+    #  0324 -> 'không ba hai mươi bốn' -> Ok
+    >>> text = 'hai mươi ba bảy tám mươi bốn năm bốn chín mươi mốt mười hai bảy năm'
+
+    >>> w2n_couple(text)
+    20378454911275
 
 
 Tính Năng Sắp Ra Mắt
