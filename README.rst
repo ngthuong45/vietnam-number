@@ -61,7 +61,7 @@ Tính năng
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
-    >>> from vietnam_number.main import w2n
+    >>> from vietnam_number.word2number import w2n
     >>> text = 'một triệu không trăm tám mươi lăm nghìn ba trăm ba mươi hai'
 
     >>> w2n(text)
@@ -113,7 +113,7 @@ Tính năng
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
-    >>> from vietnam_number.main import w2n_single
+    >>> from vietnam_number.word2number import w2n_single, w2n_couple
 
     # Văn nói cho cách đọc đơn từng số một.
     >>> text = 'không tám không chín một hai ba bốn năm sáu'
