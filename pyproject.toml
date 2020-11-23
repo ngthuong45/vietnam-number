@@ -5,7 +5,7 @@ description = "Thư viện xữ lý chữ số dành riêng cho Tiếng Việt -
 authors = ["Nguyễn Hoài Thương <ng.thuong.lio@gmail.com>"]
 repository = "https://github.com/ngthuong45/vietnam-number.git"
 license = "GPL-3.0-or-later"
-readme = "README.md"
+readme = "README.rst"
 keywords = ["Vietnam", "number", "w2n", "text"]
 classifiers = [
     'Natural Language :: Vietnamese',

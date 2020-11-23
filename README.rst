@@ -13,7 +13,7 @@ Vietnam Number Toolkit
         :target: https://pypi.python.org/pypi/underthesea
 
 .. image:: https://img.shields.io/badge/chat-on%20facebook-informational
-    :target: https://www.facebook.com/undertheseanlp/
+    :target: https://www.facebook.com/ng.thuong45/
 
 **Vietnam-number** là một thư viện Python mã nguồn mở hỗ trợ cho việc xữ lý chữ số trong Tiếng Việt.
 
@@ -144,7 +144,7 @@ Tính Năng Sắp Ra Mắt
 Đóng Góp
 ----------------------------------------
 
-Thông báo lỗi :beetle: tại https://github.com/undertheseanlp/underthesea/issues.
+Thông báo lỗi :beetle: tại https://github.com/ngthuong45/vietnam-number/issues
 
 Nếu bạn thông báo một lỗi mới, vui lòng đính kèm các thông tin:
 
