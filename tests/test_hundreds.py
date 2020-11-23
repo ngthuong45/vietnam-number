@@ -7,6 +7,30 @@ from vietnam_number.word2number.hundreds import process_hundreds
 @pytest.mark.parametrize(
     'word_hundreds, number_result',
     [
+        ('mười', 10),
+        ('trăm mười', 110),
+        ('mười lăm', 15),
+        ('không mười', 10),
+        ('ba mười hai', 312),
+        ('trăm mười ba', 113),
+        ('năm mười bảy', 517),
+        ('hai trăm mười ba', 213),
+    ],
+)
+def test_w2n_hundreds(word_hundreds, number_result):
+    """Kiểm tra xữ lý chữ số hàng trăm.
+
+    Args:
+        word_hundreds (str): Danh sách chử số đầu vào.
+        number_result (int): Chữ số hàng trăm đầu ra.
+
+    """
+    assert w2n(word_hundreds) == number_result
+
+
+@pytest.mark.parametrize(
+    'word_hundreds, number_result',
+    [
         ([], '000'),
         (['không'], '000'),
         (['trăm'], '100'),
@@ -47,27 +71,3 @@ def test_process_hundreds(word_hundreds, number_result):
 
     """
     assert process_hundreds(word_hundreds) == number_result
-
-
-@pytest.mark.parametrize(
-    'word_hundreds, number_result',
-    [
-        ('mười', 10),
-        ('trăm mười', 110),
-        ('mười lăm', 15),
-        ('không mười', 10),
-        ('ba mười hai', 312),
-        ('trăm mười ba', 113),
-        ('năm mười bảy', 517),
-        ('hai trăm mười ba', 213),
-    ],
-)
-def test_w2n_hundreds(word_hundreds, number_result):
-    """Kiểm tra xữ lý chữ số hàng trăm.
-
-    Args:
-        word_hundreds (str): Danh sách chử số đầu vào.
-        number_result (int): Chữ số hàng trăm đầu ra.
-
-    """
-    assert w2n(word_hundreds) == number_result
