@@ -1,5 +1,5 @@
-from vietnam_number.wordtonumber.utils.large_number import LargeNumber
-from vietnam_number.wordtonumber.hundreds import process_hundreds
+from vietnam_number.word2number.hundreds import process_hundreds
+from vietnam_number.word2number.utils.large_number import LargeNumber
 
 
 def pre_process_large_number(words: list) -> LargeNumber:

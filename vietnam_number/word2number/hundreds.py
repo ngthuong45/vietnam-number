@@ -1,6 +1,6 @@
-from vietnam_number.wordtonumber.utils.hundreds import NumbersOfHundreds
-from vietnam_number.wordtonumber.tens import process_tens
-from vietnam_number.wordtonumber.units import process_units
+from vietnam_number.word2number.tens import process_tens
+from vietnam_number.word2number.units import process_units
+from vietnam_number.word2number.utils.hundreds import NumbersOfHundreds
 
 
 def pre_process_hundreds(words: list) -> NumbersOfHundreds:
@@ -97,4 +97,3 @@ def process_hundreds(words: list) -> str:
         value_of_tens = clean_words_number[1:]
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)
-

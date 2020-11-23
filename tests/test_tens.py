@@ -1,6 +1,7 @@
 import pytest
 
-from vietnam_number.w2n.tens import process_tens
+from vietnam_number.word2number import w2n
+from vietnam_number.word2number.tens import process_tens
 
 
 @pytest.mark.parametrize(
@@ -26,3 +27,22 @@ def test_process_tens(word_tens, number_result):
 
     """
     assert process_tens(word_tens) == number_result
+
+
+@pytest.mark.parametrize(
+    'word_tens, number_result',
+    [
+        ('mười', 10),
+        ('mười không', 10),
+        ('mười một', 11),
+    ],
+)
+def test_w2n_tens(word_tens, number_result):
+    """Kiểm tra xữ lý chữ số hàng chục.
+
+    Args:
+        word_tens (str): Danh sách chữ số đầu vào hàng chục.
+        number_result (int): Số đầu ra hàng chục.
+
+    """
+    assert w2n(word_tens) == number_result

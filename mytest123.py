@@ -1,5 +1,5 @@
-from vietnam_number import w2n
+from vietnam_number.word2number import w2n
 
-text_1 = 'một triệu tư'
+text_1 = 'mười'
 
-w2n(text_1)
+print(w2n(text_1))

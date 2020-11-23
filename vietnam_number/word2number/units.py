@@ -1,4 +1,4 @@
-from vietnam_number.wordtonumber.data import units
+from vietnam_number.word2number.data import units
 
 
 def process_units(words: list):

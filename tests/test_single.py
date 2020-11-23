@@ -1,6 +1,6 @@
 import pytest
 
-from vietnam_number.w2n.single import process_single
+from vietnam_number.word2number.single import process_single
 
 
 @pytest.mark.parametrize(

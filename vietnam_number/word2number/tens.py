@@ -1,5 +1,5 @@
-from vietnam_number.wordtonumber.utils.tens import NumbersOfTens
-from vietnam_number.wordtonumber.units import process_units
+from vietnam_number.word2number.units import process_units
+from vietnam_number.word2number.utils.tens import NumbersOfTens
 
 
 def pre_process_tens(words: list) -> NumbersOfTens:

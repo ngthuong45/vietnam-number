@@ -1,6 +1,6 @@
-from vietnam_number.wordtonumber.data import tens_words
-from vietnam_number.wordtonumber.single import process_single
-from vietnam_number.wordtonumber.tens import process_tens
+from vietnam_number.word2number.data import tens_words
+from vietnam_number.word2number.single import process_single
+from vietnam_number.word2number.tens import process_tens
 
 
 def pre_process_couple(words: list):
@@ -69,5 +69,3 @@ def process_couple(words: list) -> str:
             value_of_tens += process_single(between_two_ten_index[1:])
 
     return value_of_tens
-
-print(process_couple(['năm', 'mươi', 'sáu', 'chín', 'hai', 'ba', 'mươi', 'lăm', 'bảy', 'tám']))

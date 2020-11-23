@@ -1,4 +1,11 @@
-from vietnam_number.wordtonumber.data import billion_words, hundreds_words, million_words, tens_words, thousand_words
+from vietnam_number.word2number.data import (
+    billion_words,
+    hundreds_words,
+    million_words,
+    tens_special,
+    tens_words,
+    thousand_words,
+)
 
 
 class Numbers(object):
@@ -45,3 +52,19 @@ class Numbers(object):
                 keyword_index['billion_index'] = self.words_number.index(word)
 
         return keyword_index
+
+
+def convert_to_tens_word(words: list):
+    """Chuyển các từ mười, chục thành ['một,'mươi']
+
+    Returns:
+        Danh sách mới sau khi chuyển đổi
+    """
+    # Chuyển các từ mười, chục thành ['một,'mươi']
+    for word in words:
+        if word in tens_special:
+            tens_index = words.index(word)
+            words[tens_index] = 'mươi'
+            words.insert(tens_index, 'một')
+
+    return words

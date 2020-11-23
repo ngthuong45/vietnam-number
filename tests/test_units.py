@@ -1,6 +1,6 @@
 import pytest
 
-from vietnam_number.w2n.units import process_units
+from vietnam_number.word2number.units import process_units
 
 
 @pytest.mark.parametrize(

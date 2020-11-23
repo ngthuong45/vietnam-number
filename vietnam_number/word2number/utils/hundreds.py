@@ -1,5 +1,5 @@
-from vietnam_number.wordtonumber.data import hundreds_words, tens_words
-from vietnam_number.wordtonumber.utils.base import Numbers
+from vietnam_number.word2number.data import hundreds_words, tens_words
+from vietnam_number.word2number.utils.base import Numbers
 
 
 class NumbersOfHundreds(Numbers):

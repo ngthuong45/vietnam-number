@@ -1,5 +1,5 @@
-from vietnam_number.wordtonumber.data import word_multiplier
-from vietnam_number.wordtonumber.units import process_units
+from vietnam_number.word2number.data import word_multiplier
+from vietnam_number.word2number.units import process_units
 
 
 def pre_process_single(words: list):
