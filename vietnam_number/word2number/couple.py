@@ -1,9 +1,9 @@
-from vietnam_number.data import tens_special, tens_words
-from vietnam_number.w2n.single import process_single
-from vietnam_number.w2n.tens import process_tens
+from vietnam_number.wordtonumber.data import tens_words
+from vietnam_number.wordtonumber.single import process_single
+from vietnam_number.wordtonumber.tens import process_tens
 
 
-def preprocessing_couple(words: list):
+def pre_process_couple(words: list):
     """Tiền xữ lý danh sách chữ số đầu vào.
 
     Giúp tiền xữ lý dữ liệu đầu vào bao gồm như định dang lại danh sách, kiểm tra tính hợp lệ
@@ -19,13 +19,6 @@ def preprocessing_couple(words: list):
         ValueError: Nếu chữ số đầu vào có từ liên kết hàng chục.
 
     """
-    # Chuyển các từ mười, chục thành ['một,'mươi']
-    for word in words:
-        if word in tens_special:
-            m_index = words.index(word)
-            words[m_index] = 'mươi'
-            words.insert(m_index, 'một')
-
     # Trường hợp từ 'mươi' nằm ở cuối cùng.
     if words[-1] in tens_words:
         words.append('không')
@@ -47,7 +40,7 @@ def process_couple(words: list) -> str:
         Chuỗi số sau khi xữ lý xong.
     """
     # Tiền xữ lý dữ liệu chữ số đầu vào.
-    clean_number = preprocessing_couple(words)
+    clean_number = pre_process_couple(words)
 
     # Lấy tất cả vị trí index của 'mươi'
     all_tens_index = [i for i, value in enumerate(clean_number) if value in tens_words]
@@ -76,3 +69,5 @@ def process_couple(words: list) -> str:
             value_of_tens += process_single(between_two_ten_index[1:])
 
     return value_of_tens
+
+print(process_couple(['năm', 'mươi', 'sáu', 'chín', 'hai', 'ba', 'mươi', 'lăm', 'bảy', 'tám']))

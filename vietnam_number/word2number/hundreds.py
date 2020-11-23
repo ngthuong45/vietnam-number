@@ -1,9 +1,9 @@
-from vietnam_number.utils.utils_hundreds import NumbersOfHundreds
-from vietnam_number.w2n.tens import process_tens
-from vietnam_number.w2n.units import process_units
+from vietnam_number.wordtonumber.utils.hundreds import NumbersOfHundreds
+from vietnam_number.wordtonumber.tens import process_tens
+from vietnam_number.wordtonumber.units import process_units
 
 
-def preprocessing_hundreds(words: list) -> NumbersOfHundreds:
+def pre_process_hundreds(words: list) -> NumbersOfHundreds:
     """Tiền xữ lý danh sách chữ số đầu vào.
 
     Giúp tiền xữ lý dữ liệu đầu vào bao gồm như định dang lại danh sách, kiểm tra tính hợp lệ
@@ -36,7 +36,7 @@ def process_hundreds(words: list) -> str:
 
     """
     # Tiền xữ lý danh sách chữ số đầu vào.
-    numbers_of_hundreds = preprocessing_hundreds(words)
+    numbers_of_hundreds = pre_process_hundreds(words)
 
     # Xữ lý chữ số hàng trăm.
     clean_words_number = numbers_of_hundreds.words_number
@@ -97,3 +97,4 @@ def process_hundreds(words: list) -> str:
         value_of_tens = clean_words_number[1:]
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)
+

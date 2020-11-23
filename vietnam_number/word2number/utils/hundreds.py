@@ -1,5 +1,5 @@
-from vietnam_number.data import hundreds_words, tens_special, tens_words
-from vietnam_number.utils.base import Numbers
+from vietnam_number.wordtonumber.data import hundreds_words, tens_words
+from vietnam_number.wordtonumber.utils.base import Numbers
 
 
 class NumbersOfHundreds(Numbers):
@@ -20,13 +20,6 @@ class NumbersOfHundreds(Numbers):
             đã được định dạng lại.
 
         """
-        # Chuyển các từ mười, chục thành ['một,'mươi']
-        for word in number_for_format:
-            if word in tens_special:
-                m_index = number_for_format.index(word)
-                number_for_format[m_index] = 'mươi'
-                number_for_format.insert(m_index, 'một')
-
         # Trường hợp đầu vào là rỗng thì đầu ra là 000
         if not number_for_format:
             number_for_format.append('không')

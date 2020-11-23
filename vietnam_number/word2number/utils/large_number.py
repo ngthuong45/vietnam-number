@@ -1,5 +1,5 @@
-from vietnam_number.data import billion_words, million_words, tens_special, thousand_words, units
-from vietnam_number.utils.base import Numbers
+from vietnam_number.wordtonumber.data import billion_words, million_words, thousand_words, units
+from vietnam_number.wordtonumber.utils.base import Numbers
 
 
 class LargeNumber(Numbers):
@@ -29,13 +29,6 @@ class LargeNumber(Numbers):
         # vd: ['hai'] => ['không', 'hai']
         if len(number_for_format) == 1 and number_for_format[0] in units:
             number_for_format.insert(0, 'không')
-
-        # Chuyển các từ mười, chục thành ['một,'mươi']
-        for word in number_for_format:
-            if word in tens_special:
-                m_index = number_for_format.index(word)
-                number_for_format[m_index] = 'mươi'
-                number_for_format.insert(m_index, 'một')
 
         # Trường hợp nghìn, triệu, tỷ nằm ở đầu
         first_number = number_for_format[0]

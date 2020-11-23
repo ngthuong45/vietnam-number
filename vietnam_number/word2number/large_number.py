@@ -1,8 +1,8 @@
-from vietnam_number.utils.utils_large_number import LargeNumber
-from vietnam_number.w2n.hundreds import process_hundreds
+from vietnam_number.wordtonumber.utils.large_number import LargeNumber
+from vietnam_number.wordtonumber.hundreds import process_hundreds
 
 
-def preprocessing_large_number(words: list) -> LargeNumber:
+def pre_process_large_number(words: list) -> LargeNumber:
     """Tiền xữ lý danh sách chữ số đầu vào.
 
     Giúp tiền xữ lý dữ liệu đầu vào bao gồm như định dang lại danh sách, kiểm tra tính hợp lệ
@@ -38,7 +38,7 @@ def process_w2n(words: list):
 
     """
     # Tiền xữ lý danh sách chữ số đầu vào.
-    large_number = preprocessing_large_number(words)
+    large_number = pre_process_large_number(words)
 
     # Xữ lý chữ số hàng trăm.
     clean_words_number = large_number.words_number

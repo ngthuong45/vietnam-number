@@ -1,8 +1,8 @@
-from vietnam_number.data import word_multiplier
-from vietnam_number.w2n.units import process_units
+from vietnam_number.wordtonumber.data import word_multiplier
+from vietnam_number.wordtonumber.units import process_units
 
 
-def preprocessing_single(words: list):
+def pre_process_single(words: list):
     """Tiền xữ lý danh sách chữ số đầu vào.
 
     Giúp tiền xữ lý dữ liệu đầu vào bao gồm như định dang lại danh sách, kiểm tra tính hợp lệ
@@ -35,7 +35,7 @@ def process_single(words: list) -> str:
         Chuỗi số sau khi xữ lý xong.
     """
     # Tiền xữ lý dữ liệu chữ số đầu vào.
-    clean_number = preprocessing_single(words)
+    clean_number = pre_process_single(words)
 
     number_total = ''
     for word in clean_number:

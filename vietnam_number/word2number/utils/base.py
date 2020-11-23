@@ -1,4 +1,4 @@
-from vietnam_number.data import billion_words, hundreds_words, million_words, tens_words, thousand_words
+from vietnam_number.wordtonumber.data import billion_words, hundreds_words, million_words, tens_words, thousand_words
 
 
 class Numbers(object):

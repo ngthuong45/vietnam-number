@@ -1,5 +1,5 @@
-from vietnam_number.data import tens_words, units
-from vietnam_number.utils.base import Numbers
+from vietnam_number.wordtonumber.data import tens_words, units
+from vietnam_number.wordtonumber.utils.base import Numbers
 
 
 class NumbersOfTens(Numbers):
