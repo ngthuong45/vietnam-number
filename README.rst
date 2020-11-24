@@ -15,6 +15,8 @@ Vietnam Number Toolkit
 .. image:: https://img.shields.io/badge/chat-on%20facebook-informational
     :target: https://www.facebook.com/ng.thuong45/
 
+.. image:: https://raw.githubusercontent.com/udertheseanlp/underthesea/master/logo.jpg
+
 **Vietnam-number** là một thư viện Python mã nguồn mở hỗ trợ cho việc xữ lý chữ số trong Tiếng Việt.
 
 +---------------------+------------------------------------------------------------------------------------------------+
@@ -57,6 +59,7 @@ Tính năng
 
 | Sử dụng phù hợp trong các tình huống dãy số có các từ liên kết với nhau như: 'mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'
 | Vd: đơn vị tiền tệ, tuổi tác...
+|
 
 .. code-block:: python
 
@@ -109,6 +112,7 @@ Tính năng
 
 | Sử dụng phù hợp trong các tình huống xữ lý một dãy số nhiều chữ số khác nhau, cần độ chính xác cao
 | Vd: số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
+|
 
 .. code-block:: python
 
@@ -151,5 +155,6 @@ Nếu bạn thông báo một lỗi mới, vui lòng đính kèm các thông tin
 * Thông tin hệ điều hành của bạn.
 * Những thiết lập ở local nếu có.
 * Các bước chi tiết dẫn đến phát hiện lỗi.
-
+|
 | *Nhớ để lại một sao :star: nếu thư viện giúp ích được phần nào cho công việc của bạn nhé!.*
+|
