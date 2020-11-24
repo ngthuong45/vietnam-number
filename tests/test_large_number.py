@@ -1,7 +1,7 @@
 import pytest
 
 from vietnam_number.word2number import w2n
-from vietnam_number.word2number.large_number import process_w2n
+from vietnam_number.word2number.large_number import process_large_number
 
 
 @pytest.mark.parametrize(
@@ -32,20 +32,29 @@ def test_w2n_large_number(word_number, number_result):
 @pytest.mark.parametrize(
     'word_number, number_result',
     [
-        ([], '000000000000'),
-        (['một', 'triệu', 'bốn', 'nghìn', 'ba', 'mươi', 'hai'], '000001004032'),
-        (['một', 'trăm', 'hai', 'triệu', 'bốn', 'nghìn', 'ba', 'mươi', 'hai'], '000120004032'),
-        (['bốn', 'nghìn', 'ba', 'mươi', 'hai'], '000000004032'),
-        (['triệu', 'nghìn'], '000001001000'),
-        (['hai', 'mươi'], '000000000020'),
-        (['bốn', 'hai', 'mươi', 'ba'], '000000000423'),
-        (['một', 'triệu', 'hai', 'trăm', 'nghìn', 'ba', 'trăm'], '000001200300'),
-        (['một'], '000000000001'),
-        (['tỷ'], '001000000000'),
-        (['hai', 'nghìn'], '000000002000'),
+        ([], 0),
+        (['một', 'triệu', 'bốn', 'nghìn', 'ba', 'mươi', 'hai'], 1004032),
+        (['một', 'trăm', 'hai', 'triệu', 'bốn', 'nghìn', 'ba', 'mươi', 'hai'], 120004032),
+        (['bốn', 'nghìn', 'ba', 'mươi', 'hai'], 4032),
+        (['triệu', 'nghìn'], 1001000),
+        (['hai', 'mươi'], 20),
+        (['bốn', 'hai', 'mươi', 'ba'], 423),
+        (['một', 'triệu', 'hai', 'trăm', 'nghìn', 'ba', 'trăm'], 1200300),
+        (['một'], 1),
+        (['tỷ'], 1000000000),
+        (['hai', 'nghìn'], 2000),
+        (
+            ['tỷ', 'hai', 'trăm', 'lẽ', 'ba', 'triệu', 'sáu', 'trăm', 'ba', 'mươi', 'hai', 'nghìn', 'lẽ', 'bốn', 'trăm'],
+            1203632400,
+        ),
+        (['tỷ', 'lẽ', 'hai', 'triệu'], 1002000000),
+        (['tỷ', 'rưỡi', 'lẽ', 'chín', 'trăm', 'nghìn'], 1500900000),
+        (['triệu', 'rưỡi', 'lẽ', 'chín', 'mươi', 'nghìn'], 1590000),
+        (['tỷ', 'lẽ', 'ba', 'mươi', 'hai', 'triệu'], 1032000000),
+        (['hai', 'triệu', 'lẽ', 'ba', 'nghìn', 'hai', 'trăm', 'lẽ', 'tám'], 2003208),
     ],
 )
-def test_process_w2n(word_number, number_result):
+def test_process_large_number(word_number, number_result):
     """Kiểm tra xữ lý chữ số lớn hơn hàng trăm.
 
     Args:
@@ -53,4 +62,4 @@ def test_process_w2n(word_number, number_result):
         number_result (str): Số đầu ra.
 
     """
-    assert process_w2n(word_number) == number_result
+    assert process_large_number(word_number) == number_result

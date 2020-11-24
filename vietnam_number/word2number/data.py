@@ -1,6 +1,5 @@
 units = {
     'không': 0,
-    'lẽ': 0,
     'một': 1,
     'mốt': 1,
     'hai': 2,
@@ -8,6 +7,8 @@ units = {
     'bốn': 4,
     'tư': 4,
     'năm': 5,
+    'rưởi': 5,
+    'rưỡi': 5,
     'lăm': 5,
     'sáu': 6,
     'bảy': 7,
@@ -22,5 +23,6 @@ hundreds_words = ['trăm', 'lít']
 tens_words = ['mươi', 'chục']
 
 tens_special = ['mười']
+special_word = ['lẽ']
 
-word_multiplier = billion_words + million_words + thousand_words + hundreds_words + tens_words + tens_special
+word_multiplier = billion_words + million_words + thousand_words + hundreds_words + tens_words + tens_special + special_word

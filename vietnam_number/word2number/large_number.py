@@ -1,3 +1,4 @@
+from vietnam_number.word2number.data import hundreds_words, special_word
 from vietnam_number.word2number.hundreds import process_hundreds
 from vietnam_number.word2number.utils.large_number import LargeNumber
 
@@ -24,7 +25,7 @@ def pre_process_large_number(words: list) -> LargeNumber:
     return large_number
 
 
-def process_w2n(words: list):
+def process_large_number_normal(words: list):
     """Xữ lý chử số lớn.
 
     Hàm xữ lý chuyển đổi dành cho trường hợp các chữ số lớn hơn
@@ -84,9 +85,41 @@ def process_w2n(words: list):
     else:
         value_of_hundreds = clean_words_number
 
-    return (
+    total_number = (
         process_hundreds(value_of_billion)
         + process_hundreds(value_of_million)
         + process_hundreds(value_of_thousand)
         + process_hundreds(value_of_hundreds)
     )
+
+    return int(total_number)
+
+
+def process_large_number_special(words: list):
+    size = len(words)
+
+    idx_list = [i for i, value in enumerate(words) if value == 'lẽ']
+    number_list = [words[i + 1 : j] for i, j in zip([-1] + idx_list, idx_list + ([size] if idx_list[-1] != size else []))]
+
+    total_number = 0
+    for element in number_list:
+        total_number += int(process_large_number_normal(element))
+
+    return total_number
+
+
+def process_large_number(words: list):
+    # Trường hợp có từ khóa đặc biệt 'lẽ'
+    # nếu từ 'lẽ' đứng sau từ 'trăm'
+    for word in words:
+        if word in special_word:
+            idx_special = words.index(word)
+            if words[idx_special - 1] in hundreds_words:
+                words[idx_special] = 'không'
+
+    try:
+        words.index('lẽ')
+    except ValueError:
+        return process_large_number_normal(words)
+
+    return process_large_number_special(words)
