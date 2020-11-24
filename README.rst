@@ -15,7 +15,7 @@ Vietnam Number Toolkit
 .. image:: https://img.shields.io/badge/chat-on%20facebook-informational
     :target: https://www.facebook.com/ng.thuong45/
 
-.. image:: https://raw.githubusercontent.com/udertheseanlp/underthesea/master/logo.jpg
+.. image:: https://user-images.githubusercontent.com/66929261/100044120-71af5500-2e41-11eb-9c51-8a0fbcf983a5.jpg
 
 **Vietnam-number** là một thư viện Python mã nguồn mở hỗ trợ cho việc xữ lý chữ số trong Tiếng Việt.
 
