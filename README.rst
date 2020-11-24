@@ -15,12 +15,14 @@ Vietnam Number Toolkit
 .. image:: https://img.shields.io/badge/chat-on%20facebook-informational
     :target: https://www.facebook.com/ng.thuong45/
 
+|
+
 .. image:: https://user-images.githubusercontent.com/66929261/100044430-424d1800-2e42-11eb-8875-3b5abbf25ade.png
 
 **Vietnam-number** là một thư viện Python mã nguồn mở hỗ trợ cho việc xữ lý chữ số trong Tiếng Việt.
 
 +---------------------+------------------------------------------------------------------------------------------------+
-|    Support          |                           Description                                                          |
+|    **Support**      |                           **Description**                                                      |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Văn nói - Văn viết  | * Hỗ trợ cho cả văn viết và văn nói thông dụng.                                                |
 +---------------------+------------------------------------------------------------------------------------------------+
@@ -155,6 +157,7 @@ Nếu bạn thông báo một lỗi mới, vui lòng đính kèm các thông tin
 * Thông tin hệ điều hành của bạn.
 * Những thiết lập ở local nếu có.
 * Các bước chi tiết dẫn đến phát hiện lỗi.
+
 |
-| *Nhớ để lại một sao :star: nếu thư viện giúp ích được phần nào cho công việc của bạn nhé!.*
-|
+
+*Nhớ để lại một sao :star: nếu thư viện giúp ích được phần nào cho công việc của bạn nhé!.*
