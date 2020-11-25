@@ -62,7 +62,7 @@ Tính năng
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
 | Chuyển đổi chữ số có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ') sang số.
-| Sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
+| sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
 |
 
 .. code-block:: python
@@ -115,8 +115,8 @@ Tính năng
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
 | Chuyển đổi chữ số không có từ liên kết sang số.
-| Sử dụng phù hợp trong các tình huống một dãy nhiều chữ số khác nhau như:
-| Số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
+| sử dụng phù hợp trong các tình huống một dãy nhiều chữ số khác nhau như: số chứng minh thư, số visa, số thẻ ATM,
+| số điện thoại, tài khoản ngân hàng...
 |
 
 .. code-block:: python
@@ -150,9 +150,9 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
-| Chuyển đổi số sang chữ số cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ').
-| Sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...
-| Hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
+| Chuyển đổi số sang chữ số cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'),
+| sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...,
+| hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
 |
 
 .. code-block:: python
@@ -185,9 +185,10 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
-| Chuyển đổi số sang chữ số không cần có các từ liên kết.
-| Sử dụng phù hợp trong các trường hợp một chuỗi nhiều số khác nhau như:
-| Số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
+| Chuyển đổi số sang chữ số không cần có các từ liên kết
+| sử dụng phù hợp trong các trường hợp một chuỗi nhiều số khác nhau như: số chứng minh thư, số visa, số thẻ ATM,
+| số điện thoại, tài khoản ngân hàng...
+|
 
 .. code-block:: python
 
