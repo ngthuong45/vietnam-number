@@ -201,7 +201,7 @@ Tính năng
     'không chín không tám một hai ba bốn năm sáu'
 
 
-Tính Năng Sắp Ra Mắt
+Tính Năng Trong Tương Lai
 ----------------------------------------
 
 * Hỗ trợ số thập phân.
