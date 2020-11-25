@@ -2,18 +2,20 @@
 Vietnam Number Toolkit
 ====================================
 
+.. image:: https://madewithlove.now.sh/vn?heart=true&colorB=%23d5481d
+        :target: https://pypi.python.org/pypi/vietnam-number
 
-.. image:: https://img.shields.io/pypi/v/underthesea.svg
-        :target: https://pypi.python.org/pypi/underthesea
+.. image:: https://img.shields.io/pypi/v/vietnam-number
+        :alt: PyPI
 
 .. image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue
-        :target: https://pypi.python.org/pypi/underthesea
+        :target: https://pypi.python.org/pypi/vietnam-number
 
 .. image:: https://img.shields.io/badge/license-GNU%20General%20Public%20License%20v3-brightgreen.svg
-        :target: https://pypi.python.org/pypi/underthesea
+        :target: https://pypi.python.org/pypi/vietnam-number
 
 .. image:: https://img.shields.io/badge/chat-on%20facebook-informational
-    :target: https://www.facebook.com/ng.thuong45/
+        :target: https://www.facebook.com/ng.thuong45/
 
 |
 
