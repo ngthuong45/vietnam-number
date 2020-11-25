@@ -23,10 +23,7 @@ __version__ = '0.1.3'
 # TOP-LEVEL MODULES
 ###########################################################
 
+from vietnam_number.number2word import n2w, n2w_single
 from vietnam_number.word2number import w2n, w2n_couple, w2n_single
 
-__all__ = [
-    'w2n',
-    'w2n_couple',
-    'w2n_single',
-]
+__all__ = ['w2n', 'w2n_couple', 'w2n_single', 'n2w', 'n2w_single']

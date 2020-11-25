@@ -29,7 +29,7 @@ Vietnam Number Toolkit
 | Số có giá trị lớn   | * Hỗ trợ chuyễn đổi chử số từ 0 đến 999.999.999.999                                            |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Từ ngữ dân gian     | * Hỗ trợ các từ ngữ dân gian, vùng miền:                                                       |
-|                     | * Vd: 'tỷ = tỏi', 'triệu = chai, củ', 'nghìn = nghàn', 'trăm = lít' , 'bốn = tư'...            |
+|                     | * Vd: 'tỷ - tỏi', 'triệu - chai, củ', 'nghìn - nghàn', 'trăm - lít' , 'bốn - tư'...            |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Cách đọc đơn        | * Hỗ trợ chuyển đổi văn bản chữ số sang số theo cách đọc từng số:                              |
 |                     | * Vd: 'không một hai ba bốn năm sáu bảy tám chín' = 0123456789                                 |
@@ -52,6 +52,8 @@ Tính năng
 
 | `1. Chữ số sang số có từ liên kết.`_
 | `2. Chữ số sang số không có từ liên kết.`_
+| `3. Số sang chữ số có từ liên kết`_
+| `4. Số sang chữ số không có từ liên kết`_
 
 ****************************************
 1. Chữ số sang số có từ liên kết.
@@ -59,14 +61,14 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
-| Sử dụng phù hợp trong các tình huống dãy số có các từ liên kết với nhau như: 'mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'
-| Vd: đơn vị tiền tệ, tuổi tác...
+| Chuyển đổi chữ số có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ') sang số.
+| Sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
 |
 
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
-    >>> from vietnam_number.word2number import w2n
+    >>> from vietnam_number import w2n
     >>> text = 'một triệu không trăm tám mươi lăm nghìn ba trăm ba mươi hai'
 
     >>> w2n(text)
@@ -112,14 +114,15 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
-| Sử dụng phù hợp trong các tình huống xữ lý một dãy số nhiều chữ số khác nhau, cần độ chính xác cao
-| Vd: số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
+| Chuyển đổi chữ số không có từ liên kết sang số.
+| Sử dụng phù hợp trong các tình huống một dãy nhiều chữ số khác nhau như:
+| Số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
 |
 
 .. code-block:: python
 
     >>> # -*- coding: utf-8 -*-
-    >>> from vietnam_number.word2number import w2n_single, w2n_couple
+    >>> from vietnam_number import w2n_single, w2n_couple
 
     # Văn nói cho cách đọc đơn từng số một.
     >>> text = 'không tám không chín một hai ba bốn năm sáu'
@@ -139,6 +142,62 @@ Tính năng
 
     >>> w2n_couple(text)
     20378454911275
+
+
+****************************************
+3. Số sang chữ số có từ liên kết
+****************************************
+
+.. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
+
+| Chuyển đổi số sang chữ số cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ').
+| Sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...
+| Hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
+|
+
+.. code-block:: python
+
+    >>> # -*- coding: utf-8 -*-
+    >>> from vietnam_number import n2w
+
+    >>> number = '115205201211'
+    >>> n2w(number)
+    'một trăm mười lăm tỷ hai trăm lẽ năm triệu hai trăm lẽ một nghìn hai trăm mười một'
+
+
+    # hỗ trợ một số trường hợp có cách đọc đặc biệt
+    >>> list_number = ['111', '200', '101', '121', '815', '805', '825']
+    >>> for element in list_number:
+    ...      print(n2w(element))
+    ...
+    'một trăm mười một'
+    'hai trăm'
+    'một trăm lẽ một'
+    'một trăm hai mươi mốt'
+    'tám trăm mười lăm'
+    'tám trăm lẽ năm'
+    'tám trăm hai mươi lăm'
+
+
+****************************************
+4. Số sang chữ số không có từ liên kết
+****************************************
+
+.. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
+
+| Chuyển đổi số sang chữ số không cần có các từ liên kết.
+| Sử dụng phù hợp trong các trường hợp một chuỗi nhiều số khác nhau như:
+| Số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
+
+.. code-block:: python
+
+    >>> # -*- coding: utf-8 -*-
+    >>> from vietnam_number import n2w_single
+
+    # Chuyển đổi từng số một.
+    >>> number = '0908123456'
+    >>> n2w_single(number)
+    'không chín không tám một hai ba bốn năm sáu'
 
 
 Tính Năng Sắp Ra Mắt
