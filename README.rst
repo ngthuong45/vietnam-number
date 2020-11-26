@@ -63,8 +63,8 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
-| Chuyển đổi **Chữ số** sang **Số** có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ') sang số.
-| sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
+| Chuyển đổi **Chữ số** sang **Số** có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ').
+| Sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
 
 .. code-block:: python
 
@@ -115,9 +115,8 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
-| Chuyển đổi **Chữ số** sang **Số** không có từ liên kết sang số.
-| sử dụng phù hợp trong các tình huống một dãy nhiều chữ số khác nhau như: số chứng minh thư, số visa, số thẻ ATM,
-| số điện thoại, tài khoản ngân hàng...
+| Chuyển đổi **Chữ số** sang **Số** không có từ liên kết.
+| Sử dụng phù hợp trong các tình huống một dãy nhiều chữ số khác nhau như: số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
 
 .. code-block:: python
 
@@ -150,9 +149,9 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
-| Chuyển đổi **Số** sang **Chữ số** cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'),
-| sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...,
-| hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
+| Chuyển đổi **Số** sang **Chữ số** cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ').
+| Sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...,
+| Hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
 
 .. code-block:: python
 
@@ -184,9 +183,8 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
-| Chuyển đổi **Số** sang **Chữ số** không cần có các từ liên kết
-| sử dụng phù hợp trong các trường hợp một chuỗi nhiều số khác nhau như: số chứng minh thư, số visa, số thẻ ATM,
-| số điện thoại, tài khoản ngân hàng...
+| Chuyển đổi **Số** sang **Chữ số** không cần có các từ liên kết.
+| Sử dụng phù hợp trong các trường hợp một chuỗi nhiều số khác nhau như: số chứng minh thư, số visa, số thẻ ATM, số điện thoại, tài khoản ngân hàng...
 
 .. code-block:: python
 
