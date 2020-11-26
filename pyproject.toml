@@ -6,7 +6,7 @@ authors = ["Nguyễn Hoài Thương <ng.thuong.lio@gmail.com>"]
 repository = "https://github.com/ngthuong45/vietnam-number.git"
 license = "GPL-3.0-or-later"
 readme = "README.rst"
-keywords = ["Vietnam", "number", "w2n", "text"]
+keywords = ["Vietnam", "number", "w2n", "n2w", "number to word", "word to number", "text to number", "number to text"]
 classifiers = [
     'Natural Language :: Vietnamese',
     'Intended Audience :: Information Technology',
@@ -18,7 +18,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
     'Programming Language :: Python :: 3 :: Only',
-    'Development Status :: 4 - Beta',
 ]
 include = [
     "LICENSE",
