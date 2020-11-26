@@ -63,9 +63,8 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
-| Chuyển đổi chữ số có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ') sang số.
+| Chuyển đổi **Chữ số** sang **Số** có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ') sang số.
 | sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
-|
 
 .. code-block:: python
 
@@ -116,10 +115,9 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
-| Chuyển đổi chữ số không có từ liên kết sang số.
+| Chuyển đổi **Chữ số** sang **Số** không có từ liên kết sang số.
 | sử dụng phù hợp trong các tình huống một dãy nhiều chữ số khác nhau như: số chứng minh thư, số visa, số thẻ ATM,
 | số điện thoại, tài khoản ngân hàng...
-|
 
 .. code-block:: python
 
@@ -152,10 +150,9 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
-| Chuyển đổi số sang chữ số cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'),
+| Chuyển đổi **Số** sang **Chữ số** cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ'),
 | sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...,
 | hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
-|
 
 .. code-block:: python
 
@@ -187,10 +184,9 @@ Tính năng
 
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
-| Chuyển đổi số sang chữ số không cần có các từ liên kết
+| Chuyển đổi **Số** sang **Chữ số** không cần có các từ liên kết
 | sử dụng phù hợp trong các trường hợp một chuỗi nhiều số khác nhau như: số chứng minh thư, số visa, số thẻ ATM,
 | số điện thoại, tài khoản ngân hàng...
-|
 
 .. code-block:: python
 
@@ -208,13 +204,14 @@ Tính Năng Trong Tương Lai
 
 * Hỗ trợ số thập phân.
 * Hỗ trợ số âm.
+* Hỗ trợ chuyển đổi số thứ tự
 
 Đóng Góp
 ----------------------------------------
 
 Thông báo lỗi :beetle: tại https://github.com/ngthuong45/vietnam-number/issues
 
-Nếu bạn thông báo một lỗi mới, vui lòng đính kèm các thông tin:
+Nếu bạn phát hiện một lỗi mới, vui lòng thông báo đính kèm các thông tin:
 
 * Thông tin hệ điều hành của bạn.
 * Những thiết lập ở local nếu có.
@@ -222,4 +219,4 @@ Nếu bạn thông báo một lỗi mới, vui lòng đính kèm các thông tin
 
 |
 
-*Nhớ để lại một sao :star: nếu thư viện giúp ích được phần nào cho công việc của bạn nhé!.*
+*Để lại một sao :star: nếu thư viện giúp ích được phần nào cho công việc của bạn nhé!.*
