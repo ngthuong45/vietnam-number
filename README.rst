@@ -31,7 +31,7 @@ Vietnam Number Toolkit
 | Số có giá trị lớn   | * Hỗ trợ chuyễn đổi chử số từ 0 đến 999.999.999.999                                            |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Từ ngữ dân gian     | * Hỗ trợ các từ ngữ dân gian, vùng miền:                                                       |
-|                     | * Vd: 'tỷ - tỏi', 'triệu - chai, củ', 'nghìn - nghàn', 'trăm - lít' , 'bốn - tư'...            |
+|                     | * Vd: 'tỷ - tỏi', 'triệu - chai, củ', 'nghìn - ngàn', 'trăm - lít' , 'bốn - tư'...            |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Cách đọc đơn        | * Hỗ trợ chuyển đổi văn bản chữ số sang số theo cách đọc từng số:                              |
 |                     | * Vd: 'không một hai ba bốn năm sáu bảy tám chín' = 0123456789                                 |
