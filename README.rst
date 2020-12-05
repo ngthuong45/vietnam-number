@@ -46,7 +46,6 @@ Cài đặt
 Cài đặt vietnam-number bằng lệnh:
 
 .. code-block:: bash
-
     $ pip install vietnam-number
 
 Tính năng
