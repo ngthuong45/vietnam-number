@@ -28,10 +28,10 @@ Vietnam Number Toolkit
 +---------------------+------------------------------------------------------------------------------------------------+
 | Văn nói - Văn viết  | * Hỗ trợ cho cả văn viết và văn nói thông dụng.                                                |
 +---------------------+------------------------------------------------------------------------------------------------+
-| Số có giá trị lớn   | * Hỗ trợ chuyễn đổi chử số từ 0 đến 999.999.999.999                                            |
+| Số có giá trị lớn   | * Hỗ trợ chuyển đổi chử số từ 0 đến 999.999.999.999                                            |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Từ ngữ dân gian     | * Hỗ trợ các từ ngữ dân gian, vùng miền:                                                       |
-|                     | * Vd: 'tỷ - tỏi', 'triệu - chai, củ', 'nghìn - ngàn', 'trăm - lít' , 'bốn - tư'...            |
+|                     | * Vd: 'tỷ - tỏi', 'triệu - chai, củ', 'nghìn - ngàn', 'trăm - lít' , 'bốn - tư'...             |
 +---------------------+------------------------------------------------------------------------------------------------+
 | Cách đọc đơn        | * Hỗ trợ chuyển đổi văn bản chữ số sang số theo cách đọc từng số:                              |
 |                     | * Vd: 'không một hai ba bốn năm sáu bảy tám chín' = 0123456789                                 |
@@ -64,7 +64,7 @@ Tính năng
 .. image:: https://img.shields.io/badge/feature-word%20to%20number-orange
 
 | Chuyển đổi **Chữ số** sang **Số** có các từ liên kết ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ').
-| Sử dụng phù hợp trong các tình huống như: Đơn vị tiền tệ, số tuổi...
+| Sử dụng phù hợp trong các tình huống như: đơn vị tiền tệ, số tuổi...
 
 .. code-block:: python
 
@@ -129,7 +129,7 @@ Tính năng
     >>> w2n_single(text)
     0809123456
 
-    # Văn nói cho cách đọc đôi từng cặp số một.
+    # Cách đọc đôi từng cặp số.
     # Bắt buộc số ban đầu phải là số kết hợp bởi từng cặp số,
     # hay nói cách khác số ban đầu phải có số lượng chữ số chia hết cho 2.
     # Trong trường hợp đặt biệt này, dãy số có thể có hoặc không có từ liên kết hàng chục là từ 'mươi'...
@@ -150,7 +150,7 @@ Tính năng
 .. image:: https://img.shields.io/badge/feature-number%20to%20word-yellow
 
 | Chuyển đổi **Số** sang **Chữ số** cần có các từ liên kết như ('mươi', 'trăm', 'nghìn', 'triệu', 'tỷ').
-| Sử dụng phù hợp trong các trường hợp như: Giá bán, đơn vị tiền tệ, số tuổi...,
+| Sử dụng phù hợp trong các trường hợp như: giá sản phẩm, đơn vị tiền tệ, số tuổi...,
 | Hỗ trợ văn nói cho các từ như 'một - mốt', 'năm - lăm', 'lẽ - linh'...
 
 .. code-block:: python
@@ -202,7 +202,10 @@ Tính Năng Trong Tương Lai
 
 * Hỗ trợ số thập phân.
 * Hỗ trợ số âm.
-* Hỗ trợ chuyển đổi số thứ tự
+* Chuyển đổi số thứ tự
+* Chuyển đổi ngày tháng năm
+* Chuyển đổi đơn vị đo khối lượng (g - kg - yến - tạ - tấn)
+* Chuyển đổi đơn vị đo độ dài (mm - cm - m - km)
 
 Đóng Góp
 ----------------------------------------
