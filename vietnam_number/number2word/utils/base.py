@@ -33,20 +33,21 @@ def pre_process_n2w(number: str):
     clean_number = ''
 
     char_to_replace = {
-        '-': ' ',
-        '.': ' ',
-        ',': ' ',
-        '+84': '0'  # replace ký tự đặt biệt "+84" sang ký tự chữ số 0. cho trường hợp số điện thoại
+        ' ': '',
+        '-': '',
+        '.': '',
+        ',': '',
     }
 
-    # replace ký tự đặt biệt "-" sang khoản trắng
+    # xóa các ký tự đặt biệt
     for key, value in char_to_replace.items():
         number = number.replace(key, value)
 
-    # xóa khoảng trắng thừa
-    number = number.strip()
+    # Kiểm tra tính hợp lệ của đầu vào
+    if not number.isdigit():
+        raise ValueError('Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (isdigit)!')
 
-    # xóa các số không có trong unit
+    # xóa các ký tự số không có trong unit
     for element in number:
         if element in units:
             clean_number += element

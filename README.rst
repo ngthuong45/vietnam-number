@@ -194,6 +194,11 @@ Tính năng
     >>> n2w_single(number)
     'không chín không tám một hai ba bốn năm sáu'
 
+    # Hỗ trợ cho số có đầu số là '+84'
+    >>> number = '+84908123456'
+    >>> n2w_single(number)
+    'không chín không tám một hai ba bốn năm sáu'
+
 
 Tính Năng Trong Tương Lai
 ----------------------------------------

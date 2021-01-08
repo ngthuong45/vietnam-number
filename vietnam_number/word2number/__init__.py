@@ -16,7 +16,7 @@ def w2n(number_sentence):
     """
     # Kiểm tra tính hợp lệ của đầu vào
     if isinstance(number_sentence, int) or number_sentence.isdigit():
-        return number_sentence  # trả về số nếu đầu vào là số
+        return number_sentence
 
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
@@ -39,7 +39,7 @@ def w2n_single(number_sentence):
     """
     # Kiểm tra tính hợp lệ của đầu vào
     if isinstance(number_sentence, int) or number_sentence.isdigit():
-        return number_sentence  # trả về số nếu đầu vào là số
+        return number_sentence
 
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
@@ -54,7 +54,7 @@ def w2n_couple(number_sentence):
     """Chuyển đổi chữ số sang số từng cặp số.
 
     Args:
-        number_sentence (str): Chuổi chữ số đầu vào.
+        number_sentence: Chuổi chữ số đầu vào.
 
     Returns:
         Số đầu ra
@@ -62,7 +62,7 @@ def w2n_couple(number_sentence):
     """
     # Kiểm tra tính hợp lệ của đầu vào
     if isinstance(number_sentence, int) or number_sentence.isdigit():
-        return number_sentence  # trả về số nếu đầu vào là số
+        return number_sentence
 
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')

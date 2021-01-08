@@ -16,7 +16,7 @@ __author__ = """Nguyen Thuong"""
 __email__ = 'ngthuong.lio@gmail.com'
 
 # Version
-__version__ = '1.0.0'
+__version__ = '1.0.2'
 
 
 ###########################################################
