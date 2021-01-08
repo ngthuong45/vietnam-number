@@ -2,18 +2,21 @@ from vietnam_number.number2word.hundreds import n2w_hundreds
 from vietnam_number.number2word.utils.base import chunks
 
 
-def n2w_large_number(numbers: str):
+def n2w_large_number(numbers: int):
     """Hàm chuyển đổi các số có giá trị lớn.
 
     Hàm chuyển đổi các số có giá trị lớn từ 999 đến 999.999.999.999
 
     Args:
-        numbers (str): Chuỗi số đầu vào.
+        numbers (int): Chuỗi số đầu vào.
 
     Returns:
         Chuỗi chữ số đầu ra.
 
     """
+    # chuyển kiểu số sang kiểu chuổi
+    numbers = str(numbers)
+
     # Chúng ta cần duyệt chuổi số đầu vào từ phải sang trái nhằm phân biệt các giá trị từ nhỏ đến lớn.
     # tương tự như khi chúng ta xữ lý cho hàm n2w_hundreds
     reversed_large_number = numbers[::-1]

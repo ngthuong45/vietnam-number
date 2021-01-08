@@ -97,14 +97,8 @@ def pre_process_w2n(words: str):
     """
     clean_numbers = []
 
-    if not isinstance(words, str):
-        raise ValueError('Không phải là một chuỗi (string)! Vui lòng truyền vào chuỗi các chữ số.')
-
     words = words.replace('-', ' ')  # replace ký tự đặt biệt "-" sang khoản trắng
     words = words.lower()  # converting chuổi đầu vào thành chuổi viết thường
-
-    if words.isdigit():  # trả về chuổi số nếu người dùng nhập chuổi số
-        return int(words)
 
     split_words = words.strip().split()  # xóa khoảng trắng thừa và chia câu thành các từ
 

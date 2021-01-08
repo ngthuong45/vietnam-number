@@ -32,11 +32,19 @@ def pre_process_n2w(number: str):
     """
     clean_number = ''
 
-    if not isinstance(number, str):
-        raise ValueError('Không phải là một chuỗi (string)! Vui lòng truyền vào chuỗi các số.')
+    char_to_replace = {
+        '-': ' ',
+        '.': ' ',
+        ',': ' ',
+        '+84': '0'  # replace ký tự đặt biệt "+84" sang ký tự chữ số 0. cho trường hợp số điện thoại
+    }
 
-    number = number.replace('-', ' ')  # replace ký tự đặt biệt "-" sang khoản trắng
-    number = number.strip()  # xóa khoảng trắng thừa
+    # replace ký tự đặt biệt "-" sang khoản trắng
+    for key, value in char_to_replace.items():
+        number = number.replace(key, value)
+
+    # xóa khoảng trắng thừa
+    number = number.strip()
 
     # xóa các số không có trong unit
     for element in number:
@@ -45,6 +53,6 @@ def pre_process_n2w(number: str):
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_number:
-        raise ValueError("Số không hợp lệ, vui lòng nhập số đúng định dạng! vd: '123456789'")
+        raise ValueError("Số không hợp lệ, vui lòng nhập số đúng định dạng!")
 
     return clean_number
