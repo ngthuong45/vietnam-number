@@ -24,7 +24,7 @@ def n2w_large_number(numbers: str):
 
     total_number = []
     for e in range(0, len(reversed_large_number)):
-        if reversed_large_number[0][::-1] == '000':
+        if reversed_large_number[e][::-1] == '000':
             continue
         if e == 0:
             value_of_hundred = reversed_large_number[0][::-1]
