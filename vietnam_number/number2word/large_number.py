@@ -23,21 +23,38 @@ def n2w_large_number(numbers: str):
     reversed_large_number = chunks(reversed_large_number, 3)
 
     total_number = []
+
+    # Chúng ta đếm số lần vượt qua lớp tỷ để thêm lại chữ 'tỷ' vào chuỗi
+    # ví dụ: số 1.000.000.000.000, chunks: ['000', '000', '000', '000', '1']
+    # khi e == 3, thuật toán sẽ xem như trở về lại lớp nghìn nên cần phải thêm lại chữ 'tỷ' vào cuối
+    # để kết quả chuyển đổi ra là: một nghìn tỷ
+    n_of_billions_skipped = 0
     for e in range(0, len(reversed_large_number)):
+        number_as_word = ''
         if reversed_large_number[e][::-1] == '000':
+            if e >= 3 and (e - 1) % 3 == 2:
+                n_of_billions_skipped += 1
             continue
         if e == 0:
-            value_of_hundred = reversed_large_number[0][::-1]
-            total_number.append(n2w_hundreds(value_of_hundred))
-        if e == 1:
-            value_of_thousand = reversed_large_number[1][::-1]
-            total_number.append(n2w_hundreds(value_of_thousand) + ' nghìn ')
-        if e == 2:
-            value_of_million = reversed_large_number[2][::-1]
-            total_number.append(n2w_hundreds(value_of_million) + ' triệu ')
-        if e == 3:
-            value_of_billion = reversed_large_number[3][::-1]
-            total_number.append(n2w_hundreds(value_of_billion) + ' tỷ ')
+            value_of_hundred = reversed_large_number[e][::-1]
+            number_as_word = n2w_hundreds(value_of_hundred)
+
+        # Sau khi vượt qua lớp tỷ thì cách đọc sẽ lặp lại từ lớp nghìn
+        # một tỷ -> một nghìn (tỷ) -> một triệu (tỷ) -> một tỷ (tỷ)
+        # dùng (e - 1) % 3 để tận dụng sự lặp lại này.
+        elif e == 1 or (e > 3 and (e - 1) % 3 == 0):
+            value_of_thousand = reversed_large_number[e][::-1]
+            number_as_word = n2w_hundreds(value_of_thousand) + ' nghìn '
+        elif e == 2 or (e > 3 and (e - 1) % 3 == 1):
+            value_of_million = reversed_large_number[e][::-1]
+            number_as_word = n2w_hundreds(value_of_million) + ' triệu '
+        elif e == 3 or (e > 3 and (e - 1) % 3 == 2):
+            value_of_billion = reversed_large_number[e][::-1]
+            number_as_word = n2w_hundreds(value_of_billion) + ' tỷ '
+        while n_of_billions_skipped != 0:
+            number_as_word += 'tỷ '
+            n_of_billions_skipped -= 1
+        total_number.append(number_as_word)
 
     return ''.join(total_number[::-1]).strip()
 
@@ -45,4 +62,8 @@ def n2w_large_number(numbers: str):
 if __name__ == '__main__':
 
     number = '4680000000'
+    print(n2w_large_number(number))
+    number = '2460125030000'
+    print(n2w_large_number(number))
+    number = '1000000000000000000'
     print(n2w_large_number(number))
