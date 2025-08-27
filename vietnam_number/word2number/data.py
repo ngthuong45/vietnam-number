@@ -26,4 +26,12 @@ tens_words = ("mươi", "chục")
 tens_special = ("mười",)
 special_word = ("lẽ", "linh", "lẻ")
 
-word_multiplier = billion_words + million_words + thousand_words + hundreds_words + tens_words + tens_special + special_word
+word_multiplier = set().union(
+    billion_words,
+    million_words,
+    thousand_words,
+    hundreds_words,
+    tens_words,
+    tens_special,
+    special_word,
+)
