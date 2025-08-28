@@ -1,5 +1,12 @@
 from vietnam_number.number2word.data import units
 
+CHAR_TO_REMOVE = {
+    " ": None,
+    "-": None,
+    ".": None,
+    ",": None,
+}
+TRANS_TABLE = str.maketrans(CHAR_TO_REMOVE)
 
 def chunks(lst, n):
     """Hàm chia nhỏ danh sách đầu vào.
@@ -30,18 +37,9 @@ def pre_process_n2w(number: str):
     Returns:
         Chuỗi số sau khi được tiền xữ lý.
     """
-    clean_number = ''
-
-    char_to_replace = {
-        ' ': '',
-        '-': '',
-        '.': '',
-        ',': '',
-    }
 
     # xóa các ký tự đặt biệt
-    for key, value in char_to_replace.items():
-        number = number.replace(key, value)
+    number = number.translate(TRANS_TABLE)
 
     # Kiểm tra tính hợp lệ của đầu vào
     if not number.isdigit():
