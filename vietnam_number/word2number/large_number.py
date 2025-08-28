@@ -116,7 +116,7 @@ def process_large_number_special(words: list):
 def process_large_number(words: list):
     # Trường hợp có từ khóa đặc biệt 'lẽ'
     # nếu từ 'lẽ' đứng sau từ 'trăm'
-    idx_list = [i for i, value in enumerate(words) if value in special_word]
+    idx_list = (i for i, value in enumerate(words) if value in special_word)
     for idx in idx_list:
         if words[idx - 1] in hundreds_words:
             words[idx] = 'không'
