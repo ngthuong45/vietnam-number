@@ -13,7 +13,7 @@ def n2w(number: str):
 def n2w_single(number: str):
     # Xữ lý đặc thù dành cho số điện thoại
     if number.startswith("+84"):
-        number = number.replace('+84', '0')
+        number = number.replace("+84", "0", count=1)
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
     clean_number = pre_process_n2w(number)
