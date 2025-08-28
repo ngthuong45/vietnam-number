@@ -51,10 +51,7 @@ def process_hundreds(words: list) -> str:
     if hundreds_index:
         value_of_hundreds = clean_words_number[:1]
 
-        try:
-            value_of_tens = clean_words_number[hundreds_index + 1 :]
-        except IndexError:
-            value_of_tens = []
+        value_of_tens = clean_words_number[hundreds_index + 1 :]
 
         # Trường hợp ['bốn', 'trăm', 'hai'] == 420
         if len(value_of_tens) == 1:
@@ -62,10 +59,7 @@ def process_hundreds(words: list) -> str:
 
     elif tens_index:
         # Lấy giá trị của phần chục.
-        try:
-            value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
-        except IndexError:
-            value_of_tens = clean_words_number[tens_index - 1 :]
+        value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
 
         # Lấy giá trị của phần còn lại.
         remaining = clean_words_number[tens_index + 2 :]
