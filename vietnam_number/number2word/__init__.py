@@ -12,7 +12,7 @@ def n2w(number: str):
 
 def n2w_single(number: str):
     # Xữ lý đặc thù dành cho số điện thoại
-    if number[0:3] == '+84':
+    if number.startswith("+84"):
         number = number.replace('+84', '0')
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
