@@ -16,17 +16,17 @@ units = {
     'chín': 9,
 }
 
-billion_words = ("tỷ", "tỏi", "tỉ")
-million_words = ("triệu", "củ", "chai")
-thousand_words = ("nghìn", "nghàn", "ngàn")
+billion_words = frozenset(("tỷ", "tỏi", "tỉ"))
+million_words = frozenset(("triệu", "củ", "chai"))
+thousand_words = frozenset(("nghìn", "nghàn", "ngàn"))
 
-hundreds_words = ("trăm", "lít")
-tens_words = ("mươi", "chục")
+hundreds_words = frozenset(("trăm", "lít"))
+tens_words = frozenset(("mươi", "chục"))
 
 tens_special = ("mười",)
-special_word = ("lẽ", "linh", "lẻ")
+special_word = frozenset(("lẽ", "linh", "lẻ"))
 
-word_multiplier = set().union(
+word_multiplier = frozenset().union(
     billion_words,
     million_words,
     thousand_words,
