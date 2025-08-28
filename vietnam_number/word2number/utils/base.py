@@ -10,6 +10,15 @@ from vietnam_number.word2number.data import (
     word_multiplier,
 )
 
+KEYWORD_INDEX_TEMPLATE = {
+    "tens_index": None,
+    "hundreds_index": None,
+    "thousand_index": None,
+    "million_index": None,
+    "billion_index": None,
+    "special_index": None,
+}
+
 
 class Numbers(object):
     """Class xữ lý chữ số đầu vào."""
@@ -30,14 +39,7 @@ class Numbers(object):
             Trả về một dic gồm các keyword và vị trí index của nó.
 
         """
-        keyword_index = {
-            'tens_index': None,
-            'hundreds_index': None,
-            'thousand_index': None,
-            'million_index': None,
-            'billion_index': None,
-            'special_index': None,
-        }
+        keyword_index = KEYWORD_INDEX_TEMPLATE.copy()
 
         for word in self.words_number:
             if word in tens_words:
