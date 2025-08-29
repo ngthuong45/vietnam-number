@@ -1,3 +1,5 @@
+from functools import cached_property
+
 from vietnam_number.word2number.data import (
     billion_words,
     hundreds_words,
@@ -31,7 +33,7 @@ class Numbers(object):
         """
         self.words_number = words_number
 
-    @property
+    @cached_property
     def get_keyword_index(self):
         """Lấy vị trí index của các từ khóa như mười, trăm, nghìn, triệu, tỷ.
 
