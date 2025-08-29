@@ -99,7 +99,12 @@ def process_large_number_special(words: list):
     size = len(words)
 
     idx_list = [i for i, value in enumerate(words) if value in special_word]
-    number_list = [words[i + 1 : j] for i, j in zip([-1] + idx_list, idx_list + ([size] if idx_list[-1] != size else []))]
+    number_list = (
+        words[i + 1 : j]
+        for i, j in zip(
+            [-1] + idx_list, idx_list + ([size] if idx_list[-1] != size else [])
+        )
+    )
 
     total_number = 0
     for element in number_list:
@@ -111,7 +116,7 @@ def process_large_number_special(words: list):
 def process_large_number(words: list):
     # Trường hợp có từ khóa đặc biệt 'lẽ'
     # nếu từ 'lẽ' đứng sau từ 'trăm'
-    idx_list = [i for i, value in enumerate(words) if value in special_word]
+    idx_list = (i for i, value in enumerate(words) if value in special_word)
     for idx in idx_list:
         if words[idx - 1] in hundreds_words:
             words[idx] = 'không'

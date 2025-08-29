@@ -21,11 +21,7 @@ def chunks(lst, n):
     Returns:
         Danh sách các nhóm con có n phần tử.
     """
-    chunks_lst = []
-    for i in range(0, len(lst), n):
-        chunks_lst.append(lst[i : i + n])
-
-    return chunks_lst
+    return [lst[i : i + n] for i in range(0, len(lst), n)]
 
 
 def pre_process_n2w(number: str):
@@ -46,9 +42,7 @@ def pre_process_n2w(number: str):
         raise ValueError('Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (isdigit)!')
 
     # xóa các ký tự số không có trong unit
-    for element in number:
-        if element in units:
-            clean_number += element
+    clean_number = "".join(element for element in number if element in units)
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_number:
