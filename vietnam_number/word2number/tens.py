@@ -47,17 +47,17 @@ def process_tens(words: list) -> str:
 
     if tens_index == 0:
         value_of_tens = 'một'
-        try:
-            value_of_units = clean_words_number[1]
-        except IndexError:
-            value_of_units = 'không'
+
+        value_of_units = (
+            clean_words_number[1] if len(clean_words_number) > 1 else "không"
+        )
 
     if tens_index == 1:
         value_of_tens = clean_words_number[0]
-        try:
-            value_of_units = clean_words_number[2]
-        except IndexError:
-            value_of_units = 'không'
+
+        value_of_units = (
+            clean_words_number[2] if len(clean_words_number) > 2 else "không"
+        )
 
     if tens_index is None:
         value_of_tens = clean_words_number[0]
