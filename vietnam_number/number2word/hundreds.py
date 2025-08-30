@@ -1,6 +1,13 @@
+from typing import Literal
+
 from vietnam_number.number2word.data import units
 from vietnam_number.number2word.units import n2w_units
 
+POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
+    "",
+    " mươi ",
+    " trăm ",
+)
 
 def n2w_hundreds(numbers: str):
     """Hàm chuyển đổi số sang chữ số lớp trăm.
@@ -49,15 +56,10 @@ def n2w_hundreds(numbers: str):
 
     reversed_hundreds: str = numbers[:-4:-1]
 
-    total_number = []
-    for e in range(0, len(reversed_hundreds)):
-
-        if e == 0:
-            total_number.append(units[reversed_hundreds[e]])
-        elif e == 1:
-            total_number.append(units[reversed_hundreds[e]] + ' mươi ')
-        elif e == 2:
-            total_number.append(units[reversed_hundreds[e]] + ' trăm ')
+    total_number = [
+        units[digit_character] + POSITION_UNITS[digit_position]
+        for digit_position, digit_character in enumerate(reversed_hundreds)
+    ]
 
     # vd: ta có total_number = ['không', 'hai mươi ', 'một trăm ']
     # có nghĩa là ta muốn kết quả cuối cùng là: ['một trăm ', 'hai mươi ', 'không']
