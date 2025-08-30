@@ -32,6 +32,21 @@ def n2w_hundreds(numbers: str):
     # tại vị trí index đầu tiên của 2 chuỗi điều có giá trị là 1
     # tuy nhiên, chuỗi đầu 1 là giá trị của hàng chục.
     # chuỗi cuối 1 là giá trị của hàng trăm.
+
+    # example for numbers = "123"
+    # numbers = "123"
+    #        |
+    #        v
+    # reversed_hundreds = "321"
+    #        |
+    #        v
+    # digit_position 0: "3" → "ba"  +   ""     → append → ["ba"]
+    # digit_position 1: "2" → "hai" + " mươi " → append → ["ba", "hai mươi "]
+    # digit_position 2: "1" → "một" + " trăm " → append → ["ba", "hai mươi ", "một trăm "]
+    #        |
+    #        v
+    # Reverse list for final output: ["một trăm ", "hai mươi ", "ba"]
+
     reversed_hundreds: str = numbers[:-4:-1]
 
     total_number = []
