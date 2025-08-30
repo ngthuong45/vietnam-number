@@ -32,7 +32,7 @@ def n2w_hundreds(numbers: str):
     # tại vị trí index đầu tiên của 2 chuỗi điều có giá trị là 1
     # tuy nhiên, chuỗi đầu 1 là giá trị của hàng chục.
     # chuỗi cuối 1 là giá trị của hàng trăm.
-    reversed_hundreds = numbers[::-1]
+    reversed_hundreds: str = numbers[:-4:-1]
 
     total_number = []
     for e in range(0, len(reversed_hundreds)):
