@@ -58,10 +58,10 @@ def n2w_hundreds(numbers: str):
 
     reversed_hundreds: str = numbers[:-4:-1]
 
-    total_number = [
+    total_number = (
         units[digit_character] + POSITION_UNITS[digit_position]
         for digit_position, digit_character in enumerate(reversed_hundreds)
-    ]
+    )
 
     # vd: ta có total_number = ['không', 'hai mươi ', 'một trăm ']
     # có nghĩa là ta muốn kết quả cuối cùng là: ['một trăm ', 'hai mươi ', 'không']
@@ -74,9 +74,7 @@ def n2w_hundreds(numbers: str):
     #       6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
 
     # Separate digits
-    digit_unit = total_number[0]  # digit_unit
-    digit_tens = total_number[1]  # digit_tens
-    digits_hundred = total_number[2]  # digits_hundred
+    digit_unit, digit_tens, digits_hundred = total_number
 
     # Adjust tens
     if digit_tens == "không mươi ":
