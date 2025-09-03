@@ -1,6 +1,13 @@
+from typing import Literal
+
 from vietnam_number.number2word.data import units
 from vietnam_number.number2word.units import n2w_units
 
+POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
+    "",
+    " mươi ",
+    " trăm ",
+)
 
 def n2w_hundreds(numbers: str):
     """Hàm chuyển đổi số sang chữ số lớp trăm.
@@ -32,17 +39,27 @@ def n2w_hundreds(numbers: str):
     # tại vị trí index đầu tiên của 2 chuỗi điều có giá trị là 1
     # tuy nhiên, chuỗi đầu 1 là giá trị của hàng chục.
     # chuỗi cuối 1 là giá trị của hàng trăm.
-    reversed_hundreds = numbers[::-1]
 
-    total_number = []
-    for e in range(0, len(reversed_hundreds)):
+    # example for numbers = "123"
+    # numbers = "123"
+    #        |
+    #        v
+    # reversed_hundreds = "321"
+    #        |
+    #        v
+    # digit_position 0: "3" → "ba"  +   ""     → append → ["ba"]
+    # digit_position 1: "2" → "hai" + " mươi " → append → ["ba", "hai mươi "]
+    # digit_position 2: "1" → "một" + " trăm " → append → ["ba", "hai mươi ", "một trăm "]
+    #        |
+    #        v
+    # Reverse list for final output: ["một trăm ", "hai mươi ", "ba"]
 
-        if e == 0:
-            total_number.append(units[reversed_hundreds[e]])
-        elif e == 1:
-            total_number.append(units[reversed_hundreds[e]] + ' mươi ')
-        elif e == 2:
-            total_number.append(units[reversed_hundreds[e]] + ' trăm ')
+    reversed_hundreds: str = numbers[:-4:-1]
+
+    total_number = [
+        units[digit_character] + POSITION_UNITS[digit_position]
+        for digit_position, digit_character in enumerate(reversed_hundreds)
+    ]
 
     # vd: ta có total_number = ['không', 'hai mươi ', 'một trăm ']
     # có nghĩa là ta muốn kết quả cuối cùng là: ['một trăm ', 'hai mươi ', 'không']
