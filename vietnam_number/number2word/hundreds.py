@@ -8,6 +8,8 @@ POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
     " mươi ",
     " trăm ",
 )
+SPECIAL_TENS: tuple[Literal["mười "], Literal["lẽ "]] = ("mười ", "lẽ ")
+
 
 def n2w_hundreds(numbers: str):
     """Hàm chuyển đổi số sang chữ số lớp trăm.
@@ -70,29 +72,62 @@ def n2w_hundreds(numbers: str):
     #       4. 'hai mươi một' trở thành 'hai mươi mốt'
     #       5. 'một mươi năm' trở thành 'mười lăm'
     #       6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
-    for idx, value in enumerate(total_number):
-        if idx == 0 and value == 'không':
 
-            if total_number[1] == 'không mươi ':
-                total_number[1] = ''
+    # Separate digits
+    digit_unit = total_number[0]  # digit_unit
+    digit_tens = total_number[1]  # digit_tens
+    digits_hundred = total_number[2]  # digits_hundred
 
-            total_number[idx] = ''
+    # Adjust tens
+    if digit_tens == "không mươi ":
+        # Case: tens = 'không mươi '
+        # Example list before: ['không', 'không mươi ', 'hai trăm '] (200)
 
-        if idx == 0 and value == 'một':
-            if total_number[1] != 'một mươi ' and total_number[1] != 'không mươi ':
-                total_number[idx] = 'mốt'
+        if digit_unit == "không":
+            # Nested case: units = 'không'
+            # Example list before: ['không', 'không mươi ', 'hai trăm ']
+            digit_tens = ""
+            # Example list after assignment: ['không', '', 'hai trăm ']
+        else:
+            # Nested else: units ≠ 'không'
+            # Example list before: ['năm', 'không mươi ', 'hai trăm '] (205)
+            digit_tens = "lẽ "
+            # Example list after assignment: ['năm', 'lẽ ', 'hai trăm ']
+            # case 2. 'ba trăm không mươi hai' trở thành 'ba trăm lẽ hai'
 
-        if idx == 0 and value == 'năm':
-            if total_number[1] != 'không mươi ':
-                total_number[idx] = 'lăm'
+    elif digit_tens == "một mươi ":
+        # Case: tens = 'một mươi '
+        # Example list before: ['một', 'một mươi ', 'một trăm '] (111)
+        digit_tens = "mười "
+        # Example list after assignment: ['một', 'mười ', 'một trăm ']
+        # case 3. 'một mươi một' trở thành 'mười một'
+        # half case 5. 'một mươi năm' trở thành 'mười lăm'
 
-        if value == 'không mươi ':
-            total_number[idx] = 'lẽ '
+    # Adjust units
+    if digit_unit == "không":
+        # Case: units = 'không'
+        # Example list before: ['không', 'không mươi ', 'hai trăm '] (200)
+        digit_unit = ""
+        # Example list after assignment: ['', 'không mươi ', 'hai trăm ']
+        # case 1. 'hai mươi không' trở thành 'hai mươi'
 
-        if value == 'một mươi ':
-            total_number[idx] = 'mười '
+    elif digit_unit == "một" and digit_tens not in SPECIAL_TENS:
+        # Case: units = 'một' AND tens ≠ 'mười ' or 'lẽ '
+        # Example list before: ['một', 'hai mươi ', 'hai trăm '] (221)
+        digit_unit = "mốt"
+        # Example list after assignment: ['mốt', 'hai mươi ', 'hai trăm ']
+        # case 4. 'hai mươi một' trở thành 'hai mươi mốt'
 
-    return ''.join(total_number[::-1]).strip()
+    elif digit_unit == "năm" and digit_tens != "lẽ ":
+        # Case: units = 'năm' AND tens ≠ 'lẽ '
+        # Example list before: ['năm', 'một mươi ', 'hai trăm '] (215)
+        digit_unit = "lăm"
+        # Example list after assignment: ['lăm', 'một mươi ', 'hai trăm ']
+        # half case 5. 'một mươi năm' trở thành 'mười lăm'
+        # case 6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
+
+    # Combine everything
+    return (digits_hundred + digit_tens + digit_unit).strip()
 
 
 if __name__ == '__main__':
