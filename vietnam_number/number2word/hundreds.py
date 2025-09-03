@@ -70,7 +70,6 @@ def n2w_hundreds(numbers: str):
     #       4. 'hai mươi một' trở thành 'hai mươi mốt'
     #       5. 'một mươi năm' trở thành 'mười lăm'
     #       6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
-    #       7. 'hai trăm không mươi ba' trở thành 'hai trăm lẽ ba'
     for idx, value in enumerate(total_number):
         if idx == 0 and value == 'không':
 
