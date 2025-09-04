@@ -99,18 +99,15 @@ def pre_process_w2n(words: str):
         ValueError: Nếu đầu vào là chuỗi rỗng.
 
     """
-    clean_numbers = []
-
     words = words.replace('-', ' ')  # replace ký tự đặt biệt "-" sang khoản trắng
     words = words.lower()  # converting chuổi đầu vào thành chuổi viết thường
 
     split_words = words.strip().split()  # xóa khoảng trắng thừa và chia câu thành các từ
 
     # xóa các từ không có trong unit va word_multiplier
-    for word in split_words:
-        if word in units or word in word_multiplier:
-            clean_numbers.append(word)
-
+    clean_numbers = [
+        word for word in split_words if word in units or word in word_multiplier
+    ]
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_numbers:
         raise ValueError('không có chử số hợp lệ! vui lòng nhập chữ số hợp lệ.')
