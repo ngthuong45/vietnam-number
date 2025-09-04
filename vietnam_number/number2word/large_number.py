@@ -1,5 +1,14 @@
+from typing import Literal
+
 from vietnam_number.number2word.hundreds import n2w_hundreds
 from vietnam_number.number2word.utils.base import chunks
+
+LABELS: tuple[Literal[""], Literal[" nghìn "], Literal[" triệu "], Literal[" tỷ "]] = (
+    "",
+    " nghìn ",
+    " triệu ",
+    " tỷ ",
+)
 
 
 def n2w_large_number(numbers: str):
@@ -29,28 +38,34 @@ def n2w_large_number(numbers: str):
     # khi e == 3, thuật toán sẽ xem như trở về lại lớp nghìn nên cần phải thêm lại chữ 'tỷ' vào cuối
     # để kết quả chuyển đổi ra là: một nghìn tỷ
     n_of_billions_skipped = 0
-    for e in range(0, len(reversed_large_number)):
-        number_as_word = ''
-        if reversed_large_number[e][::-1] == '000':
-            if e >= 3 and (e - 1) % 3 == 2:
+    for group_index, reversed_group in enumerate(reversed_large_number):
+        group_value = reversed_group[::-1]
+
+        if group_value == "000":
+            if group_index >= 3 and (group_index - 1) % 3 == 2:
                 n_of_billions_skipped += 1
             continue
-        if e == 0:
-            value_of_hundred = reversed_large_number[e][::-1]
-            number_as_word = n2w_hundreds(value_of_hundred)
 
         # Sau khi vượt qua lớp tỷ thì cách đọc sẽ lặp lại từ lớp nghìn
         # một tỷ -> một nghìn (tỷ) -> một triệu (tỷ) -> một tỷ (tỷ)
         # dùng (e - 1) % 3 để tận dụng sự lặp lại này.
-        elif e == 1 or (e > 3 and (e - 1) % 3 == 0):
-            value_of_thousand = reversed_large_number[e][::-1]
-            number_as_word = n2w_hundreds(value_of_thousand) + ' nghìn '
-        elif e == 2 or (e > 3 and (e - 1) % 3 == 1):
-            value_of_million = reversed_large_number[e][::-1]
-            number_as_word = n2w_hundreds(value_of_million) + ' triệu '
-        elif e == 3 or (e > 3 and (e - 1) % 3 == 2):
-            value_of_billion = reversed_large_number[e][::-1]
-            number_as_word = n2w_hundreds(value_of_billion) + ' tỷ '
+
+        # Determine label based on position
+        # group_index | Calculation of label_index        | label assigned
+        # ------------+----------------------------------+---------------
+        # 0           | 0 (since 0 <= 3)                  | ""
+        # 1           | 1 (since 1 <= 3)                  | "nghìn"
+        # 2           | 2 (since 2 <= 3)                  | "triệu"
+        # 3           | 3 (since 3 <= 3)                  | "tỷ"
+        # 4           | ((4-1)%3 +1) = (3%3 +1) = 1       | "nghìn"
+        # 5           | ((5-1)%3 +1) = (4%3 +1) = 2       | "triệu"
+        # 6           | ((6-1)%3 +1) = (5%3 +1) = 3       | "tỷ"
+        # 7           | ((7-1)%3 +1) = (6%3 +1) = 1       | "nghìn"
+        # 8           | ((8-1)%3 +1) = (7%3 +1) = 2       | "triệu"
+        # 9           | ((9-1)%3 +1) = (8%3 +1) = 3       | "tỷ"
+
+        label_index = group_index if group_index <= 3 else ((group_index - 1) % 3 + 1)
+        number_as_word = n2w_hundreds(group_value) + LABELS[label_index]
 
         if n_of_billions_skipped > 0:
             number_as_word += "tỷ " * n_of_billions_skipped
