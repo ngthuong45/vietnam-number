@@ -51,9 +51,11 @@ def n2w_large_number(numbers: str):
         elif e == 3 or (e > 3 and (e - 1) % 3 == 2):
             value_of_billion = reversed_large_number[e][::-1]
             number_as_word = n2w_hundreds(value_of_billion) + ' tỷ '
-        while n_of_billions_skipped != 0:
-            number_as_word += 'tỷ '
-            n_of_billions_skipped -= 1
+
+        if n_of_billions_skipped > 0:
+            number_as_word += "tỷ " * n_of_billions_skipped
+            n_of_billions_skipped = 0
+
         total_number.append(number_as_word)
 
     return ''.join(total_number[::-1]).strip()
