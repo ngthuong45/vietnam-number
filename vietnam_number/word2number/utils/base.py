@@ -1,5 +1,5 @@
 from functools import cached_property
-
+from collections.abc import Generator
 from vietnam_number.word2number.data import (
     billion_words,
     hundreds_words,
@@ -65,20 +65,21 @@ class Numbers(object):
         return keyword_index
 
 
-def convert_to_tens_word(words: list):
+def convert_to_tens_word(words: Generator):
     """Chuyển các từ mười, chục thành ['một,'mươi']
 
     Returns:
         Danh sách mới sau khi chuyển đổi
     """
     # Chuyển các từ mười, chục thành ['một,'mươi']
+    new_words = []
     for word in words:
         if word in tens_special:
-            tens_index = words.index(word)
-            words[tens_index] = 'mươi'
-            words.insert(tens_index, 'một')
-
-    return words
+            new_words.append("một")
+            new_words.append("mươi")
+        else:
+            new_words.append(word)
+    return new_words
 
 
 def pre_process_w2n(words: str):
@@ -99,23 +100,21 @@ def pre_process_w2n(words: str):
         ValueError: Nếu đầu vào là chuỗi rỗng.
 
     """
-    clean_numbers = []
-
     words = words.replace('-', ' ')  # replace ký tự đặt biệt "-" sang khoản trắng
     words = words.lower()  # converting chuổi đầu vào thành chuổi viết thường
 
     split_words = words.strip().split()  # xóa khoảng trắng thừa và chia câu thành các từ
 
     # xóa các từ không có trong unit va word_multiplier
-    for word in split_words:
-        if word in units or word in word_multiplier:
-            clean_numbers.append(word)
+    clean_numbers = (
+        word for word in split_words if word in units or word in word_multiplier
+    )
+
+    # Chuyển các từ 'mười', 'chục' thành cụm ['một,'mươi']
+    clean_numbers = convert_to_tens_word(clean_numbers)
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_numbers:
         raise ValueError('không có chử số hợp lệ! vui lòng nhập chữ số hợp lệ.')
-
-    # Chuyển các từ 'mười', 'chục' thành cụm ['một,'mươi']
-    clean_numbers = convert_to_tens_word(clean_numbers)
 
     return clean_numbers
