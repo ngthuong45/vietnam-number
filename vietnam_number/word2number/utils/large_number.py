@@ -36,18 +36,18 @@ class LargeNumber(Numbers):
             number_for_format.insert(0, 'một')
 
         # Trường hợp văn nói "một triệu hai", "tỷ ba"
-        if number_for_format[-2] in billion_words:
-            if number_for_format[-1] in units:
+        if number_for_format[-1] in units:
+            second_last_word = number_for_format[-2]
+
+            if second_last_word in billion_words:
                 number_for_format.append('trăm')
                 number_for_format.append('triệu')
 
-        if number_for_format[-2] in million_words:
-            if number_for_format[-1] in units:
+            if second_last_word in million_words:
                 number_for_format.append('trăm')
                 number_for_format.append('nghìn')
 
-        if number_for_format[-2] in thousand_words:
-            if number_for_format[-1] in units:
+            if second_last_word in thousand_words:
                 number_for_format.append('trăm')
 
         return cls(number_for_format)
