@@ -49,8 +49,7 @@ def process_couple(words: list) -> str:
         return process_single(clean_number)
 
     value_of_tens = ''
-    for i in range(0, len(all_tens_index)):
-        first_tens_index = all_tens_index[i]
+    for i, first_tens_index in enumerate(all_tens_index):
 
         try:
             second_tens_index = all_tens_index[i + 1]

@@ -37,8 +37,5 @@ def process_single(words: list) -> str:
     # Tiền xữ lý dữ liệu chữ số đầu vào.
     clean_number = pre_process_single(words)
 
-    number_total = ''
-    for word in clean_number:
-        number_total += process_units([word])
-
+    number_total = "".join(process_units([word]) for word in clean_number)
     return number_total
