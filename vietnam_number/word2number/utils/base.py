@@ -43,24 +43,24 @@ class Numbers(object):
         """
         keyword_index = KEYWORD_INDEX_TEMPLATE.copy()
 
-        for word in self.words_number:
+        for index_position, word in enumerate(self.words_number):
             if word in tens_words:
-                keyword_index['tens_index'] = self.words_number.index(word)
+                keyword_index["tens_index"] = index_position
 
             if word in hundreds_words:
-                keyword_index['hundreds_index'] = self.words_number.index(word)
+                keyword_index["hundreds_index"] = index_position
 
             if word in thousand_words:
-                keyword_index['thousand_index'] = self.words_number.index(word)
+                keyword_index["thousand_index"] = index_position
 
             if word in million_words:
-                keyword_index['million_index'] = self.words_number.index(word)
+                keyword_index["million_index"] = index_position
 
             if word in billion_words:
-                keyword_index['billion_index'] = self.words_number.index(word)
+                keyword_index["billion_index"] = index_position
 
             if word in special_word:
-                keyword_index['special_index'] = self.words_number.index(word)
+                keyword_index["special_index"] = index_position
 
         return keyword_index
 
