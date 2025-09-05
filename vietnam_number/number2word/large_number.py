@@ -42,7 +42,7 @@ def n2w_large_number(numbers: str):
         group_value = reversed_group[::-1]
 
         if group_value == "000":
-            if group_index >= 3 and (group_index - 1) % 3 == 2:
+            if group_index >= 3 and group_index % 3 == 0:
                 n_of_billions_skipped += 1
             continue
 
