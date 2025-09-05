@@ -21,7 +21,7 @@ def chunks(lst, n):
     Returns:
         Danh sách các nhóm con có n phần tử.
     """
-    return [lst[i : i + n] for i in range(0, len(lst), n)]
+    return (lst[i : i + n] for i in range(0, len(lst), n))
 
 
 def pre_process_n2w(number: str):
