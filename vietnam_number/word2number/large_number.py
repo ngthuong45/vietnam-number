@@ -1,3 +1,5 @@
+from itertools import groupby
+
 from vietnam_number.word2number.data import hundreds_words, special_word
 from vietnam_number.word2number.hundreds import process_hundreds
 from vietnam_number.word2number.utils.large_number import LargeNumber
@@ -96,19 +98,19 @@ def process_large_number_normal(words: list):
 
 
 def process_large_number_special(words: list):
-    size = len(words)
-
-    idx_list = [i for i, value in enumerate(words) if value in special_word]
-    number_list = (
-        words[i + 1 : j]
-        for i, j in zip(
-            [-1] + idx_list, idx_list + ([size] if idx_list[-1] != size else [])
-        )
-    )
-
+    #   Create sublists of consecutive words that are NOT in `special_word`.
+    #   The special word(s) act as split points and are NOT included in the output.
+    #
+    #   Example:
+    #   Input:  ['một', 'trăm', 'lẻ', 'ba'], special_word = {'lẻ'}
+    #   Output: [['một', 'trăm'], ['ba']]
     total_number = 0
-    for element in number_list:
-        total_number += int(process_large_number_normal(element))
+
+    for is_special_word, word_group in groupby(
+        words, key=lambda word: word in special_word
+    ):
+        if not is_special_word:
+            total_number += int(process_large_number_normal(list(word_group)))
 
     return total_number
 
