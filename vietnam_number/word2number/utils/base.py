@@ -47,19 +47,19 @@ class Numbers(object):
             if word in tens_words:
                 keyword_index["tens_index"] = index_position
 
-            if word in hundreds_words:
+            elif word in hundreds_words:
                 keyword_index["hundreds_index"] = index_position
 
-            if word in thousand_words:
+            elif word in thousand_words:
                 keyword_index["thousand_index"] = index_position
 
-            if word in million_words:
+            elif word in million_words:
                 keyword_index["million_index"] = index_position
 
-            if word in billion_words:
+            elif word in billion_words:
                 keyword_index["billion_index"] = index_position
 
-            if word in special_word:
+            elif word in special_word:
                 keyword_index["special_index"] = index_position
 
         return keyword_index
