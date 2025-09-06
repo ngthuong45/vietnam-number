@@ -78,7 +78,7 @@ def process_hundreds(words: list) -> str:
                 return process_tens(value_of_tens) + process_units(remaining)
 
             # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
-            if tens_index == 2:
+            elif tens_index == 2:
                 return process_units(remaining) + process_tens(value_of_tens)
 
     # Trường hợp ['hai', 'ba'] == 023
