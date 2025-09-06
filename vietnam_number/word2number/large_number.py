@@ -76,12 +76,7 @@ def process_large_number_normal(words: list):
     if not value_of_million and million_index:
         value_of_million.append("một")
 
-    total_number = (
-        process_hundreds(value_of_billion)
-        + process_hundreds(value_of_million)
-        + process_hundreds(value_of_thousand)
-        + process_hundreds(value_of_hundreds)
-    )
+    total_number: str = "".join(map(process_hundreds, number_segments))
 
     return int(total_number)
 
