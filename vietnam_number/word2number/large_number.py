@@ -46,46 +46,35 @@ def process_large_number_normal(words: list):
     # Xữ lý chữ số hàng trăm.
     clean_words_number = large_number.words_number
 
-    value_of_billion = []
-    value_of_million = []
-    value_of_thousand = []
-
     # Lấy vị trí index của từ khóa hàng chục
     billion_index = large_number.get_keyword_index['billion_index']
     million_index = large_number.get_keyword_index['million_index']
     thousand_index = large_number.get_keyword_index['thousand_index']
 
-    if billion_index:
-        value_of_billion = clean_words_number[:billion_index]
+    start: int = 0
+    number_segments: list[list[str]] = []
 
-    if million_index:
-        if billion_index:
-            value_of_million = clean_words_number[billion_index + 1 : million_index]
+    for index in (
+        billion_index,
+        million_index,
+        thousand_index,
+    ):
+        if index is None:
+            number_segments.append([])
         else:
-            value_of_million = clean_words_number[:million_index]
+            number_segments.append(clean_words_number[start:index])
+            start = index + 1
 
-        if not value_of_million:
-            value_of_million = ['một']
+    number_segments.append(clean_words_number[start:])
 
-    if thousand_index:
-        if million_index:
-            value_of_thousand = clean_words_number[million_index + 1 : thousand_index]
-        elif billion_index:
-            value_of_thousand = clean_words_number[billion_index + 1 : thousand_index]
-        else:
-            value_of_thousand = clean_words_number[:thousand_index]
+    _value_of_billion, value_of_million, value_of_thousand, _value_of_hundreds = (
+        number_segments
+    )
 
-        if not value_of_thousand:
-            value_of_thousand = ['một']
-
-    if thousand_index:
-        value_of_hundreds = clean_words_number[thousand_index + 1 :]
-    elif million_index:
-        value_of_hundreds = clean_words_number[million_index + 1 :]
-    elif billion_index:
-        value_of_hundreds = clean_words_number[billion_index + 1 :]
-    else:
-        value_of_hundreds = clean_words_number
+    if not value_of_thousand and thousand_index:
+        value_of_thousand.append("một")
+    if not value_of_million and million_index:
+        value_of_million.append("một")
 
     total_number = (
         process_hundreds(value_of_billion)
