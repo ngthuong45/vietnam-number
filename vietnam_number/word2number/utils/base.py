@@ -44,7 +44,11 @@ class Numbers(object):
         keyword_index = KEYWORD_INDEX_TEMPLATE.copy()
 
         for index_position, word in enumerate(self.words_number):
-            if word in tens_words:
+            # Optimal order: highest frequency first
+            if word in units:
+                pass
+
+            elif word in tens_words:
                 keyword_index["tens_index"] = index_position
 
             elif word in hundreds_words:
