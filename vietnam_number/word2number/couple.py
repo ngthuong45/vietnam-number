@@ -48,7 +48,7 @@ def process_couple(words: list) -> str:
     if not all_tens_index:
         return process_single(clean_number)
 
-    value_of_tens = ''
+    value_of_tens = []
     for i, first_tens_index in enumerate(all_tens_index):
 
         try:
@@ -61,10 +61,14 @@ def process_couple(words: list) -> str:
             between_two_ten_index = clean_number[first_tens_index + 1 :]
 
         if (len(between_two_ten_index) % 2) == 0:
-            value_of_tens += process_tens(clean_number[first_tens_index - 1 : first_tens_index + 1])
-            value_of_tens += process_single(between_two_ten_index)
+            value_of_tens.append(
+                process_tens(clean_number[first_tens_index - 1 : first_tens_index + 1])
+            )
+            value_of_tens.append(process_single(between_two_ten_index))
         else:
-            value_of_tens += process_tens(clean_number[first_tens_index - 1 : first_tens_index + 2])
-            value_of_tens += process_single(between_two_ten_index[1:])
+            value_of_tens.append(
+                process_tens(clean_number[first_tens_index - 1 : first_tens_index + 2])
+            )
+            value_of_tens.append(process_single(between_two_ten_index[1:]))
 
-    return value_of_tens
+    return "".join(value_of_tens)
