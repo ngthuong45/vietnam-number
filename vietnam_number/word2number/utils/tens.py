@@ -19,13 +19,18 @@ class NumbersOfTens(Numbers):
             Đối tượng NumbersOfTens với thuộc tính words_number đã được định dạng.
 
         """
-        # Trường hợp đầu vào là rỗng thì đầu ra là 00
-        if not number_for_format:
-            number_for_format.append('không')
+        # Optimal order: highest frequency first
+        if len(number_for_format) > 1:
+            pass
 
         # Trường hợp đầu vào chỉ có 1 số thuộc hàng đơn vị
-        if len(number_for_format) == 1 and number_for_format[0] in units:
-            number_for_format.insert(0, 'không')
+        elif len(number_for_format) == 1 and number_for_format[0] in units:
+            number_for_format.insert(0, "không")
+
+        # Trường hợp đầu vào là rỗng thì đầu ra là 00
+        elif not number_for_format:
+            number_for_format.append("không")
+            number_for_format.append("không")
 
         return cls(number_for_format)
 
