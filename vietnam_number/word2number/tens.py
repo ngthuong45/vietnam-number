@@ -39,8 +39,6 @@ def process_tens(words: list) -> str:
 
     # Xữ lý chữ số hàng chục.
     clean_words_number = numbers_of_tens.words_number
-    value_of_tens = ''
-    value_of_units = ''
 
     # Lấy vị trí index của từ khóa hàng chục
     tens_index = numbers_of_tens.get_keyword_index['tens_index']
@@ -62,5 +60,9 @@ def process_tens(words: list) -> str:
     elif tens_index is None:
         value_of_tens = clean_words_number[0]
         value_of_units = clean_words_number[1]
+
+    else:
+        value_of_tens = ""
+        value_of_units = ""
 
     return process_units([value_of_tens]) + process_units([value_of_units])
