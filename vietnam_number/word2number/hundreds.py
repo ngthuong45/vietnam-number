@@ -73,11 +73,11 @@ def process_hundreds(words: list) -> str:
             value_of_tens = clean_words_number
 
         elif clean_words_number_count == 4:
-            # Trường hợp đặc biệt như ['ba', 'bốn', 'mươi', 'hai'] == 342
+            # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
             if tens_index == 1:
                 return process_tens(value_of_tens) + process_units(remaining)
 
-            # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
+            # Trường hợp đặc biệt như ['ba', 'bốn', 'mươi', 'hai'] == 342
             elif tens_index == 2:
                 return process_units(remaining) + process_tens(value_of_tens)
 
