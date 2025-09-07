@@ -15,10 +15,12 @@ def process_units(words: list):
 
     """
     # nếu list truyền vào là rỗng thì bằng 0
-    if not words:
+    # Optimal order: highest frequency first
+    if len(words) == 1:
+        pass
+    elif not words:
         words.append('không')
-
-    if len(words) > 1:
+    else:
         raise ValueError('chữ số vượt quá hàng đơn vị')
 
     return str(units[words[0]])
