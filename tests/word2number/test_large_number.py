@@ -49,11 +49,17 @@ def test_w2n_large_number(word_number, number_result):
         ),
         (['tỷ', 'lẽ', 'hai', 'triệu'], 1002000000),
         (['tỷ', 'rưỡi', 'lẽ', 'chín', 'trăm', 'nghìn'], 1500900000),
+        (['tỷ', 'rưỡi', 'lẻ', 'chín', 'trăm', 'nghìn'], 1500900000),
+        (['tỷ', 'rưỡi', 'linh', 'chín', 'trăm', 'nghìn'], 1500900000),
         (['triệu', 'rưỡi', 'lẽ', 'chín', 'mươi', 'nghìn'], 1590000),
         (['tỷ', 'lẽ', 'ba', 'mươi', 'hai', 'triệu'], 1032000000),
         (['hai', 'triệu', 'lẽ', 'ba', 'nghìn', 'hai', 'trăm', 'lẽ', 'tám'], 2003208),
         (
             ['tỷ', 'lẽ', 'tám', 'trăm', 'năm', 'mươi', 'hai', 'triệu', 'sáu', 'trăm', 'lẽ', 'ba', 'nghìn', 'hai', 'trăm'],
+            1852603200,
+        ),
+        (
+            ['tỷ', 'lẻ', 'tám', 'trăm', 'năm', 'mươi', 'hai', 'triệu', 'sáu', 'trăm', 'linh', 'ba', 'nghìn', 'hai', 'trăm'],
             1852603200,
         ),
     ],
