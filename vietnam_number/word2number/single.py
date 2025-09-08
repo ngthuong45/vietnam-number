@@ -18,11 +18,12 @@ def pre_process_single(words: list):
         ValueError: Nếu chữ số đầu vào có từ liên kết.
 
     """
-    for word in words:
-        if word in word_multiplier:
-            raise ValueError('Chữ số đầu vào có từ liên kết. Vui lòng sử dụng hàm dành riêng cho chữ số có từ liên kết.')
-
-    return words
+    if word_multiplier.isdisjoint(words):
+        return words
+    else:
+        raise ValueError(
+            "Chữ số đầu vào có từ liên kết. Vui lòng sử dụng hàm dành riêng cho chữ số có từ liên kết."
+        )
 
 
 def process_single(words: list) -> str:
