@@ -1,6 +1,7 @@
 from functools import cached_property
-from collections.abc import Generator
+
 from vietnam_number.word2number.data import (
+    ALLOW_WORDS,
     billion_words,
     hundreds_words,
     million_words,
@@ -8,8 +9,6 @@ from vietnam_number.word2number.data import (
     tens_special,
     tens_words,
     thousand_words,
-    units,
-    word_multiplier,
 )
 
 KEYWORD_INDEX_TEMPLATE = {
@@ -65,19 +64,21 @@ class Numbers(object):
         return keyword_index
 
 
-def convert_to_tens_word(words: Generator):
-    """Chuyển các từ mười, chục thành ['một,'mươi']
+def convert_to_tens_word(words: list[str]) -> list[str]:
+    """Xóa các từ không có trong ALLOW_WORDS và
+    chuyển các từ mười, chục thành ['một,'mươi']
 
     Returns:
         Danh sách mới sau khi chuyển đổi
     """
+    # Xóa các từ không có trong ALLOW_WORDS và
     # Chuyển các từ mười, chục thành ['một,'mươi']
     new_words = []
     for word in words:
         if word in tens_special:
             new_words.append("một")
             new_words.append("mươi")
-        else:
+        elif word in ALLOW_WORDS:
             new_words.append(word)
     return new_words
 
@@ -105,13 +106,8 @@ def pre_process_w2n(words: str):
 
     split_words = words.strip().split()  # xóa khoảng trắng thừa và chia câu thành các từ
 
-    # xóa các từ không có trong unit va word_multiplier
-    clean_numbers = (
-        word for word in split_words if word in units or word in word_multiplier
-    )
-
     # Chuyển các từ 'mười', 'chục' thành cụm ['một,'mươi']
-    clean_numbers = convert_to_tens_word(clean_numbers)
+    clean_numbers = convert_to_tens_word(split_words)
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_numbers:

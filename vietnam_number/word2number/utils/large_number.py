@@ -1,4 +1,10 @@
-from vietnam_number.word2number.data import billion_words, million_words, thousand_words, units
+from vietnam_number.word2number.data import (
+    BILLION_MILLION_THOUSAND_WORDS,
+    billion_words,
+    million_words,
+    thousand_words,
+    units,
+)
 from vietnam_number.word2number.utils.base import Numbers
 
 
@@ -32,7 +38,7 @@ class LargeNumber(Numbers):
 
         # Trường hợp nghìn, triệu, tỷ nằm ở đầu
         first_number = number_for_format[0]
-        if first_number in thousand_words or first_number in million_words or first_number in billion_words:
+        if first_number in BILLION_MILLION_THOUSAND_WORDS:
             number_for_format.insert(0, 'một')
 
         # Trường hợp văn nói "một triệu hai", "tỷ ba"

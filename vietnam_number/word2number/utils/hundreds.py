@@ -1,4 +1,8 @@
-from vietnam_number.word2number.data import hundreds_words, tens_words
+from vietnam_number.word2number.data import (
+    HUNDREDS_TENS_WORDS,
+    hundreds_words,
+    tens_words,
+)
 from vietnam_number.word2number.utils.base import Numbers
 
 
@@ -26,12 +30,12 @@ class NumbersOfHundreds(Numbers):
 
         # Trường hợp trăm, mươi nằm ở đầu
         first_number = number_for_format[0]
-        if first_number in hundreds_words or first_number in tens_words:
+        if first_number in HUNDREDS_TENS_WORDS:
             number_for_format.insert(0, 'một')
 
         # Trường hợp trăm, mươi nằm ở cuối
         last_number = number_for_format[-1]
-        if last_number in hundreds_words or last_number in tens_words:
+        if last_number in HUNDREDS_TENS_WORDS:
             number_for_format.append('không')
 
         return cls(number_for_format)
