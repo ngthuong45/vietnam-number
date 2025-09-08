@@ -1,6 +1,7 @@
 from functools import cached_property
 
 from vietnam_number.word2number.data import (
+    units,
     ALLOW_WORDS,
     billion_words,
     hundreds_words,
