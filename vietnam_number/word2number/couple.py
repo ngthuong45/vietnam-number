@@ -60,15 +60,16 @@ def process_couple(words: list) -> str:
             # Giá trị của phần còn lại tính từ vị trí từ 'mươi' cuối cùng
             between_two_ten_index = clean_number[first_tens_index + 1 :]
 
-        if (len(between_two_ten_index) % 2) == 0:
-            value_of_tens.append(
-                process_tens(clean_number[first_tens_index - 1 : first_tens_index + 1])
-            )
-            value_of_tens.append(process_single(between_two_ten_index))
+        if len(between_two_ten_index) % 2 == 0:
+            tens_end = first_tens_index + 1
+            remainder = between_two_ten_index
         else:
-            value_of_tens.append(
-                process_tens(clean_number[first_tens_index - 1 : first_tens_index + 2])
-            )
-            value_of_tens.append(process_single(between_two_ten_index[1:]))
+            tens_end = first_tens_index + 2
+            remainder = between_two_ten_index[1:]
+
+        value_of_tens.append(
+            process_tens(clean_number[first_tens_index - 1 : tens_end])
+        )
+        value_of_tens.append(process_single(remainder))
 
     return "".join(value_of_tens)
