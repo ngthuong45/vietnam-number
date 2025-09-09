@@ -1,8 +1,4 @@
-from vietnam_number.word2number.data import (
-    HUNDREDS_TENS_WORDS,
-    hundreds_words,
-    tens_words,
-)
+from vietnam_number.word2number.data import HUNDREDS_TENS_WORDS
 from vietnam_number.word2number.utils.base import Numbers
 
 
@@ -49,10 +45,9 @@ class NumbersOfHundreds(Numbers):
                 vd: bốn trăm trăm bảy mươi hai, bốn trăm bảy mươi mươi hai
 
         """
-        for hundreds, tens in zip(hundreds_words, tens_words):
-
-            if self.words_number.count(hundreds) > 1:
-                raise ValueError('Chữ số hàng trăm nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ.')
-
-            if self.words_number.count(tens) > 1:
-                raise ValueError('Chữ số hàng mười nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ.')
+        words_number_counter = self.words_number_counter
+        for word in HUNDREDS_TENS_WORDS:
+            if words_number_counter[word] > 1:
+                raise ValueError(
+                    f"Chữ số {word} nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ."
+                )
