@@ -49,11 +49,11 @@ class LargeNumber(Numbers):
                 number_for_format.append('trăm')
                 number_for_format.append('triệu')
 
-            if second_last_word in million_words:
+            elif second_last_word in million_words:
                 number_for_format.append('trăm')
                 number_for_format.append('nghìn')
 
-            if second_last_word in thousand_words:
+            elif second_last_word in thousand_words:
                 number_for_format.append('trăm')
 
         return cls(number_for_format)
