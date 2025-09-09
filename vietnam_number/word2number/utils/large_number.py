@@ -68,13 +68,9 @@ class LargeNumber(Numbers):
 
         """
         # Lỗi nếu người dùng nhập hai lần chữ triệu, tỷ, nghìn
-        for thousand, million, billion in zip(thousand_words, million_words, billion_words):
-
-            if self.words_number.count(thousand) > 1:
-                raise ValueError('Chữ số hàng nghìn nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ.')
-
-            if self.words_number.count(million) > 1:
-                raise ValueError('Chữ số hàng triệu nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ.')
-
-            if self.words_number.count(billion) > 1:
-                raise ValueError('Chữ số hàng tỷ nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ.')
+        words_number_counter = self.words_number_counter
+        for word in BILLION_MILLION_THOUSAND_WORDS:
+            if words_number_counter[word] > 1:
+                raise ValueError(
+                    f"Chữ số {word} nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ."
+                )
