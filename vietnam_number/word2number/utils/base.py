@@ -1,7 +1,7 @@
+from collections import Counter
 from functools import cached_property
 
 from vietnam_number.word2number.data import (
-    units,
     ALLOW_WORDS,
     billion_words,
     hundreds_words,
@@ -10,6 +10,7 @@ from vietnam_number.word2number.data import (
     tens_special,
     tens_words,
     thousand_words,
+    units,
 )
 
 KEYWORD_INDEX_TEMPLATE = {
@@ -32,6 +33,7 @@ class Numbers(object):
             words_number (list): Danh sách chữ số đầu vào.
         """
         self.words_number = words_number
+        self.words_number_counter = Counter(words_number)
 
     @cached_property
     def get_keyword_index(self):
