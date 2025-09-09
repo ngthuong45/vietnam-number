@@ -64,7 +64,7 @@ def process_hundreds(words: list) -> str:
             value_of_hundreds = ['không']
             value_of_tens = clean_words_number
 
-        elif clean_words_number_count == 4:
+        else:
             # Lấy giá trị của phần chục.
             value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
 
