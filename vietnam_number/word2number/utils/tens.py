@@ -37,6 +37,9 @@ class NumbersOfTens(Numbers):
                 vd: ba mươi chục tám, năm mươi mươi bảy
 
         """
+        words_number_counter = self.words_number_counter
         for word in tens_words:
-            if self.words_number.count(word) > 1:
-                raise ValueError('Có nhiều hơn một từ dùng để liên kết hàng chục!')
+            if words_number_counter[word] > 1:
+                raise ValueError(
+                    f"Có nhiều hơn một từ {word} dùng để liên kết hàng chục!"
+                )
