@@ -59,20 +59,20 @@ def process_hundreds(words: list) -> str:
             value_of_tens.append('không')
 
     elif tens_index:
-        # Lấy giá trị của phần chục.
-        value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
-
-        # Lấy giá trị của phần còn lại.
-        remaining = clean_words_number[tens_index + 2 :]
-        if not remaining:
-            remaining = clean_words_number[: tens_index - 1]
-
         # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
         if clean_words_number_count <= 3:
             value_of_hundreds = ['không']
             value_of_tens = clean_words_number
 
         elif clean_words_number_count == 4:
+            # Lấy giá trị của phần chục.
+            value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
+
+            # Lấy giá trị của phần còn lại.
+            remaining = clean_words_number[tens_index + 2 :]
+            if not remaining:
+                remaining = clean_words_number[: tens_index - 1]
+
             # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
             if tens_index == 1:
                 return process_tens(value_of_tens) + process_units(remaining)
