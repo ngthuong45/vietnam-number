@@ -69,9 +69,10 @@ def process_hundreds(words: list) -> str:
             value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
 
             # Lấy giá trị của phần còn lại.
-            remaining = clean_words_number[tens_index + 2 :]
-            if not remaining:
-                remaining = clean_words_number[: tens_index - 1]
+            remaining = (
+                clean_words_number[tens_index + 2 :]
+                or clean_words_number[: tens_index - 1]
+            )
 
             # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
             if tens_index == 1:
