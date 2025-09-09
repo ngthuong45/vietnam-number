@@ -1,3 +1,5 @@
+from itertools import zip_longest
+
 from vietnam_number.word2number.data import tens_words
 from vietnam_number.word2number.single import process_single
 from vietnam_number.word2number.tens import process_tens
@@ -48,23 +50,23 @@ def process_couple(words: list) -> str:
     if not all_tens_index:
         return process_single(clean_number)
 
-    value_of_tens = ''
-    for i, first_tens_index in enumerate(all_tens_index):
+    value_of_tens = []
+    for first_tens_index, second_tens_index in zip_longest(
+        all_tens_index, all_tens_index[1:]
+    ):
+        second_tens_index = second_tens_index - 1 if second_tens_index else None
+        between_two_ten_index = clean_number[first_tens_index + 1 : second_tens_index]
 
-        try:
-            second_tens_index = all_tens_index[i + 1]
-            between_two_ten_index = clean_number[first_tens_index + 1 : second_tens_index - 1]
-
-        # Khi duyệt đến vị trí từ 'mươi' cuối cùng.
-        except IndexError:
-            # Giá trị của phần còn lại tính từ vị trí từ 'mươi' cuối cùng
-            between_two_ten_index = clean_number[first_tens_index + 1 :]
-
-        if (len(between_two_ten_index) % 2) == 0:
-            value_of_tens += process_tens(clean_number[first_tens_index - 1 : first_tens_index + 1])
-            value_of_tens += process_single(between_two_ten_index)
+        if len(between_two_ten_index) % 2 == 0:
+            tens_end = first_tens_index + 1
+            remainder = between_two_ten_index
         else:
-            value_of_tens += process_tens(clean_number[first_tens_index - 1 : first_tens_index + 2])
-            value_of_tens += process_single(between_two_ten_index[1:])
+            tens_end = first_tens_index + 2
+            remainder = between_two_ten_index[1:]
 
-    return value_of_tens
+        value_of_tens.append(
+            process_tens(clean_number[first_tens_index - 1 : tens_end])
+        )
+        value_of_tens.append(process_single(remainder))
+
+    return "".join(value_of_tens)
