@@ -1,11 +1,13 @@
+from collections.abc import Sequence
+
 from vietnam_number.word2number.data import units
 
 
-def process_units(words: list):
+def process_units(words: Sequence[str]) -> str:
     """Xữ lý chữ số hàng đơn vị.
 
     Args:
-        words (list): Danh sách chữ số đầu vào.
+        words (Sequence[str]): Danh sách chữ số đầu vào.
 
     Returns:
         Chuổi số hàng đơn vị.
