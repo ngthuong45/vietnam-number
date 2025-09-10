@@ -17,10 +17,8 @@ def process_units(words: list):
     # nếu list truyền vào là rỗng thì bằng 0
     # Optimal order: highest frequency first
     if len(words) == 1:
-        pass
+        return str(units[words[0]])
     elif not words:
-        words.append('không')
+        return "0"
     else:
         raise ValueError('chữ số vượt quá hàng đơn vị')
-
-    return str(units[words[0]])
