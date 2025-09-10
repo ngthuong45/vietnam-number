@@ -27,10 +27,7 @@ def n2w_hundreds(numbers: str):
         ValueError: Nếu số đầu vào là chuỗi rỗng.
 
     """
-    if len(numbers) > 3:
-        raise ValueError('Số vượt quá giá trị của hàng trăm!')
-
-    if len(numbers) == 0:
+    if len(numbers) > 3 or len(numbers) == 0:
         raise ValueError('Số vượt quá giá trị của hàng trăm!')
 
     if len(numbers) == 1:
