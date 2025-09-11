@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vietnam_number"
-version = "1.0.4"
+version = "1.0.5"
 description = "Thư viện xữ lý chữ số dành riêng cho Tiếng Việt - Hỗ trợ chuyển đổi cho cả văn nói và văn viết"
 authors = ["Nguyễn Hoài Thương <ng.thuong.lio@gmail.com>"]
 repository = "https://github.com/ngthuong45/vietnam-number.git"
