@@ -28,17 +28,19 @@ class LargeNumber(Numbers):
         """
         # Nếu list truyền vào là rỗng thì bằng 000000
         if not number_for_format:
-            number_for_format.append('không')
+            number_for_format.append("không")
+            number_for_format.append("không")
+            return cls(number_for_format)
 
         # Nếu danh sách chữ số truyền vào có 1 chữ số thuộc hàng đơn vị
         # thì thêm 'không' vào đầu của list
         # vd: ['hai'] => ['không', 'hai']
-        if len(number_for_format) == 1 and number_for_format[0] in units:
+        elif len(number_for_format) == 1 and number_for_format[0] in units:
             number_for_format.insert(0, 'không')
+            return cls(number_for_format)
 
         # Trường hợp nghìn, triệu, tỷ nằm ở đầu
-        first_number = number_for_format[0]
-        if first_number in BILLION_MILLION_THOUSAND_WORDS:
+        elif number_for_format[0] in BILLION_MILLION_THOUSAND_WORDS:
             number_for_format.insert(0, 'một')
 
         # Trường hợp văn nói "một triệu hai", "tỷ ba"
@@ -49,11 +51,11 @@ class LargeNumber(Numbers):
                 number_for_format.append('trăm')
                 number_for_format.append('triệu')
 
-            if second_last_word in million_words:
+            elif second_last_word in million_words:
                 number_for_format.append('trăm')
                 number_for_format.append('nghìn')
 
-            if second_last_word in thousand_words:
+            elif second_last_word in thousand_words:
                 number_for_format.append('trăm')
 
         return cls(number_for_format)

@@ -27,13 +27,10 @@ def n2w_hundreds(numbers: str):
         ValueError: Nếu số đầu vào là chuỗi rỗng.
 
     """
-    if len(numbers) > 3:
+    if len(numbers) > 3 or len(numbers) == 0:
         raise ValueError('Số vượt quá giá trị của hàng trăm!')
 
-    if len(numbers) == 0:
-        raise ValueError('Số vượt quá giá trị của hàng trăm!')
-
-    if len(numbers) <= 1:
+    if len(numbers) == 1:
         return n2w_units(numbers)
 
     # Chúng ta cần duyệt danh sách từ phải qua trái nhằm phân biệt các giá trị từ nhỏ đến lớn.

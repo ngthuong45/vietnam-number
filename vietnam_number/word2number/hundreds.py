@@ -42,9 +42,6 @@ def process_hundreds(words: list) -> str:
     clean_words_number = numbers_of_hundreds.words_number
     clean_words_number_count = len(clean_words_number)
 
-    value_of_hundreds = []
-    value_of_tens = []
-
     # Lấy vị trí index của từ khóa hàng chục
     tens_index = numbers_of_hundreds.get_keyword_index['tens_index']
     hundreds_index = numbers_of_hundreds.get_keyword_index['hundreds_index']
@@ -59,20 +56,21 @@ def process_hundreds(words: list) -> str:
             value_of_tens.append('không')
 
     elif tens_index:
-        # Lấy giá trị của phần chục.
-        value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
-
-        # Lấy giá trị của phần còn lại.
-        remaining = clean_words_number[tens_index + 2 :]
-        if not remaining:
-            remaining = clean_words_number[: tens_index - 1]
-
         # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
         if clean_words_number_count <= 3:
             value_of_hundreds = ['không']
             value_of_tens = clean_words_number
 
-        elif clean_words_number_count == 4:
+        else:
+            # Lấy giá trị của phần chục.
+            value_of_tens = clean_words_number[tens_index - 1 : tens_index + 2]
+
+            # Lấy giá trị của phần còn lại.
+            remaining = (
+                clean_words_number[tens_index + 2 :]
+                or clean_words_number[: tens_index - 1]
+            )
+
             # Trường hợp đặc biệt như ['bốn', 'mươi', 'hai', 'ba'] == 423
             if tens_index == 1:
                 return process_tens(value_of_tens) + process_units(remaining)
@@ -90,5 +88,9 @@ def process_hundreds(words: list) -> str:
     elif clean_words_number_count == 3:
         value_of_hundreds = clean_words_number[:1]
         value_of_tens = clean_words_number[1:]
+
+    else:
+        value_of_hundreds = []
+        value_of_tens = []
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)

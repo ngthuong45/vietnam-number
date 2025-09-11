@@ -58,8 +58,7 @@ def process_tens(words: list) -> str:
         )
 
     elif tens_index is None:
-        value_of_tens = clean_words_number[0]
-        value_of_units = clean_words_number[1]
+        value_of_tens, value_of_units = clean_words_number
 
     else:
         value_of_tens = ""

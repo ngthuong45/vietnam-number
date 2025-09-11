@@ -23,15 +23,14 @@ class NumbersOfHundreds(Numbers):
         # Trường hợp đầu vào là rỗng thì đầu ra là 000
         if not number_for_format:
             number_for_format.append('không')
+            return cls(number_for_format)
 
         # Trường hợp trăm, mươi nằm ở đầu
-        first_number = number_for_format[0]
-        if first_number in HUNDREDS_TENS_WORDS:
+        elif number_for_format[0] in HUNDREDS_TENS_WORDS:
             number_for_format.insert(0, 'một')
 
         # Trường hợp trăm, mươi nằm ở cuối
-        last_number = number_for_format[-1]
-        if last_number in HUNDREDS_TENS_WORDS:
+        if number_for_format[-1] in HUNDREDS_TENS_WORDS:
             number_for_format.append('không')
 
         return cls(number_for_format)
