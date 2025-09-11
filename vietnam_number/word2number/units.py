@@ -1,11 +1,13 @@
+from collections.abc import Sequence
+
 from vietnam_number.word2number.data import units
 
 
-def process_units(words: list):
+def process_units(words: Sequence[str]) -> str:
     """Xữ lý chữ số hàng đơn vị.
 
     Args:
-        words (list): Danh sách chữ số đầu vào.
+        words (Sequence[str]): Danh sách chữ số đầu vào.
 
     Returns:
         Chuổi số hàng đơn vị.
@@ -17,10 +19,8 @@ def process_units(words: list):
     # nếu list truyền vào là rỗng thì bằng 0
     # Optimal order: highest frequency first
     if len(words) == 1:
-        pass
+        return str(units[words[0]])
     elif not words:
-        words.append('không')
+        return "0"
     else:
         raise ValueError('chữ số vượt quá hàng đơn vị')
-
-    return str(units[words[0]])
