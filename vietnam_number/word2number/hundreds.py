@@ -90,7 +90,7 @@ def process_hundreds(words: list) -> str:
         value_of_tens = clean_words_number[1:]
 
     else:
-        value_of_hundreds = []
+        value_of_hundreds = ()
         value_of_tens = []
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)
