@@ -1,6 +1,6 @@
 from collections.abc import Sequence
 
-from vietnam_number.word2number.data import units
+from vietnam_number.word2number.data import UNITS
 
 
 def process_units(words: Sequence[str]) -> str:
@@ -19,7 +19,7 @@ def process_units(words: Sequence[str]) -> str:
     # nếu list truyền vào là rỗng thì bằng 0
     # Optimal order: highest frequency first
     if len(words) == 1:
-        return str(units[words[0]])
+        return str(UNITS[words[0]])
     elif not words:
         return "0"
     else:

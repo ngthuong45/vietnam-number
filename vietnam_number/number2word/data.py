@@ -1,4 +1,4 @@
-units = {
+UNITS = {
     '0': 'không',
     '1': 'một',
     '2': 'hai',

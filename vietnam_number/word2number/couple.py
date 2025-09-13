@@ -1,6 +1,6 @@
 from itertools import zip_longest
 
-from vietnam_number.word2number.data import tens_words
+from vietnam_number.word2number.data import TENS_WORDS
 from vietnam_number.word2number.single import process_single
 from vietnam_number.word2number.tens import process_tens
 
@@ -22,11 +22,11 @@ def pre_process_couple(words: list):
 
     """
     # Trường hợp từ 'mươi' nằm ở cuối cùng.
-    if words[-1] in tens_words:
+    if words[-1] in TENS_WORDS:
         words.append('không')
 
     # Trường hợp từ 'mươi' nằm ở đầu.
-    if words[0] in tens_words:
+    if words[0] in TENS_WORDS:
         raise ValueError("Từ 'mươi' không thể đặt ở vị trí đầu tiên. Vui lòng nhập dãy chữ số đúng định dạng!")
 
     return words
@@ -45,7 +45,7 @@ def process_couple(words: list) -> str:
     clean_number = pre_process_couple(words)
 
     # Lấy tất cả vị trí index của 'mươi'
-    all_tens_index = [i for i, value in enumerate(clean_number) if value in tens_words]
+    all_tens_index = [i for i, value in enumerate(clean_number) if value in TENS_WORDS]
 
     if not all_tens_index:
         return process_single(clean_number)

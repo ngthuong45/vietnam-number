@@ -1,4 +1,4 @@
-units = {
+UNITS = {
     'không': 0,
     'một': 1,
     'mốt': 1,
@@ -17,24 +17,24 @@ units = {
     'chín': 9,
 }
 
-billion_words = frozenset(("tỷ", "tỏi", "tỉ"))
-million_words = frozenset(("triệu", "củ", "chai"))
-thousand_words = frozenset(("nghìn", "nghàn", "ngàn", "cành"))
+BILLION_WORDS = frozenset(("tỷ", "tỏi", "tỉ"))
+MILLION_WORDS = frozenset(("triệu", "củ", "chai"))
+THOUSAND_WORDS = frozenset(("nghìn", "nghàn", "ngàn", "cành"))
 
-BILLION_MILLION_THOUSAND_WORDS = billion_words.union(million_words, thousand_words)
+BILLION_MILLION_THOUSAND_WORDS = BILLION_WORDS.union(MILLION_WORDS, THOUSAND_WORDS)
 
-hundreds_words = frozenset(("trăm", "lít", "lốp", "xị"))
-tens_words = frozenset(("mươi", "chục"))
+HUNDREDS_WORDS = frozenset(("trăm", "lít", "lốp", "xị"))
+TENS_WORDS = frozenset(("mươi", "chục"))
 
-HUNDREDS_TENS_WORDS = hundreds_words.union(tens_words)
+HUNDREDS_TENS_WORDS = HUNDREDS_WORDS.union(TENS_WORDS)
 
-tens_special = ("mười",)
-special_word = frozenset(("lẽ", "linh", "lẻ"))
+TENS_SPECIAL = ("mười",)
+SPECIAL_WORDS = frozenset(("lẽ", "linh", "lẻ"))
 
-word_multiplier = BILLION_MILLION_THOUSAND_WORDS.union(
+WORD_MULTIPLIER = BILLION_MILLION_THOUSAND_WORDS.union(
     HUNDREDS_TENS_WORDS,
-    tens_special,
-    special_word,
+    TENS_SPECIAL,
+    SPECIAL_WORDS,
 )
 
-ALLOW_WORDS = word_multiplier.union(units)
+ALLOW_WORDS = WORD_MULTIPLIER.union(UNITS)

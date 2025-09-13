@@ -1,4 +1,4 @@
-from vietnam_number.number2word.data import units
+from vietnam_number.number2word.data import UNITS
 
 
 def n2w_units(numbers: str):
@@ -15,14 +15,15 @@ def n2w_units(numbers: str):
         ValueError: Số đầu vào có giá trị lớn hơn 9.
 
     """
+    if len(numbers) == 1:
+        return UNITS[numbers]
 
-    if not numbers:
+    elif not numbers:
         raise ValueError('Số rỗng!! vui lòng nhập số đúng định dạng!')
 
-    if len(numbers) > 1:
+    else:
         raise ValueError('Số vượt quá giá trị của hàng đơn vị!')
 
-    return units[numbers]
 
 
 if __name__ == '__main__':

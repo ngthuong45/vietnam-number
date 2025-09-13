@@ -1,4 +1,4 @@
-from vietnam_number.word2number.data import tens_words, units
+from vietnam_number.word2number.data import TENS_WORDS, UNITS
 from vietnam_number.word2number.utils.base import Numbers
 
 
@@ -24,7 +24,7 @@ class NumbersOfTens(Numbers):
             pass
 
         # Trường hợp đầu vào chỉ có 1 số thuộc hàng đơn vị
-        elif len(number_for_format) == 1 and number_for_format[0] in units:
+        elif len(number_for_format) == 1 and number_for_format[0] in UNITS:
             number_for_format.insert(0, "không")
 
         # Trường hợp đầu vào là rỗng thì đầu ra là 00
@@ -43,7 +43,7 @@ class NumbersOfTens(Numbers):
 
         """
         words_number_counter = self.words_number_counter
-        for word in tens_words:
+        for word in TENS_WORDS:
             if words_number_counter[word] > 1:
                 raise ValueError(
                     f"Có nhiều hơn một từ {word} dùng để liên kết hàng chục!"

@@ -1,6 +1,6 @@
 from itertools import groupby
 
-from vietnam_number.word2number.data import hundreds_words, special_word
+from vietnam_number.word2number.data import HUNDREDS_WORDS, SPECIAL_WORDS
 from vietnam_number.word2number.hundreds import process_hundreds
 from vietnam_number.word2number.utils.large_number import LargeNumber
 
@@ -89,7 +89,7 @@ def process_large_number_special(words: list):
     total_number = 0
 
     for is_special_word, word_group in groupby(
-        words, key=lambda word: word in special_word
+        words, key=lambda word: word in SPECIAL_WORDS
     ):
         if not is_special_word:
             total_number += int(process_large_number_normal(list(word_group)))
@@ -103,9 +103,9 @@ def process_large_number(words: list):
     contain_special_word = False
 
     for index, value in enumerate(words):
-        if value in special_word:
+        if value in SPECIAL_WORDS:
             contain_special_word = True
-            if words[index - 1] in hundreds_words:
+            if words[index - 1] in HUNDREDS_WORDS:
                 words[index] = "không"
 
     if contain_special_word:
