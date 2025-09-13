@@ -1,4 +1,4 @@
-from vietnam_number.number2word.data import units
+from vietnam_number.number2word.data import UNITS
 
 
 def n2w_units(numbers: str):
@@ -16,7 +16,7 @@ def n2w_units(numbers: str):
 
     """
     if len(numbers) == 1:
-        return units[numbers]
+        return UNITS[numbers]
 
     elif not numbers:
         raise ValueError('Số rỗng!! vui lòng nhập số đúng định dạng!')

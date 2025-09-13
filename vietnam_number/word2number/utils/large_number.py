@@ -1,9 +1,9 @@
 from vietnam_number.word2number.data import (
     BILLION_MILLION_THOUSAND_WORDS,
-    billion_words,
-    million_words,
-    thousand_words,
-    units,
+    BILLION_WORDS,
+    MILLION_WORDS,
+    THOUSAND_WORDS,
+    UNITS,
 )
 from vietnam_number.word2number.utils.base import Numbers
 
@@ -35,7 +35,7 @@ class LargeNumber(Numbers):
         # Nếu danh sách chữ số truyền vào có 1 chữ số thuộc hàng đơn vị
         # thì thêm 'không' vào đầu của list
         # vd: ['hai'] => ['không', 'hai']
-        elif len(number_for_format) == 1 and number_for_format[0] in units:
+        elif len(number_for_format) == 1 and number_for_format[0] in UNITS:
             number_for_format.insert(0, 'không')
             return cls(number_for_format)
 
@@ -44,18 +44,18 @@ class LargeNumber(Numbers):
             number_for_format.insert(0, 'một')
 
         # Trường hợp văn nói "một triệu hai", "tỷ ba"
-        if number_for_format[-1] in units:
+        if number_for_format[-1] in UNITS:
             second_last_word = number_for_format[-2]
 
-            if second_last_word in billion_words:
+            if second_last_word in BILLION_WORDS:
                 number_for_format.append('trăm')
                 number_for_format.append('triệu')
 
-            elif second_last_word in million_words:
+            elif second_last_word in MILLION_WORDS:
                 number_for_format.append('trăm')
                 number_for_format.append('nghìn')
 
-            elif second_last_word in thousand_words:
+            elif second_last_word in THOUSAND_WORDS:
                 number_for_format.append('trăm')
 
         return cls(number_for_format)

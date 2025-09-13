@@ -1,6 +1,6 @@
 from typing import Literal
 
-from vietnam_number.number2word.data import units
+from vietnam_number.number2word.data import UNITS
 
 POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
     "",
@@ -32,7 +32,7 @@ def n2w_hundreds(numbers: str):
         pass
 
     elif numbers_length == 1:
-        return units[numbers]
+        return UNITS[numbers]
 
     else:
         raise ValueError("Số vượt quá giá trị của hàng trăm!")
@@ -60,7 +60,7 @@ def n2w_hundreds(numbers: str):
     reversed_hundreds: str = numbers[:-4:-1]
 
     total_number = (
-        units[digit_character] + POSITION_UNITS[digit_position]
+        UNITS[digit_character] + POSITION_UNITS[digit_position]
         for digit_position, digit_character in enumerate(reversed_hundreds)
     )
 

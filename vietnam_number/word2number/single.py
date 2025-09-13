@@ -1,4 +1,4 @@
-from vietnam_number.word2number.data import word_multiplier
+from vietnam_number.word2number.data import WORD_MULTIPLIER
 from vietnam_number.word2number.units import process_units
 
 
@@ -18,7 +18,7 @@ def pre_process_single(words: list):
         ValueError: Nếu chữ số đầu vào có từ liên kết.
 
     """
-    if word_multiplier.isdisjoint(words):
+    if WORD_MULTIPLIER.isdisjoint(words):
         return words
     else:
         raise ValueError(

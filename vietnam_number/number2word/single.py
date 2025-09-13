@@ -1,4 +1,4 @@
-from vietnam_number.number2word.data import units
+from vietnam_number.number2word.data import UNITS
 
 
 def process_n2w_single(numbers: str):
@@ -10,7 +10,7 @@ def process_n2w_single(numbers: str):
     Returns:
         Chuỗi chữ số đầu ra.
     """
-    return " ".join(units[element] for element in numbers)
+    return " ".join(UNITS[element] for element in numbers)
 
 
 if __name__ == '__main__':

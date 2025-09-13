@@ -1,4 +1,4 @@
-from vietnam_number.number2word.data import units
+from vietnam_number.number2word.data import UNITS
 
 CHAR_TO_REMOVE = {
     " ": None,
@@ -42,7 +42,7 @@ def pre_process_n2w(number: str):
         raise ValueError('Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (isdigit)!')
 
     # xóa các ký tự số không có trong unit
-    clean_number = "".join(element for element in number if element in units)
+    clean_number = "".join(element for element in number if element in UNITS)
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_number:
