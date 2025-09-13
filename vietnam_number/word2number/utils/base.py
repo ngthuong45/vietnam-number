@@ -108,10 +108,11 @@ def pre_process_w2n(words: str):
         ValueError: Nếu đầu vào là chuỗi rỗng.
 
     """
-    words = words.replace('-', ' ')  # replace ký tự đặt biệt "-" sang khoản trắng
-    words = words.lower()  # converting chuổi đầu vào thành chuổi viết thường
-
-    split_words = words.strip().split()  # xóa khoảng trắng thừa và chia câu thành các từ
+    split_words = (
+        words.replace("-", " ")  # replace ký tự đặt biệt "-" sang khoản trắng
+        .lower()  # converting chuổi đầu vào thành chuổi viết thường
+        .split()  # xóa khoảng trắng thừa và chia câu thành các từ
+    )
 
     # Chuyển các từ 'mười', 'chục' thành cụm ['một,'mươi']
     clean_numbers = convert_to_tens_word(split_words)
