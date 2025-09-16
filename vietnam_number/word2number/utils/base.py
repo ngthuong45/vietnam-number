@@ -3,14 +3,14 @@ from functools import cached_property
 
 from vietnam_number.word2number.data import (
     ALLOW_WORDS,
-    billion_words,
-    hundreds_words,
-    million_words,
-    special_word,
-    tens_special,
-    tens_words,
-    thousand_words,
-    units,
+    BILLION_WORDS,
+    HUNDREDS_WORDS,
+    MILLION_WORDS,
+    SPECIAL_WORDS,
+    TENS_SPECIAL,
+    TENS_WORDS,
+    THOUSAND_WORDS,
+    UNITS,
 )
 
 KEYWORD_INDEX_TEMPLATE = {
@@ -47,25 +47,25 @@ class Numbers(object):
 
         for index_position, word in enumerate(self.words_number):
             # Optimal order: highest frequency first
-            if word in units:
+            if word in UNITS:
                 pass
 
-            elif word in tens_words:
+            elif word in TENS_WORDS:
                 keyword_index["tens_index"] = index_position
 
-            elif word in hundreds_words:
+            elif word in HUNDREDS_WORDS:
                 keyword_index["hundreds_index"] = index_position
 
-            elif word in thousand_words:
+            elif word in THOUSAND_WORDS:
                 keyword_index["thousand_index"] = index_position
 
-            elif word in million_words:
+            elif word in MILLION_WORDS:
                 keyword_index["million_index"] = index_position
 
-            elif word in billion_words:
+            elif word in BILLION_WORDS:
                 keyword_index["billion_index"] = index_position
 
-            elif word in special_word:
+            elif word in SPECIAL_WORDS:
                 keyword_index["special_index"] = index_position
 
         return keyword_index
@@ -82,7 +82,7 @@ def convert_to_tens_word(words: list[str]) -> list[str]:
     # Chuyển các từ mười, chục thành ['một,'mươi']
     new_words = []
     for word in words:
-        if word in tens_special:
+        if word in TENS_SPECIAL:
             new_words.append("một")
             new_words.append("mươi")
         elif word in ALLOW_WORDS:
@@ -108,10 +108,11 @@ def pre_process_w2n(words: str):
         ValueError: Nếu đầu vào là chuỗi rỗng.
 
     """
-    words = words.replace('-', ' ')  # replace ký tự đặt biệt "-" sang khoản trắng
-    words = words.lower()  # converting chuổi đầu vào thành chuổi viết thường
-
-    split_words = words.strip().split()  # xóa khoảng trắng thừa và chia câu thành các từ
+    split_words = (
+        words.replace("-", " ")  # replace ký tự đặt biệt "-" sang khoản trắng
+        .lower()  # converting chuổi đầu vào thành chuổi viết thường
+        .split()  # xóa khoảng trắng thừa và chia câu thành các từ
+    )
 
     # Chuyển các từ 'mười', 'chục' thành cụm ['một,'mươi']
     clean_numbers = convert_to_tens_word(split_words)

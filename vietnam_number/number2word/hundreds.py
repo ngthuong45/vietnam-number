@@ -1,7 +1,6 @@
 from typing import Literal
 
-from vietnam_number.number2word.data import units
-from vietnam_number.number2word.units import n2w_units
+from vietnam_number.number2word.data import UNITS
 
 POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
     "",
@@ -27,11 +26,16 @@ def n2w_hundreds(numbers: str):
         ValueError: Nếu số đầu vào là chuỗi rỗng.
 
     """
-    if len(numbers) > 3 or len(numbers) == 0:
-        raise ValueError('Số vượt quá giá trị của hàng trăm!')
+    # Optimal order: highest frequency first
+    numbers_length = len(numbers)
+    if numbers_length == 3 or numbers_length == 2:
+        pass
 
-    if len(numbers) == 1:
-        return n2w_units(numbers)
+    elif numbers_length == 1:
+        return UNITS[numbers]
+
+    else:
+        raise ValueError("Số vượt quá giá trị của hàng trăm!")
 
     # Chúng ta cần duyệt danh sách từ phải qua trái nhằm phân biệt các giá trị từ nhỏ đến lớn.
     # Lý giải: giả sử chúng ta có 2 đầu vào: '10' và '123'
@@ -56,7 +60,7 @@ def n2w_hundreds(numbers: str):
     reversed_hundreds: str = numbers[:-4:-1]
 
     total_number = (
-        units[digit_character] + POSITION_UNITS[digit_position]
+        UNITS[digit_character] + POSITION_UNITS[digit_position]
         for digit_position, digit_character in enumerate(reversed_hundreds)
     )
 
