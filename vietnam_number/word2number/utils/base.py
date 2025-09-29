@@ -3,24 +3,10 @@ from functools import cached_property
 
 from vietnam_number.word2number.data import (
     ALLOW_WORDS,
-    BILLION_WORDS,
-    HUNDREDS_WORDS,
-    MILLION_WORDS,
-    SPECIAL_WORDS,
+    KEYWORD_INDEX_TEMPLATE,
     TENS_SPECIAL,
-    TENS_WORDS,
-    THOUSAND_WORDS,
-    UNITS,
+    WORD_TO_KEYWORD,
 )
-
-KEYWORD_INDEX_TEMPLATE = {
-    "tens_index": None,
-    "hundreds_index": None,
-    "thousand_index": None,
-    "million_index": None,
-    "billion_index": None,
-    "special_index": None,
-}
 
 
 class Numbers(object):
@@ -46,27 +32,8 @@ class Numbers(object):
         keyword_index = KEYWORD_INDEX_TEMPLATE.copy()
 
         for index_position, word in enumerate(self.words_number):
-            # Optimal order: highest frequency first
-            if word in UNITS:
-                pass
-
-            elif word in TENS_WORDS:
-                keyword_index["tens_index"] = index_position
-
-            elif word in HUNDREDS_WORDS:
-                keyword_index["hundreds_index"] = index_position
-
-            elif word in THOUSAND_WORDS:
-                keyword_index["thousand_index"] = index_position
-
-            elif word in MILLION_WORDS:
-                keyword_index["million_index"] = index_position
-
-            elif word in BILLION_WORDS:
-                keyword_index["billion_index"] = index_position
-
-            elif word in SPECIAL_WORDS:
-                keyword_index["special_index"] = index_position
+            if keyword := WORD_TO_KEYWORD.get(word):
+                keyword_index[keyword] = index_position
 
         return keyword_index
 
