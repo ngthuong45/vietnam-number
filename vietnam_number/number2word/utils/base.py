@@ -38,8 +38,8 @@ def pre_process_n2w(number: str):
     number = number.translate(TRANS_TABLE)
 
     # Kiểm tra tính hợp lệ của đầu vào
-    if not number.isdigit():
-        raise ValueError('Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (isdigit)!')
+    if not number.isdecimal():
+        raise ValueError('Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (0-9)!')
 
     # xóa các ký tự số không có trong unit
     clean_number = "".join(element for element in number if element in UNITS)

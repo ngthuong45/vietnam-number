@@ -21,7 +21,7 @@ def w2n(number_sentence):
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
 
-    if number_sentence.isdigit():
+    if number_sentence.isdecimal():
         return number_sentence
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
@@ -47,7 +47,7 @@ def w2n_single(number_sentence):
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
 
-    if number_sentence.isdigit():
+    if number_sentence.isdecimal():
         return number_sentence
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
@@ -73,7 +73,7 @@ def w2n_couple(number_sentence):
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
 
-    if number_sentence.isdigit():
+    if number_sentence.isdecimal():
         return number_sentence
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
