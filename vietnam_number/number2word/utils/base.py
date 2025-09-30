@@ -1,12 +1,8 @@
-from vietnam_number.number2word.data import UNITS
+from string import ascii_letters, punctuation, whitespace
 
-CHAR_TO_REMOVE = {
-    " ": None,
-    "-": None,
-    ".": None,
-    ",": None,
-}
-TRANS_TABLE = str.maketrans(CHAR_TO_REMOVE)
+CHAR_TO_REMOVE = ascii_letters + punctuation + whitespace
+TRANS_TABLE = str.maketrans("", "", CHAR_TO_REMOVE)
+
 
 def chunks(lst, n):
     """Hàm chia nhỏ danh sách đầu vào.
@@ -35,17 +31,16 @@ def pre_process_n2w(number: str):
     """
 
     # xóa các ký tự đặt biệt
-    number = number.translate(TRANS_TABLE)
+    clean_number = number.translate(TRANS_TABLE)
+
+    # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
+    if not number.isascii():
+        raise ValueError("Số không hợp lệ, vui lòng nhập số đúng định dạng!")
 
     # Kiểm tra tính hợp lệ của đầu vào
     if not number.isdecimal():
-        raise ValueError('Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (0-9)!')
-
-    # xóa các ký tự số không có trong unit
-    clean_number = "".join(element for element in number if element in UNITS)
-
-    # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
-    if not clean_number:
-        raise ValueError("Số không hợp lệ, vui lòng nhập số đúng định dạng!")
+        raise ValueError(
+            "Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (0-9)!"
+        )
 
     return clean_number
