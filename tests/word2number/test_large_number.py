@@ -2,6 +2,7 @@ import pytest
 
 from vietnam_number.word2number import w2n
 from vietnam_number.word2number.large_number import process_large_number
+from vietnam_number.word2number.utils.base import pre_process_w2n
 
 
 @pytest.mark.parametrize(
@@ -32,7 +33,6 @@ def test_w2n_large_number(word_number, number_result):
 @pytest.mark.parametrize(
     'word_number, number_result',
     [
-        ([], 0),
         (['một', 'triệu', 'bốn', 'nghìn', 'ba', 'mươi', 'hai'], 1004032),
         (['một', 'trăm', 'hai', 'triệu', 'bốn', 'nghìn', 'ba', 'mươi', 'hai'], 120004032),
         (['bốn', 'nghìn', 'ba', 'mươi', 'hai'], 4032),
@@ -73,3 +73,12 @@ def test_process_large_number(word_number, number_result):
 
     """
     assert process_large_number(word_number) == number_result
+
+
+def test_pre_process_w2n_empty_list_raises_error():
+    # Input that should produce an empty list from convert_to_tens_word
+    invalid_input = "abc"  # a string that is not recognized as a number word
+
+    # Expect ValueError to be raised
+    with pytest.raises(ValueError, match="không có chữ số hợp lệ"):
+        pre_process_w2n(invalid_input)

@@ -119,6 +119,6 @@ def pre_process_w2n(words: str):
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
     if not clean_numbers:
-        raise ValueError('không có chử số hợp lệ! vui lòng nhập chữ số hợp lệ.')
+        raise ValueError("không có chữ số hợp lệ! vui lòng nhập chữ số hợp lệ.")
 
     return clean_numbers
