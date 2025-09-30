@@ -9,7 +9,7 @@ from vietnam_number.word2number.data import (
 )
 
 
-class Numbers(object):
+class Numbers:
     """Class xữ lý chữ số đầu vào."""
 
     def __init__(self, words_number: list):
