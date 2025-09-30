@@ -67,7 +67,7 @@ def n2w_large_number(numbers: str):
         label_index = group_index if group_index <= 3 else ((group_index - 1) % 3 + 1)
         number_as_word = n2w_hundreds(group_value) + LABELS[label_index]
 
-        if n_of_billions_skipped > 0:
+        if n_of_billions_skipped:
             number_as_word += "tỷ " * n_of_billions_skipped
             n_of_billions_skipped = 0
 
