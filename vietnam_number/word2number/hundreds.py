@@ -47,7 +47,7 @@ def process_hundreds(words: list) -> str:
     hundreds_index = numbers_of_hundreds.get_keyword_index['hundreds_index']
 
     if hundreds_index:
-        value_of_hundreds = clean_words_number[:1]
+        value_of_hundreds = clean_words_number[0]
 
         value_of_tens = clean_words_number[hundreds_index + 1 :]
 
