@@ -58,7 +58,7 @@ def process_hundreds(words: list) -> str:
     elif tens_index:
         # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
         if clean_words_number_count <= 3:
-            value_of_hundreds = ['không']
+            value_of_hundreds = "không"
             value_of_tens = clean_words_number
 
         else:
@@ -83,7 +83,7 @@ def process_hundreds(words: list) -> str:
 
     # Trường hợp ['hai', 'ba'] == 023
     elif clean_words_number_count <= 2:
-        value_of_hundreds = ['không']
+        value_of_hundreds = "không"
         value_of_tens = clean_words_number
 
     # Trường hợp ['năm', 'sáu', 'hai'] == 562
@@ -92,7 +92,7 @@ def process_hundreds(words: list) -> str:
         value_of_tens = clean_words_number[1:]
 
     else:
-        value_of_hundreds = ()
+        value_of_hundreds = ""
         value_of_tens = []
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)
