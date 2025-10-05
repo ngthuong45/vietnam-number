@@ -73,7 +73,9 @@ def n2w_large_number(numbers: str):
 
         total_number.append(number_as_word)
 
-    return ''.join(reversed(total_number)).strip()
+    total_number.reverse()
+
+    return "".join(total_number).strip()
 
 
 if __name__ == '__main__':
