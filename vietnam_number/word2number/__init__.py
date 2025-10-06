@@ -4,14 +4,14 @@ from vietnam_number.word2number.single import process_single
 from vietnam_number.word2number.utils.base import pre_process_w2n
 
 
-def w2n(number_sentence):
+def w2n(number_sentence) -> int:
     """Chuyển đổi chữ số sang số.
 
     Args:
         number_sentence (str): Chuổi chữ số đầu vào.
 
     Returns:
-        Số đầu ra
+        Số đầu ra (int)
 
     """
     # Kiểm tra tính hợp lệ của đầu vào
@@ -21,8 +21,8 @@ def w2n(number_sentence):
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
 
-    if number_sentence.isdigit():
-        return number_sentence
+    if number_sentence.isdecimal() and number_sentence.isascii():
+        return int(number_sentence)
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
     clean_numbers = pre_process_w2n(number_sentence)
@@ -47,7 +47,7 @@ def w2n_single(number_sentence):
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
 
-    if number_sentence.isdigit():
+    if number_sentence.isdecimal() and number_sentence.isascii():
         return number_sentence
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
@@ -73,7 +73,7 @@ def w2n_couple(number_sentence):
     if not isinstance(number_sentence, str):
         raise ValueError('Đầu vào không phải là dạng chuỗi (str)! Vui lòng truyền vào chuỗi các chữ số.')
 
-    if number_sentence.isdigit():
+    if number_sentence.isdecimal() and number_sentence.isascii():
         return number_sentence
 
     # Tiền xữ lý dữ liệu chuỗi số đầu vào
