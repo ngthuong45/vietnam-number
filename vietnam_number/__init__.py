@@ -1,12 +1,12 @@
 import sys
 
 # Check python version
-try:
-    version_info = sys.version_info
-    if version_info < (3, 8, 0):
-        raise RuntimeError("vietnam-number requires Python 3.8 or later")
-except Exception:
-    pass
+if sys.version_info < (3, 8):
+    raise RuntimeError(
+        "vietnam-number requires Python 3.8 or later. "
+        "Please install an older version if you need compatibility."
+    )
+
 
 ###########################################################
 # METADATA

@@ -38,3 +38,20 @@ WORD_MULTIPLIER = BILLION_MILLION_THOUSAND_WORDS.union(
 )
 
 ALLOW_WORDS = WORD_MULTIPLIER.union(UNITS)
+
+KEYWORD_TO_WORDS: dict[str, frozenset[str]] = {
+    "tens_index": TENS_WORDS,
+    "hundreds_index": HUNDREDS_WORDS,
+    "thousand_index": THOUSAND_WORDS,
+    "million_index": MILLION_WORDS,
+    "billion_index": BILLION_WORDS,
+    "special_index": SPECIAL_WORDS,
+}
+
+WORD_TO_KEYWORD: dict[str, str] = {
+    word: keyword_name
+    for keyword_name, words in KEYWORD_TO_WORDS.items()
+    for word in words
+}
+
+KEYWORD_INDEX_TEMPLATE = dict.fromkeys(KEYWORD_TO_WORDS)

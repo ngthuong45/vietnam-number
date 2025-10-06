@@ -43,8 +43,8 @@ def process_hundreds(words: list) -> str:
     clean_words_number_count = len(clean_words_number)
 
     # Lấy vị trí index của từ khóa hàng chục
-    tens_index = numbers_of_hundreds.get_keyword_index['tens_index']
-    hundreds_index = numbers_of_hundreds.get_keyword_index['hundreds_index']
+    tens_index = numbers_of_hundreds.keyword_index['tens_index']
+    hundreds_index = numbers_of_hundreds.keyword_index['hundreds_index']
 
     if hundreds_index:
         value_of_hundreds = clean_words_number[:1]
