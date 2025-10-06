@@ -92,7 +92,7 @@ def process_large_number_special(words: list):
         words, key=lambda word: word in SPECIAL_WORDS
     ):
         if not is_special_word:
-            total_number += int(process_large_number_normal(list(word_group)))
+            total_number += process_large_number_normal(list(word_group))
 
     return total_number
 
