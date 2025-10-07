@@ -12,4 +12,4 @@ def process_units(words: str) -> str:
 
     """
     # nếu str truyền vào là rỗng thì bằng "0"
-    return str(UNITS.get(words, "0"))
+    return UNITS.get(words, "0")
