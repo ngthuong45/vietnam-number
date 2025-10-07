@@ -1,7 +1,7 @@
 from typing import Literal
 
 from vietnam_number.number2word.hundreds import n2w_hundreds
-from vietnam_number.number2word.utils.base import chunks
+from vietnam_number.number2word.utils.base import chunk_from_right
 
 LABELS: tuple[Literal[""], Literal[" nghìn "], Literal[" triệu "], Literal[" tỷ "]] = (
     "",
@@ -25,11 +25,9 @@ def n2w_large_number(numbers: str):
     """
     # Chúng ta cần duyệt chuổi số đầu vào từ phải sang trái nhằm phân biệt các giá trị từ nhỏ đến lớn.
     # tương tự như khi chúng ta xữ lý cho hàm n2w_hundreds
-    reversed_large_number = numbers[::-1]
-
     # Chia chuỗi số đầu vào thành các nhóm con có 3 phần tử.
     # vì cứ 3 phần tử số lại tạo thành một lớp giá trị, như lớp trăm, lớp nghìn, lớp triệu...
-    reversed_large_number = chunks(reversed_large_number, 3)
+    reversed_large_number = chunk_from_right(numbers, 3)
 
     total_number = []
 
@@ -38,9 +36,7 @@ def n2w_large_number(numbers: str):
     # khi e == 3, thuật toán sẽ xem như trở về lại lớp nghìn nên cần phải thêm lại chữ 'tỷ' vào cuối
     # để kết quả chuyển đổi ra là: một nghìn tỷ
     n_of_billions_skipped = 0
-    for group_index, reversed_group in enumerate(reversed_large_number):
-        group_value = reversed_group[::-1]
-
+    for group_index, group_value in enumerate(reversed_large_number):
         if group_value == "000":
             if group_index >= 3 and group_index % 3 == 0:
                 n_of_billions_skipped += 1
