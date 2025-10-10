@@ -4,20 +4,30 @@ CHAR_TO_REMOVE = ascii_letters + punctuation + whitespace
 TRANS_TABLE = str.maketrans("", "", CHAR_TO_REMOVE)
 
 
-def chunks(lst, n):
-    """Hàm chia nhỏ danh sách đầu vào.
-
-    Hàm dùng chia nhỏ danh sách đầu vào thành các nhóm danh sách con với số lượng các phần tử trong
-    nhóm con là n
+def chunk_from_right(numeric_string: str, n: int):
+    """
+    Split a string into chunks of `n` characters, counting from the right.
 
     Args:
-        lst: Danh sách đầu vào.
-        n: Số lượng phần tử trong một nhóm con.
+        numeric_string (str): The input string to split.
+        n (int): The chunk size.
 
     Returns:
-        Danh sách các nhóm con có n phần tử.
+        list[str]: A list of substrings (chunks) from right to left.
+
+    Examples:
+        >>> chunk_from_right("1_234_567_890", 3)
+        ['890', '567', '234', '1']
+        >>> chunk_from_right("12_345", 3)
+        ['345', '12']
+        >>> chunk_from_right("123", 3)
+        ['123']
+        >>> chunk_from_right("12", 3)
+        ['12']
     """
-    return (lst[i : i + n] for i in range(0, len(lst), n))
+    return (
+        numeric_string[max(i - n, 0) : i] for i in range(len(numeric_string), 0, -n)
+    )
 
 
 def pre_process_n2w(number: str):

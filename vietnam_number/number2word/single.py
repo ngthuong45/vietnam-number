@@ -10,7 +10,7 @@ def process_n2w_single(numbers: str):
     Returns:
         Chuỗi chữ số đầu ra.
     """
-    return " ".join(UNITS[element] for element in numbers)
+    return " ".join(map(UNITS.get, numbers))
 
 
 if __name__ == '__main__':

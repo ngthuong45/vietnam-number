@@ -7,7 +7,7 @@ POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
     " mươi ",
     " trăm ",
 )
-SPECIAL_TENS: tuple[Literal["mười "], Literal["lẽ "]] = ("mười ", "lẽ ")
+SPECIAL_TENS: frozenset[Literal["mười "], Literal["lẽ "]] = frozenset(("mười ", "lẽ "))
 
 
 def n2w_hundreds(numbers: str):
