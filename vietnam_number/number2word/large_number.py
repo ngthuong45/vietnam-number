@@ -11,6 +11,54 @@ LABELS: tuple[Literal[""], Literal[" nghìn "], Literal[" triệu "], Literal[" 
 )
 
 
+def build_scale_label(group_index: int) -> str:
+    """
+    Return the Vietnamese scale label for a 3-digit group position.
+    Pattern repeats every 3 groups and adds 'tỷ' layers for higher magnitudes.
+    ```
+    Examples:
+    index | label
+    ------+--------------------
+      0   | ""
+      1   | " nghìn "
+      2   | " triệu "
+      3   | " tỷ "
+      4   | " nghìn tỷ "
+      5   | " triệu tỷ "
+      6   | " tỷ tỷ "
+      7   | " nghìn tỷ tỷ "
+      8   | " triệu tỷ tỷ "
+      9   | " tỷ tỷ tỷ "
+    ```
+    """
+
+    # base_label_index: 0 for index=0, else 1..3
+    base_label_index: int = group_index and ((group_index - 1) % 3 + 1)
+
+    # Determine label based on position
+    # group_index | Calculation of base_label_index   | label assigned
+    # ------------+-----------------------------------+---------------
+    # 0           | 0                                 | ""
+    # 1           | ((1-1)%3 +1) = (0%3 +1) = 1       | "nghìn"
+    # 2           | ((2-1)%3 +1) = (1%3 +1) = 2       | "triệu"
+    # 3           | ((3-1)%3 +1) = (2%3 +1) = 3       | "tỷ"
+    # 4           | ((4-1)%3 +1) = (3%3 +1) = 1       | "nghìn"
+    # 5           | ((5-1)%3 +1) = (4%3 +1) = 2       | "triệu"
+    # 6           | ((6-1)%3 +1) = (5%3 +1) = 3       | "tỷ"
+    # 7           | ((7-1)%3 +1) = (6%3 +1) = 1       | "nghìn"
+    # 8           | ((8-1)%3 +1) = (7%3 +1) = 2       | "triệu"
+    # 9           | ((9-1)%3 +1) = (8%3 +1) = 3       | "tỷ"
+
+    base_label: str = LABELS[base_label_index]
+
+    # Number of extra 'tỷ' to append:
+    #   - Every full block of 3 adds one 'tỷ' layer
+    #   - Subtract 1 when the base itself is 'tỷ' (i.e., base_label_index == 3)
+    number_of_ty_suffixes: int = (group_index // 3) - (base_label_index // 3)
+
+    return base_label + "tỷ " * number_of_ty_suffixes
+
+
 def n2w_large_number(numbers: str):
     """Hàm chuyển đổi các số có giá trị lớn.
 
