@@ -54,8 +54,9 @@ def process_couple(words: list) -> str:
     for first_tens_index, second_tens_index in zip_longest(
         all_tens_index, all_tens_index[1:]
     ):
-        second_tens_index = second_tens_index - 1 if second_tens_index else None
-        between_two_ten_index = clean_number[first_tens_index + 1 : second_tens_index]
+        between_two_ten_index = clean_number[
+            first_tens_index + 1 : second_tens_index and second_tens_index - 1
+        ]
 
         if len(between_two_ten_index) % 2 == 0:
             tens_end = first_tens_index + 1
