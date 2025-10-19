@@ -33,13 +33,11 @@ class Numbers:
             Trả về một dic gồm các keyword và vị trí index của nó.
 
         """
-        keyword_index = KEYWORD_INDEX_TEMPLATE.copy()
-
-        for index_position, word in enumerate(self.words_number):
-            if keyword := WORD_TO_KEYWORD.get(word):
-                keyword_index[keyword] = index_position
-
-        return keyword_index
+        return {
+            keyword: index_position
+            for index_position, word in enumerate(self.words_number)
+            if (keyword := WORD_TO_KEYWORD.get(word))
+        }
 
 
 def convert_to_tens_word(words: list[str]) -> list[str]:
