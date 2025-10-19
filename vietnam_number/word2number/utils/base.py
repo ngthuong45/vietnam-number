@@ -17,6 +17,7 @@ class Numbers:
     """Class xữ lý chữ số đầu vào.
     words_number (list): Danh sách chữ số đầu vào.
     """
+
     words_number: list[str]
     words_number_counter: Counter[str] = field(init=False)
     keyword_index: dict[str, int] = field(init=False)

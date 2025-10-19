@@ -47,9 +47,9 @@ def process_large_number_normal(words: list):
     clean_words_number = large_number.words_number
 
     # Lấy vị trí index của từ khóa hàng chục
-    billion_index = large_number.keyword_index['billion_index']
-    million_index = large_number.keyword_index['million_index']
-    thousand_index = large_number.keyword_index['thousand_index']
+    billion_index = large_number.keyword_index.get("billion_index")
+    million_index = large_number.keyword_index.get("million_index")
+    thousand_index = large_number.keyword_index.get("thousand_index")
 
     start: int = 0
     number_segments: list[list[str]] = []
