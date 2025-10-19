@@ -53,5 +53,3 @@ WORD_TO_KEYWORD: dict[str, str] = {
     for keyword_name, words in KEYWORD_TO_WORDS.items()
     for word in words
 }
-
-KEYWORD_INDEX_TEMPLATE = dict.fromkeys(KEYWORD_TO_WORDS)

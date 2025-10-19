@@ -4,7 +4,6 @@ from string import punctuation
 
 from vietnam_number.word2number.data import (
     ALLOW_WORDS,
-    KEYWORD_INDEX_TEMPLATE,
     TENS_SPECIAL,
     WORD_TO_KEYWORD,
 )
@@ -78,7 +77,9 @@ def pre_process_w2n(words: str):
 
     """
     split_words = (
-        words.translate(PUNCTUATION_TO_SPACE_TABLE)  # replace ký tự đặt biệt punctuation sang khoản trắng
+        words.translate(
+            PUNCTUATION_TO_SPACE_TABLE
+        )  # replace ký tự đặt biệt punctuation sang khoản trắng
         .lower()  # converting chuổi đầu vào thành chuổi viết thường
         .split()  # xóa khoảng trắng thừa và chia câu thành các từ
     )
