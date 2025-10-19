@@ -21,11 +21,11 @@ class Numbers:
     words_number_counter: Counter[str] = field(init=False)
     keyword_index: dict[str, int] = field(init=False)
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.words_number_counter = Counter(self.words_number)
         self.keyword_index = self.get_keyword_index()
 
-    def get_keyword_index(self):
+    def get_keyword_index(self) -> dict[str, int]:
         """Lấy vị trí index của các từ khóa như mười, trăm, nghìn, triệu, tỷ.
 
         Returns:
