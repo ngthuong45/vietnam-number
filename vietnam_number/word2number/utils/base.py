@@ -3,9 +3,9 @@ from dataclasses import dataclass, field
 from string import punctuation
 
 from vietnam_number.word2number.data import (
-    ALLOW_WORDS,
     TENS_SPECIAL,
     WORD_TO_KEYWORD,
+    ALLOW_WORDS_EXCLUDING_TENS_SPECIAL,
 )
 
 PUNCTUATION_TO_SPACE_TABLE = str.maketrans(punctuation, " " * len(punctuation))
@@ -50,11 +50,11 @@ def convert_to_tens_word(words: list[str]) -> list[str]:
     # Chuyển các từ mười, chục thành ['một,'mươi']
     new_words = []
     for word in words:
-        if word in TENS_SPECIAL:
+        if word in ALLOW_WORDS_EXCLUDING_TENS_SPECIAL:
+            new_words.append(word)
+        elif word in TENS_SPECIAL:
             new_words.append("một")
             new_words.append("mươi")
-        elif word in ALLOW_WORDS:
-            new_words.append(word)
     return new_words
 
 
