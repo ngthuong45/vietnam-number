@@ -3,11 +3,11 @@ from typing import Literal
 from vietnam_number.number2word.hundreds import n2w_hundreds
 from vietnam_number.number2word.utils.base import chunk_from_right
 
-LABELS: tuple[Literal[""], Literal[" nghìn "], Literal[" triệu "], Literal[" tỷ "]] = (
+LABELS: tuple[Literal[""], Literal[" nghìn"], Literal[" triệu"], Literal[" tỷ"]] = (
     "",
-    " nghìn ",
-    " triệu ",
-    " tỷ ",
+    " nghìn",
+    " triệu",
+    " tỷ",
 )
 
 
@@ -56,7 +56,7 @@ def build_scale_label(group_index: int) -> str:
     #   - Subtract 1 when the base itself is 'tỷ' (i.e., base_label_index == 3)
     number_of_ty_suffixes: int = (group_index // 3) - (base_label_index // 3)
 
-    return base_label + "tỷ " * number_of_ty_suffixes
+    return base_label + " tỷ" * number_of_ty_suffixes
 
 
 def n2w_large_number(numbers: str):
@@ -84,7 +84,7 @@ def n2w_large_number(numbers: str):
 
     total_number.reverse()
 
-    return "".join(total_number).strip()
+    return " ".join(total_number)
 
 
 if __name__ == '__main__':
