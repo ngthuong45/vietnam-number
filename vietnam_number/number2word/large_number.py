@@ -15,21 +15,19 @@ def build_scale_label(group_index: int) -> str:
     """
     Return the Vietnamese scale label for a 3-digit group position.
     Pattern repeats every 3 groups and adds 'tỷ' layers for higher magnitudes.
-    ```
     Examples:
-    index | label
-    ------+--------------------
-      0   | ""
-      1   | " nghìn "
-      2   | " triệu "
-      3   | " tỷ "
-      4   | " nghìn tỷ "
-      5   | " triệu tỷ "
-      6   | " tỷ tỷ "
-      7   | " nghìn tỷ tỷ "
-      8   | " triệu tỷ tỷ "
-      9   | " tỷ tỷ tỷ "
-    ```
+    | index | label           |
+    |-------|-----------------|
+    | 0     | ""              |
+    | 1     | " nghìn"        |
+    | 2     | " triệu"        |
+    | 3     | " tỷ"           |
+    | 4     | " nghìn tỷ"     |
+    | 5     | " triệu tỷ"     |
+    | 6     | " tỷ tỷ"        |
+    | 7     | " nghìn tỷ tỷ"  |
+    | 8     | " triệu tỷ tỷ"  |
+    | 9     | " tỷ tỷ tỷ"     |
     """
 
     # base_label_index: 0 for index=0, else 1..3
