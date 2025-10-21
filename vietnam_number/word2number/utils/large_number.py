@@ -41,7 +41,10 @@ class LargeNumber(Numbers):
         if number_for_format[-1] in UNITS:
             second_last_word = number_for_format[-2]
 
-            if second_last_word in BILLION_WORDS:
+            if second_last_word not in BILLION_MILLION_THOUSAND_WORDS:
+                pass
+
+            elif second_last_word in BILLION_WORDS:
                 number_for_format.append('trăm')
                 number_for_format.append('triệu')
 
