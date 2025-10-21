@@ -41,7 +41,7 @@ def process_tens(words: list) -> str:
     clean_words_number = numbers_of_tens.words_number
 
     # Lấy vị trí index của từ khóa hàng chục
-    tens_index = numbers_of_tens.keyword_index['tens_index']
+    tens_index = numbers_of_tens.keyword_index.get("tens_index")
 
     if tens_index == 0:
         value_of_tens = 'một'

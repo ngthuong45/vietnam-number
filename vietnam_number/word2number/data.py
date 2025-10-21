@@ -38,6 +38,7 @@ WORD_MULTIPLIER = BILLION_MILLION_THOUSAND_WORDS.union(
 )
 
 ALLOW_WORDS = WORD_MULTIPLIER.union(UNITS)
+ALLOW_WORDS_EXCLUDING_TENS_SPECIAL = ALLOW_WORDS.difference(TENS_SPECIAL)
 
 KEYWORD_TO_WORDS: dict[str, frozenset[str]] = {
     "tens_index": TENS_WORDS,
@@ -53,5 +54,3 @@ WORD_TO_KEYWORD: dict[str, str] = {
     for keyword_name, words in KEYWORD_TO_WORDS.items()
     for word in words
 }
-
-KEYWORD_INDEX_TEMPLATE = dict.fromkeys(KEYWORD_TO_WORDS)
