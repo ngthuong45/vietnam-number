@@ -47,7 +47,11 @@ def process_hundreds(words: list) -> str:
     hundreds_index = numbers_of_hundreds.keyword_index.get("hundreds_index")
 
     if hundreds_index is not None:
-        value_of_hundreds = clean_words_number[0]
+        if hundreds_index > 0:
+            value_of_hundreds = clean_words_number[hundreds_index - 1]
+        else:
+            # Trường hợp trăm nằm ở đầu
+            value_of_hundreds = "một"
 
         value_of_tens = clean_words_number[hundreds_index + 1 :]
 
