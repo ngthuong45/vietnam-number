@@ -26,7 +26,8 @@ def chunk_from_right(numeric_string: str, n: int):
         ['12']
     """
     return (
-        numeric_string[max(i - n, 0) : i] for i in range(len(numeric_string), 0, -n)
+        numeric_string[i - n if i > n else 0 : i]
+        for i in range(len(numeric_string), 0, -n)
     )
 
 
