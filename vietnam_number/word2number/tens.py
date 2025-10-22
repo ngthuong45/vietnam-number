@@ -61,7 +61,6 @@ def process_tens(words: list) -> str:
         value_of_tens, value_of_units = clean_words_number
 
     else:
-        value_of_tens = ""
-        value_of_units = ""
+        value_of_tens = value_of_units = ""
 
     return process_units(value_of_tens) + process_units(value_of_units)
