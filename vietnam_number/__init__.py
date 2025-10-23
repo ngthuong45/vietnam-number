@@ -1,13 +1,3 @@
-import sys
-
-# Check python version
-if sys.version_info < (3, 8):
-    raise RuntimeError(
-        "vietnam-number requires Python 3.8 or later. "
-        "Please install an older version if you need compatibility."
-    )
-
-
 ###########################################################
 # METADATA
 ###########################################################
