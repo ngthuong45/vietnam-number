@@ -126,7 +126,7 @@ def n2w_hundreds(numbers: str):
         # case 6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
 
     # Combine everything
-    return (digits_hundred + digit_tens + digit_unit).strip()
+    return (digits_hundred + digit_tens + digit_unit).rstrip()
 
 
 if __name__ == '__main__':
