@@ -46,16 +46,20 @@ def process_hundreds(words: list) -> str:
     tens_index = numbers_of_hundreds.keyword_index.get("tens_index")
     hundreds_index = numbers_of_hundreds.keyword_index.get("hundreds_index")
 
-    if hundreds_index:
-        value_of_hundreds = clean_words_number[0]
+    if hundreds_index is not None:
+        if hundreds_index > 0:
+            value_of_hundreds = clean_words_number[hundreds_index - 1]
+        else:
+            # Trường hợp trăm nằm ở đầu
+            value_of_hundreds = "một"
 
         value_of_tens = clean_words_number[hundreds_index + 1 :]
 
         # Trường hợp ['bốn', 'trăm', 'hai'] == 420
         if len(value_of_tens) == 1:
-            value_of_tens.append('không')
+            value_of_tens.append("không")
 
-    elif tens_index:
+    elif tens_index is not None:
         # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
         if clean_words_number_count <= 3:
             value_of_hundreds = "không"

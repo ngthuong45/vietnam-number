@@ -25,10 +25,6 @@ class NumbersOfHundreds(Numbers):
             number_for_format.append('không')
             return cls(number_for_format)
 
-        # Trường hợp trăm, mươi nằm ở đầu
-        elif number_for_format[0] in HUNDREDS_TENS_WORDS:
-            number_for_format.insert(0, 'một')
-
         # Trường hợp trăm, mươi nằm ở cuối
         if number_for_format[-1] in HUNDREDS_TENS_WORDS:
             number_for_format.append('không')
