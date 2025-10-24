@@ -44,11 +44,11 @@ def pre_process_n2w(number: str):
     clean_number = number.translate(TRANS_TABLE)
 
     # Thông báo lỗi nếu người dùng nhập đầu vào không hợp lệ!
-    if not number.isascii():
+    if not clean_number.isascii():
         raise ValueError("Số không hợp lệ, vui lòng nhập số đúng định dạng!")
 
     # Kiểm tra tính hợp lệ của đầu vào
-    if not number.isdecimal():
+    if not clean_number.isdecimal():
         raise ValueError(
             "Đầu vào không phải là kiểu chuỗi chỉ chứa các ký tự số (0-9)!"
         )
