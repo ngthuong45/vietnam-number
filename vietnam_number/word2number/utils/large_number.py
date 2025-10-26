@@ -26,15 +26,12 @@ class LargeNumber(Numbers):
             đã được định dạng lại.
 
         """
-        if len(number_for_format) == 1 and number_for_format[0] in UNITS:
-            return cls(number_for_format)
-
         # Trường hợp nghìn, triệu, tỷ nằm ở đầu
-        elif number_for_format[0] in BILLION_MILLION_THOUSAND_WORDS:
-            number_for_format.insert(0, 'một')
+        if number_for_format[0] in BILLION_MILLION_THOUSAND_WORDS:
+            number_for_format.insert(0, "một")
 
         # Trường hợp văn nói "một triệu hai", "tỷ ba"
-        if number_for_format[-1] in UNITS:
+        if len(number_for_format) > 1 and number_for_format[-1] in UNITS:
             second_last_word = number_for_format[-2]
 
             if second_last_word not in BILLION_MILLION_THOUSAND_WORDS:
