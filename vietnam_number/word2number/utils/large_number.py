@@ -26,11 +26,7 @@ class LargeNumber(Numbers):
             đã được định dạng lại.
 
         """
-        # Nếu danh sách chữ số truyền vào có 1 chữ số thuộc hàng đơn vị
-        # thì thêm 'không' vào đầu của list
-        # vd: ['hai'] => ['không', 'hai']
         if len(number_for_format) == 1 and number_for_format[0] in UNITS:
-            number_for_format.insert(0, 'không')
             return cls(number_for_format)
 
         # Trường hợp nghìn, triệu, tỷ nằm ở đầu
