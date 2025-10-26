@@ -67,10 +67,6 @@ def process_large_number_normal(words: list):
 
     number_segments.append(clean_words_number[start:])
 
-    _value_of_billion, value_of_million, value_of_thousand, _value_of_hundreds = (
-        number_segments
-    )
-
     return int("".join(map(process_hundreds, number_segments)))
 
 
