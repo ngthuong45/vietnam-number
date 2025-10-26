@@ -62,7 +62,7 @@ def process_large_number_normal(words: list):
         if index is None:
             number_segments.append([])
         else:
-            number_segments.append(clean_words_number[start:index])
+            number_segments.append(clean_words_number[start:index] or ["một"])
             start = index + 1
 
     number_segments.append(clean_words_number[start:])
@@ -70,11 +70,6 @@ def process_large_number_normal(words: list):
     _value_of_billion, value_of_million, value_of_thousand, _value_of_hundreds = (
         number_segments
     )
-
-    if not value_of_thousand and thousand_index:
-        value_of_thousand.append("một")
-    if not value_of_million and million_index:
-        value_of_million.append("một")
 
     return int("".join(map(process_hundreds, number_segments)))
 
