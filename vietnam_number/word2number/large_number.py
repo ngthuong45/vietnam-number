@@ -79,22 +79,24 @@ def process_large_number_normal(words: list):
     return int("".join(map(process_hundreds, number_segments)))
 
 
-def process_large_number_special(words: list):
+def process_large_number_special(words: list[str]) -> int:
     #   Create sublists of consecutive words that are NOT in `special_word`.
     #   The special word(s) act as split points and are NOT included in the output.
     #
     #   Example:
     #   Input:  ['một', 'trăm', 'lẻ', 'ba'], special_word = {'lẻ'}
     #   Output: [['một', 'trăm'], ['ba']]
-    total_number = 0
+    #
+    #   Then: each non-special group is passed to `process_large_number_normal`,
+    #   and all returned integers are sum into a single integer.
 
-    for is_special_word, word_group in groupby(
-        words, key=lambda word: word in SPECIAL_WORDS
-    ):
-        if not is_special_word:
-            total_number += process_large_number_normal(list(word_group))
-
-    return total_number
+    return sum(
+        process_large_number_normal(list(word_group))
+        for is_special_word, word_group in groupby(
+            words, key=SPECIAL_WORDS.__contains__
+        )
+        if not is_special_word
+    )
 
 
 def process_large_number(words: list):
