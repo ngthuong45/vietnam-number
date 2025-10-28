@@ -8,7 +8,7 @@ Vietnam Number Toolkit
 .. image:: https://img.shields.io/pypi/v/vietnam-number
         :target: https://pypi.python.org/pypi/vietnam-number
 
-.. image:: https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue
+.. image:: https://img.shields.io/badge/python-3.9|3.10|3.11|3.12|3.13|3.14-blue
         :target: https://pypi.python.org/pypi/vietnam-number
 
 .. image:: https://img.shields.io/badge/license-GPLv3-brightgreen.svg

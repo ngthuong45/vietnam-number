@@ -1,13 +1,3 @@
-import sys
-
-# Check python version
-if sys.version_info < (3, 8):
-    raise RuntimeError(
-        "vietnam-number requires Python 3.8 or later. "
-        "Please install an older version if you need compatibility."
-    )
-
-
 ###########################################################
 # METADATA
 ###########################################################
@@ -16,8 +6,12 @@ __author__ = """Nguyen Thuong"""
 __email__ = 'ngthuong.lio@gmail.com'
 
 # Version
-__version__ = '1.0.3'
+from importlib.metadata import version, PackageNotFoundError
 
+try:
+    __version__ = version("vietnam_number")
+except PackageNotFoundError:
+    __version__ = "0.0.0"  # fallback for source installs or testing
 
 ###########################################################
 # TOP-LEVEL MODULES
