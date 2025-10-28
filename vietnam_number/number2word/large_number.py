@@ -3,11 +3,11 @@ from typing import Literal
 from vietnam_number.number2word.hundreds import n2w_hundreds
 from vietnam_number.number2word.utils.base import chunk_from_right
 
-LABELS: tuple[Literal[""], Literal[" nghìn "], Literal[" triệu "], Literal[" tỷ "]] = (
+LABELS: tuple[Literal[""], Literal[" nghìn"], Literal[" triệu"], Literal[" tỷ"]] = (
     "",
-    " nghìn ",
-    " triệu ",
-    " tỷ ",
+    " nghìn",
+    " triệu",
+    " tỷ",
 )
 
 
@@ -15,21 +15,19 @@ def build_scale_label(group_index: int) -> str:
     """
     Return the Vietnamese scale label for a 3-digit group position.
     Pattern repeats every 3 groups and adds 'tỷ' layers for higher magnitudes.
-    ```
     Examples:
-    index | label
-    ------+--------------------
-      0   | ""
-      1   | " nghìn "
-      2   | " triệu "
-      3   | " tỷ "
-      4   | " nghìn tỷ "
-      5   | " triệu tỷ "
-      6   | " tỷ tỷ "
-      7   | " nghìn tỷ tỷ "
-      8   | " triệu tỷ tỷ "
-      9   | " tỷ tỷ tỷ "
-    ```
+    | index | label           |
+    |-------|-----------------|
+    | 0     | ""              |
+    | 1     | " nghìn"        |
+    | 2     | " triệu"        |
+    | 3     | " tỷ"           |
+    | 4     | " nghìn tỷ"     |
+    | 5     | " triệu tỷ"     |
+    | 6     | " tỷ tỷ"        |
+    | 7     | " nghìn tỷ tỷ"  |
+    | 8     | " triệu tỷ tỷ"  |
+    | 9     | " tỷ tỷ tỷ"     |
     """
 
     # base_label_index: 0 for index=0, else 1..3
@@ -56,7 +54,7 @@ def build_scale_label(group_index: int) -> str:
     #   - Subtract 1 when the base itself is 'tỷ' (i.e., base_label_index == 3)
     number_of_ty_suffixes: int = (group_index // 3) - (base_label_index // 3)
 
-    return base_label + "tỷ " * number_of_ty_suffixes
+    return base_label + " tỷ" * number_of_ty_suffixes
 
 
 def n2w_large_number(numbers: str):
@@ -84,7 +82,7 @@ def n2w_large_number(numbers: str):
 
     total_number.reverse()
 
-    return "".join(total_number).strip()
+    return " ".join(total_number)
 
 
 if __name__ == '__main__':
