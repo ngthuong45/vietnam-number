@@ -78,7 +78,4 @@ def process_tens(words: list) -> str:
         #    case _:
         #        raise ValueError("Định dạng chữ số không hợp lệ.")
 
-    else:
-        value_of_tens = value_of_units = ""
-
     return process_units(value_of_tens) + process_units(value_of_units)
