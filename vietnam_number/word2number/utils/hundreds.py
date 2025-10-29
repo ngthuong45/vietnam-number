@@ -20,13 +20,9 @@ class NumbersOfHundreds(Numbers):
             đã được định dạng lại.
 
         """
-        # Trường hợp đầu vào là rỗng thì đầu ra là 000
-        if not number_for_format:
-            return cls(number_for_format)
-
         # Trường hợp trăm, mươi nằm ở cuối
-        if number_for_format[-1] in HUNDREDS_TENS_WORDS:
-            number_for_format.append('không')
+        if number_for_format and number_for_format[-1] in HUNDREDS_TENS_WORDS:
+            number_for_format.append("không")
 
         return cls(number_for_format)
 
