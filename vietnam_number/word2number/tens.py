@@ -44,7 +44,7 @@ def process_tens(words: list) -> str:
     tens_index = numbers_of_tens.keyword_index.get("tens_index")
 
     if tens_index == 0:
-        value_of_tens = 'một'
+        value_of_tens = "một"
 
         value_of_units = (
             clean_words_number[1] if len(clean_words_number) > 1 else "không"
@@ -58,7 +58,25 @@ def process_tens(words: list) -> str:
         )
 
     elif tens_index is None:
-        value_of_tens, value_of_units = clean_words_number
+        clean_words_number_count = len(clean_words_number)
+        if clean_words_number_count == 2:
+            value_of_tens, value_of_units = clean_words_number
+        elif clean_words_number_count == 1:
+            value_of_tens = ""
+            value_of_units = clean_words_number[0]
+        else:
+            value_of_tens = value_of_units = ""
+
+        # From Python 3.10+, use 'match-case' instead of if-elif.
+        # match clean_words_number:
+        #    case [value_of_tens, value_of_units]:
+        #        pass
+        #    case [value_of_units]:
+        #        value_of_tens = ""
+        #    case []:
+        #        value_of_tens = value_of_units = ""
+        #    case _:
+        #        raise ValueError("Định dạng chữ số không hợp lệ.")
 
     else:
         value_of_tens = value_of_units = ""

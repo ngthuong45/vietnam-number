@@ -1,4 +1,4 @@
-from vietnam_number.word2number.data import TENS_WORDS, UNITS
+from vietnam_number.word2number.data import TENS_WORDS
 from vietnam_number.word2number.utils.base import Numbers
 
 
@@ -19,19 +19,6 @@ class NumbersOfTens(Numbers):
             Đối tượng NumbersOfTens với thuộc tính words_number đã được định dạng.
 
         """
-        # Optimal order: highest frequency first
-        if len(number_for_format) > 1:
-            pass
-
-        # Trường hợp đầu vào chỉ có 1 số thuộc hàng đơn vị
-        elif len(number_for_format) == 1 and number_for_format[0] in UNITS:
-            number_for_format.insert(0, "không")
-
-        # Trường hợp đầu vào là rỗng thì đầu ra là 00
-        elif not number_for_format:
-            number_for_format.append("không")
-            number_for_format.append("không")
-
         return cls(number_for_format)
 
     def validate(self):
