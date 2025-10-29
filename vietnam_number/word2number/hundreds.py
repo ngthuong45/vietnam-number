@@ -1,3 +1,4 @@
+from vietnam_number.word2number.data import TENS_WORDS
 from vietnam_number.word2number.tens import process_tens
 from vietnam_number.word2number.units import process_units
 from vietnam_number.word2number.utils.hundreds import NumbersOfHundreds
@@ -60,8 +61,12 @@ def process_hundreds(words: list) -> str:
             value_of_tens.append("không")
 
     elif tens_index is not None:
+        # Trường hợp mươi nằm ở cuối
+        if clean_words_number[-1] in TENS_WORDS:
+            clean_words_number.append("không")
+
         # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
-        if clean_words_number_count <= 3:
+        if len(clean_words_number) <= 3:
             value_of_hundreds = "không"
             value_of_tens = clean_words_number
 
