@@ -22,7 +22,6 @@ class NumbersOfHundreds(Numbers):
         """
         # Trường hợp đầu vào là rỗng thì đầu ra là 000
         if not number_for_format:
-            number_for_format.append('không')
             return cls(number_for_format)
 
         # Trường hợp trăm, mươi nằm ở cuối
