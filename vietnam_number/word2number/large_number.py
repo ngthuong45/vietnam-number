@@ -60,9 +60,9 @@ def process_large_number_normal(words: list):
         thousand_index,
     ):
         if index is None:
-            number_segments.append([])
+            number_segments.append(())
         else:
-            number_segments.append(clean_words_number[start:index] or ["một"])
+            number_segments.append(clean_words_number[start:index] or ("một",))
             start = index + 1
 
     number_segments.append(clean_words_number[start:])

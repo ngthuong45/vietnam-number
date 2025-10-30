@@ -1,3 +1,4 @@
+from vietnam_number.word2number.data import TENS_WORDS
 from vietnam_number.word2number.tens import process_tens
 from vietnam_number.word2number.units import process_units
 from vietnam_number.word2number.utils.hundreds import NumbersOfHundreds
@@ -40,7 +41,6 @@ def process_hundreds(words: list) -> str:
 
     # Xữ lý chữ số hàng trăm.
     clean_words_number = numbers_of_hundreds.words_number
-    clean_words_number_count = len(clean_words_number)
 
     # Lấy vị trí index của từ khóa hàng chục
     tens_index = numbers_of_hundreds.keyword_index.get("tens_index")
@@ -60,8 +60,12 @@ def process_hundreds(words: list) -> str:
             value_of_tens.append("không")
 
     elif tens_index is not None:
+        # Trường hợp mươi nằm ở cuối
+        if clean_words_number[-1] in TENS_WORDS:
+            clean_words_number.append("không")
+
         # Trường hợp cho các số như ['hai','mươi', 'ba'] == 023
-        if clean_words_number_count <= 3:
+        if len(clean_words_number) <= 3:
             value_of_hundreds = "không"
             value_of_tens = clean_words_number
 
@@ -86,17 +90,13 @@ def process_hundreds(words: list) -> str:
                 raise ValueError("Định dạng chữ số không hợp lệ.")
 
     # Trường hợp ['hai', 'ba'] == 023
-    elif clean_words_number_count <= 2:
+    elif len(clean_words_number) <= 2:
         value_of_hundreds = "không"
         value_of_tens = clean_words_number
 
     # Trường hợp ['năm', 'sáu', 'hai'] == 562
-    elif clean_words_number_count == 3:
+    else:
         value_of_hundreds = clean_words_number[0]
         value_of_tens = clean_words_number[1:]
-
-    else:
-        value_of_hundreds = ""
-        value_of_tens = []
 
     return process_units(value_of_hundreds) + process_tens(value_of_tens)
