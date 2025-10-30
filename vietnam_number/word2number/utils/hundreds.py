@@ -22,18 +22,20 @@ class NumbersOfHundreds(Numbers):
         """
         return cls(number_for_format)
 
-    def validate(self):
+    def validate(
+        self,
+        hundreds_tens_words: frozenset[str] = HUNDREDS_TENS_WORDS,
+    ):
         """Kiểm tra tính hợp lệ của danh sách chữ số đầu vào.
 
         Raises:
             ValueError: Nếu danh sách chữ số đầu váo có nhiều hợn 1 từ thuộc các từ trong
-                hundreds_words và tens_words thì báo lỗi.
+                HUNDREDS_TENS_WORDS thì báo lỗi.
                 vd: bốn trăm trăm bảy mươi hai, bốn trăm bảy mươi mươi hai
 
         """
-        words_number_counter = self.words_number_counter
-        for word in HUNDREDS_TENS_WORDS:
-            if words_number_counter[word] > 1:
+        for word, count in self.words_number_counter.items():
+            if count > 1 and word in hundreds_tens_words:
                 raise ValueError(
                     f"Chữ số {word} nhiều hơn 1 từ. Vui lòng nhập chữ số hợp lệ."
                 )
