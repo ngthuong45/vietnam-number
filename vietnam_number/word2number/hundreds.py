@@ -41,7 +41,6 @@ def process_hundreds(words: list) -> str:
 
     # Xữ lý chữ số hàng trăm.
     clean_words_number = numbers_of_hundreds.words_number
-    clean_words_number_count = len(clean_words_number)
 
     # Lấy vị trí index của từ khóa hàng chục
     tens_index = numbers_of_hundreds.keyword_index.get("tens_index")
@@ -91,12 +90,12 @@ def process_hundreds(words: list) -> str:
                 raise ValueError("Định dạng chữ số không hợp lệ.")
 
     # Trường hợp ['hai', 'ba'] == 023
-    elif clean_words_number_count <= 2:
+    elif len(clean_words_number) <= 2:
         value_of_hundreds = "không"
         value_of_tens = clean_words_number
 
     # Trường hợp ['năm', 'sáu', 'hai'] == 562
-    elif clean_words_number_count == 3:
+    else:
         value_of_hundreds = clean_words_number[0]
         value_of_tens = clean_words_number[1:]
 
