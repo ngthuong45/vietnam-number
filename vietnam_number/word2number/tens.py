@@ -57,7 +57,7 @@ def process_tens(words: list) -> str:
             clean_words_number[2] if len(clean_words_number) > 2 else "không"
         )
 
-    elif tens_index is None:
+    else:
         clean_words_number_count = len(clean_words_number)
         if clean_words_number_count == 2:
             value_of_tens, value_of_units = clean_words_number
