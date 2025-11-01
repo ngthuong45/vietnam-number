@@ -26,16 +26,9 @@ def n2w_hundreds(numbers: str):
         ValueError: Nếu số đầu vào là chuỗi rỗng.
 
     """
-    # Optimal order: highest frequency first
     numbers_length = len(numbers)
-    if numbers_length == 3 or numbers_length == 2:
-        pass
-
-    elif numbers_length == 1:
+    if numbers_length == 1:
         return UNITS[numbers]
-
-    else:
-        raise ValueError("Số vượt quá giá trị của hàng trăm!")
 
     # Chúng ta cần duyệt danh sách từ phải qua trái nhằm phân biệt các giá trị từ nhỏ đến lớn.
     # Lý giải: giả sử chúng ta có 2 đầu vào: '10' và '123'
@@ -75,7 +68,11 @@ def n2w_hundreds(numbers: str):
     #       6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
 
     # Separate digits
-    digit_unit, digit_tens, digits_hundred = total_number
+    if numbers_length == 3:
+        digit_unit, digit_tens, digits_hundred = total_number
+    else:
+        digit_unit, digit_tens = total_number
+        digits_hundred = ""
 
     # Adjust tens
     if digit_tens == "không mươi ":
