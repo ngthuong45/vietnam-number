@@ -75,7 +75,11 @@ def n2w_hundreds(numbers: str):
     #       6. 'hai trăm ba mươi năm' trở thành 'hai trăm ba mươi lăm'
 
     # Separate digits
-    digit_unit, digit_tens, digits_hundred = total_number
+    if numbers_length == 3:
+        digit_unit, digit_tens, digits_hundred = total_number
+    else:
+        digit_unit, digit_tens = total_number
+        digits_hundred = ""
 
     # Adjust tens
     if digit_tens == "không mươi ":
