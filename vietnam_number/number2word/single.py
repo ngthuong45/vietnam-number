@@ -1,4 +1,4 @@
-from vietnam_number.number2word.data import UNITS
+from vietnam_number.number2word.data import UNITS_WITH_TRAILING_SPACE_TABLE
 
 
 def process_n2w_single(numbers: str):
@@ -10,7 +10,7 @@ def process_n2w_single(numbers: str):
     Returns:
         Chuỗi chữ số đầu ra.
     """
-    return " ".join(map(UNITS.get, numbers))
+    return numbers.translate(UNITS_WITH_TRAILING_SPACE_TABLE).rstrip()
 
 
 if __name__ == '__main__':
