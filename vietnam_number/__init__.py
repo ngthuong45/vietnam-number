@@ -3,10 +3,10 @@
 ###########################################################
 
 __author__ = """Nguyen Thuong"""
-__email__ = 'ngthuong.lio@gmail.com'
+__email__ = "ngthuong.lio@gmail.com"
 
 # Version
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
 
 try:
     __version__ = version("vietnam_number")
@@ -17,7 +17,7 @@ except PackageNotFoundError:
 # TOP-LEVEL MODULES
 ###########################################################
 
-from vietnam_number.number2word import n2w, n2w_single
+from vietnam_number.number2word import ZeroWord, n2w, n2w_single
 from vietnam_number.word2number import w2n, w2n_couple, w2n_single
 
-__all__ = ['w2n', 'w2n_couple', 'w2n_single', 'n2w', 'n2w_single']
+__all__ = ["ZeroWord", "n2w", "n2w_single", "w2n", "w2n_couple", "w2n_single"]

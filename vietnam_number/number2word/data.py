@@ -1,3 +1,16 @@
+from enum import StrEnum
+
+
+class ZeroWord(StrEnum):
+    """Choose "lẻ" or "linh" to read an interior zero digit (101, 205...)."""
+
+    LE = "lẽ"
+    """lẻ: 101 → "một trăm lẻ một"."""
+
+    LINH = "linh"
+    """linh: 101 → "một trăm linh một"."""
+
+
 UNITS = {
     '0': 'không',
     '1': 'một',

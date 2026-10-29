@@ -1,5 +1,6 @@
 from typing import Literal
 
+from vietnam_number.number2word.data import ZeroWord
 from vietnam_number.number2word.hundreds import n2w_hundreds
 from vietnam_number.number2word.utils.base import chunk_from_right
 
@@ -57,7 +58,7 @@ def build_scale_label(group_index: int) -> str:
     return base_label + " tỷ" * number_of_ty_suffixes
 
 
-def n2w_large_number(numbers: str):
+def n2w_large_number(numbers: str, *, zero_word: ZeroWord):
     """Hàm chuyển đổi các số có giá trị lớn.
 
     Hàm chuyển đổi các số có giá trị lớn từ 999 đến 999.999.999.999
@@ -75,7 +76,7 @@ def n2w_large_number(numbers: str):
     reversed_large_number = chunk_from_right(numbers, 3)
 
     total_number = [
-        n2w_hundreds(group_value) + build_scale_label(group_index)
+        n2w_hundreds(group_value, zero_word=zero_word) + build_scale_label(group_index)
         for group_index, group_value in enumerate(reversed_large_number)
         if group_value != "000"
     ]
@@ -85,11 +86,9 @@ def n2w_large_number(numbers: str):
     return " ".join(total_number)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    numbers = ("4680000000", "2460125030000", "1000000000000000000")
 
-    number = '4680000000'
-    print(n2w_large_number(number))
-    number = '2460125030000'
-    print(n2w_large_number(number))
-    number = '1000000000000000000'
-    print(n2w_large_number(number))
+    for number in numbers:
+        print(n2w_large_number(number, zero_word=ZeroWord.LE))
+        print(n2w_large_number(number, zero_word=ZeroWord.LINH))

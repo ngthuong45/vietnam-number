@@ -1,16 +1,21 @@
 from typing import Literal
 
-from vietnam_number.number2word.data import UNITS
+from vietnam_number.number2word.data import UNITS, ZeroWord
 
 POSITION_UNITS: tuple[Literal[""], Literal[" mươi "], Literal[" trăm "]] = (
     "",
     " mươi ",
     " trăm ",
 )
-SPECIAL_TENS: frozenset[Literal["mười ", "lẽ "]] = frozenset(("mười ", "lẽ "))
+
+ZERO_WORDS: frozenset[Literal[ZeroWord.LE, ZeroWord.LINH]] = frozenset(ZeroWord)
+
+SPECIAL_TENS: frozenset[Literal[ZeroWord.LE, ZeroWord.LINH, "mười"]] = ZERO_WORDS.union(
+    ("mười",)
+)
 
 
-def n2w_hundreds(numbers: str):
+def n2w_hundreds(numbers: str, *, zero_word: ZeroWord):
     """Hàm chuyển đổi số sang chữ số lớp trăm.
 
     Hàm chuyển đổi số sang chữ số áp dụng cho các số từ 0 đến 999
@@ -87,7 +92,11 @@ def n2w_hundreds(numbers: str):
         else:
             # Nested else: units ≠ 'không'
             # Example list before: ['năm', 'không mươi ', 'hai trăm '] (205)
-            digit_tens = "lẽ "
+            match zero_word:
+                case ZeroWord.LE:
+                    digit_tens = "lẽ "
+                case ZeroWord.LINH:
+                    digit_tens = "linh "
             # Example list after assignment: ['năm', 'lẽ ', 'hai trăm ']
             # case 2. 'ba trăm không mươi hai' trở thành 'ba trăm lẽ hai'
 
@@ -100,6 +109,7 @@ def n2w_hundreds(numbers: str):
         # half case 5. 'một mươi năm' trở thành 'mười lăm'
 
     # Adjust units
+    tens_word = digit_tens.rstrip()
     if digit_unit == "không":
         # Case: units = 'không'
         # Example list before: ['không', 'không mươi ', 'hai trăm '] (200)
@@ -107,14 +117,14 @@ def n2w_hundreds(numbers: str):
         # Example list after assignment: ['', 'không mươi ', 'hai trăm ']
         # case 1. 'hai mươi không' trở thành 'hai mươi'
 
-    elif digit_unit == "một" and digit_tens not in SPECIAL_TENS:
+    elif digit_unit == "một" and tens_word not in SPECIAL_TENS:
         # Case: units = 'một' AND tens ≠ 'mười ' or 'lẽ '
         # Example list before: ['một', 'hai mươi ', 'hai trăm '] (221)
         digit_unit = "mốt"
         # Example list after assignment: ['mốt', 'hai mươi ', 'hai trăm ']
         # case 4. 'hai mươi một' trở thành 'hai mươi mốt'
 
-    elif digit_unit == "năm" and digit_tens != "lẽ ":
+    elif digit_unit == "năm" and tens_word not in ZERO_WORDS:
         # Case: units = 'năm' AND tens ≠ 'lẽ '
         # Example list before: ['năm', 'một mươi ', 'hai trăm '] (215)
         digit_unit = "lăm"
@@ -126,25 +136,9 @@ def n2w_hundreds(numbers: str):
     return (digits_hundred + digit_tens + digit_unit).rstrip()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    numbers = ("111", "200", "101", "121", "815", "805", "825")
 
-    number = '111'
-    print(n2w_hundreds(number))
-
-    number = '200'
-    print(n2w_hundreds(number))
-
-    number = '101'
-    print(n2w_hundreds(number))
-
-    number = '121'
-    print(n2w_hundreds(number))
-
-    number = '815'
-    print(n2w_hundreds(number))
-
-    number = '805'
-    print(n2w_hundreds(number))
-
-    number = '825'
-    print(n2w_hundreds(number))
+    for number in numbers:
+        print(n2w_hundreds(number, zero_word=ZeroWord.LE))
+        print(n2w_hundreds(number, zero_word=ZeroWord.LINH))
